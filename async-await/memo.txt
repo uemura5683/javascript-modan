@@ -1,0 +1,178 @@
+デバイス・ドライバ
+マウス・キーボードを繋げるとコンピューターと連動して動く
+
+プロセス・スレッド
+実行中のプログラム
+セキュリティの為に、他のユーザーが触らないようにして実行すること
+
+スングルスレッド・マルチスレッド
+
+同期処理
+1行め終わったら、2行め処理と順序に実行する
+
+非同期処理
+他のプログラムを処理する時でも、それと同時に処理すること
+
+ーーーーーーー
+
+同期通信
+
+サーバーからの応答を通信
+サーバーから一つ一つ処理することを同期通信
+
+非同期通信
+
+サーバーから同時平行で処理することを非同期通信
+
+ーーーーーーー
+
+
+# Callback地獄を回避したい
+
+という欲求がありました、なぜ回避したいかというと・・・
+
+- コードが追いづらい
+- 入子構造になるので、順番の制御が難しい
+
+複数回通信が必要で、それぞれの結果を元に別の通信を実施するような場合
+fuction getAData(callback) {
+	//  Aのデータを取りに行く	
+	let dataA = get();
+	callback(dataA);
+}
+
+fuction getBData(dataA, callback) {
+	// Bのデータを取りに行く	
+	callback(dataA);
+}
+
+fuction getCData(dataB, callback) {
+	// Bのデータを取りに行く	
+	callback(dataB);
+}
+
+getAData((data1) => {
+	getBData((data2) => {
+        getCData(data2);
+  })
+})
+
+----------------------------------------------------------------------
+
+Promise
+
+var promise = new Promise((resolve, reject) = {
+	// 非同期で処理したいことを記述する
+	try {
+		// なにか失敗するかもしれない処理(通信処理や外部リソースへのアクセスなどを書く)
+	  setTimeout(() => {
+	    resolve("hello world"); サーバーから取得したJSONとかがわr
+	  }, 1000);
+	} catch {
+    // 失敗したときの処理
+	  reject("失敗") エラーコードとかが渡る
+  }
+});
+
+promise
+	.then((res) => console.log(res))
+	.catch((err) => console.error("error:" + err))
+
+
+then catch が出てきたら promiseだと覚えた方がいい
+axios.getメソッドは promiseオブジェクトだと覚えた方がいい
+then 成功
+catch 失敗
+
+非同期のオブジェクト
+### **Promiseの状態**
+
+`Promise`インスタンスの状態について整理していきます。
+`Promise`インスタンスには、内部的に次の3つの状態が存在します。
+
+- **Fulfilled**
+     - `resolve`（成功）したときの状態。このとき`onFulfilled`が呼ばれる
+- **Rejected**
+     - `reject`（失敗）または例外が発生したときの状態。このとき`onRejected`が呼ばれる
+- **Pending**
+     - FulfilledまたはRejectedではない状態
+     - `new Promise`でインスタンスを作成したときの初期状態
+
+resolve成功・reject失敗
+Fulfilled成功した時のコールバック関数
+
+new promise は保留
+
+----------------------------------------------------------------------
+
+promiseをもう少しわかりやすくしたのが
+async function
+json処理に使った方がいい
+
+async function blockTime(timeout) {
+  const startTime = Date.now();
+  `timeout`ミリ秒経過するまで無限ループをする
+    setTimeout(() => {
+      resolve("hello world");
+    }, 1000);
+}
+
+----------------------------------------------------------------------
+
+// ユーザーのダッシュボードを表示する処理
+async function showDashboard () {
+	doApiはPromiseオブジェクトを返す、async functionの場合、以下のように書ける
+	let userId = null
+	let userData = null
+	
+	// ログイン
+	await axios.get("login", { user, password }).then((user) => {
+		// ログイン後の処理
+		userId = user.id
+	}).catch((err) => {
+	  console.log("ログインに失敗しました")
+		throw "ログインエラー発生"
+	})
+
+	// ログインしたユーザーの情報を取得する
+	await axios.get("user", { userId }).then((data) => {
+		userData = data
+	}).catch((err) => {
+	  console.log("errorが発生しました")
+		throw "ログインエラー発生"
+	})
+
+  // 例外をthrowしたい場合はcatchを書かないなどの対応をして、
+}
+
+ダッシュボードを表示する
+showDashboard()
+
+ダッシュボードを表示する
+showDashboard()
+
+res1 と res2 両方のデータを使う処理
+res1 と res2 両方のデータを使う処理
+
+async functionの中にawaitを入れないと警告がでる
+
+await は通信が終わるまで待ってくれる
+
+順番に関係なく処理する場合はawaitを入れない
+
+----------------------------------------------------------------------
+
+connpass
+https://www.notion.so/Promise-async-await-fca97a2454174b7289cad15986d4ca9e
+
+参考記事
+
+setinterval
+https://techacademy.jp/magazine/5537
+
+promise
+https://developer.mozilla.org/ja/docs/Web/JavaScript/Guide/Using_promises
+
+非同期処理：コールバック
+https://jsprimer.net/basic/async/
+
