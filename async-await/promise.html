@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <link href="css.css" rel="stylesheet">
+  <style type="text/css">
+    pre {
+        background: #1d1d1d;
+        color: #fff;
+        padding: 1rem;
+        line-height: 1.6;
+        border: 1px solid #1d1d1d;
+        border-radius: .5rem;
+    }
+    pre code {
+        font-size: inherit;
+        color: inherit;
+        word-break: normal;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <h3>## Callbackより綺麗に書けるメソッドPromise</h3>
+    <pre>
+      <code>
+
+        var promise = new Promise((resolve, reject) = {
+          // 非同期で処理したいことを記述する
+          try {
+            // なにか失敗するかもしれない処理(通信処理や外部リソースへのアクセスなどを書く)
+            setTimeout(() => {
+              resolve("hello world"); サーバーから取得したJSONとかがわr
+            }, 1000);
+          } catch {
+            // 失敗したときの処理
+            reject("失敗") エラーコードとかが渡る
+          }
+        });
+
+        promise
+          .then((res) => console.log(res))
+          .catch((err) => console.error("error:" + err))
+                console.log(getAData());
+
+        then catch が出てきたら promiseだと覚えた方がいい
+        axios.getメソッドは promiseオブジェクトだと覚えた方がいい
+        then 成功
+        catch 失敗
+
+        非同期のオブジェクト
+        ### **Promiseの状態**
+
+        `Promise`インスタンスの状態について整理していきます。
+        `Promise`インスタンスには、内部的に次の3つの状態が存在します。
+
+        - **Fulfilled**
+             - `resolve`（成功）したときの状態。このとき`onFulfilled`が呼ばれる
+        - **Rejected**
+             - `reject`（失敗）または例外が発生したときの状態。このとき`onRejected`が呼ばれる
+        - **Pending**
+             - FulfilledまたはRejectedではない状態
+             - `new Promise`でインスタンスを作成したときの初期状態
+
+        resolve成功・reject失敗
+        Fulfilled成功した時のコールバック関数
+
+        new promise は保留
+
+      </code>
+    </pre>
+  </div>
+  <script type="text/javascript">
+    var promise = new Promise((resolve, reject) = {
+      // 非同期で処理したいことを記述する
+      try {
+        // なにか失敗するかもしれない処理(通信処理や外部リソースへのアクセスなどを書く)
+        setTimeout(() => {
+          resolve("hello world"); サーバーから取得したJSONとかがわr
+        }, 1000);
+      } catch {
+        // 失敗したときの処理
+        reject("失敗") エラーコードとかが渡る
+      }
+    });
+
+    promise
+      .then((res) => console.log(res))
+      .catch((err) => console.error("error:" + err))
+            console.log(getAData());
+
+  </script>
+</body>
+</html>
