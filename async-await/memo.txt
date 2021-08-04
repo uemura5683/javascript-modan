@@ -26,39 +26,6 @@
 
 ーーーーーーー
 
-
-# Callback地獄を回避したい
-
-という欲求がありました、なぜ回避したいかというと・・・
-
-- コードが追いづらい
-- 入子構造になるので、順番の制御が難しい
-
-複数回通信が必要で、それぞれの結果を元に別の通信を実施するような場合
-fuction getAData(callback) {
-	//  Aのデータを取りに行く	
-	let dataA = get();
-	callback(dataA);
-}
-
-fuction getBData(dataA, callback) {
-	// Bのデータを取りに行く	
-	callback(dataA);
-}
-
-fuction getCData(dataB, callback) {
-	// Bのデータを取りに行く	
-	callback(dataB);
-}
-
-getAData((data1) => {
-	getBData((data2) => {
-        getCData(data2);
-  })
-})
-
-----------------------------------------------------------------------
-
 Promise
 
 var promise = new Promise((resolve, reject) = {
