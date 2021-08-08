@@ -25,23 +25,19 @@
     <pre>
       <code>
 
-        var promise = new Promise((resolve, reject) = {
-          // 非同期で処理したいことを記述する
-          try {
-            // なにか失敗するかもしれない処理(通信処理や外部リソースへのアクセスなどを書く)
-            setTimeout(() => {
-              resolve("hello world"); サーバーから取得したJSONとかがわr
-            }, 1000);
-          } catch {
-            // 失敗したときの処理
-            reject("失敗") エラーコードとかが渡る
-          }
-        });
-
-        promise
-          .then((res) => console.log(res))
-          .catch((err) => console.error("error:" + err))
-                console.log(getAData());
+        scrollEvent = function( trigger ) {
+            return new Promise((resolve, reject) => {
+              alert("hello world");
+              resolve();
+            }).then(() => {
+              setTimeout( function() {
+                alert("hello world second");
+              }, 200 );
+            }).catch(() => {
+              reject();
+            });
+        }
+        scrollEvent();
 
         then catch が出てきたら promiseだと覚えた方がいい
         axios.getメソッドは promiseオブジェクトだと覚えた方がいい
@@ -71,23 +67,19 @@
     </pre>
   </div>
   <script type="text/javascript">
-    var promise = new Promise((resolve, reject) = {
-      // 非同期で処理したいことを記述する
-      try {
-        // なにか失敗するかもしれない処理(通信処理や外部リソースへのアクセスなどを書く)
-        setTimeout(() => {
-          resolve("hello world"); サーバーから取得したJSONとかがわr
-        }, 1000);
-      } catch {
-        // 失敗したときの処理
-        reject("失敗") エラーコードとかが渡る
+      scrollEvent = function( trigger ) {
+          return new Promise((resolve, reject) => {
+            alert("hello world");
+            resolve();
+          }).then(() => {
+            setTimeout( function() {
+              alert("hello world second");
+            }, 200 );
+          }).catch(() => {
+            reject();
+          });
       }
-    });
-
-    promise
-      .then((res) => console.log(res))
-      .catch((err) => console.error("error:" + err))
-            console.log(getAData());
+      scrollEvent();
 
   </script>
 </body>
