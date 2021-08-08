@@ -1,25 +1,12 @@
-let data1 = 1;
-function getAData(callback) {
-  //  Aのデータを取りに行く 
-  let dataA = get();
-  callback(dataA);
-}
+let callback = 1;
+let callback2 = 2;
 
-function getBData(dataA, callback) {
-  // Bのデータを取りに行く  
-  let dataA = dataA + 1;
-  callback(dataA);
-}
-
-function getCData(dataB, callback) {
-  // Bのデータを取りに行く  
-  let dataB = dataB + 1;
-  callback(dataB);
-}
-
-getAData((data1) => {
-  getBData((data2) => {
-        getCData(data2);
-  })
-})
-console.log(getAData());
+setTimeout(function(){
+  console.log(callback);
+  setTimeout(function(){
+    console.log(callback2);
+    setTimeout(function(){
+      console.log(callback + callback2);
+    }, 1000);
+  }, 1000);
+}, 1000);
