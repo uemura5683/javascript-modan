@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <link href="../css.css" rel="stylesheet">
+</head>
+<body>
+  <div class="wrapper">
+    <h3>## 指定したミリ秒(ms)の間、実行をブロックする同期処理<br>これは同期処理です。</h3>
+    <pre>
+      <code>
+        function blockTime(timeout) {
+          const startTime = Date.now();
+          // `timeout`ミリ秒経過するまで無限ループをする
+          while (true) {
+              const diffTime = Date.now() - startTime;
+              if (diffTime >= timeout) {
+                  alert('終了です');
+                  return; // 指定時間経過したら関数の実行を終了
+              }
+          }
+        }  
+        blockTime(5000) // 5秒処理を止める
+      </code>
+    </pre>
+  </div>
+  <script src="index.js"></script>
+</body>
+</html>

@@ -2,22 +2,7 @@
 <html>
 <head>
   <meta charset="utf-8"/>
-  <link href="css.css" rel="stylesheet">
-  <style type="text/css">
-    pre {
-        background: #1d1d1d;
-        color: #fff;
-        padding: 1rem;
-        line-height: 1.6;
-        border: 1px solid #1d1d1d;
-        border-radius: .5rem;
-    }
-    pre code {
-        font-size: inherit;
-        color: inherit;
-        word-break: normal;
-    }
-  </style>
+  <link href="../css.css" rel="stylesheet">
 </head>
 <body>
   <div class="wrapper">
@@ -77,32 +62,6 @@
       </code>
     </pre>
   </div>
-  <script type="text/javascript">
-    // ユーザーのダッシュボードを表示する処理
-    async function showDashboard () {
-      doApiはPromiseオブジェクトを返す、async functionの場合、以下のように書ける
-      let userId = null
-      let userData = null
-      
-      // ログイン
-      await axios.get("login", { user, password }).then((user) => {
-        // ログイン後の処理
-        userId = user.id
-      }).catch((err) => {
-        console.log("ログインに失敗しました")
-        throw "ログインエラー発生"
-      })
-
-      // ログインしたユーザーの情報を取得する
-      await axios.get("user", { userId }).then((data) => {
-        userData = data
-      }).catch((err) => {
-        console.log("errorが発生しました")
-        throw "ログインエラー発生"
-      })
-
-      // 例外をthrowしたい場合はcatchを書かないなどの対応をして、
-    }
-  </script>
+  <script src="index.js"></script>
 </body>
 </html>

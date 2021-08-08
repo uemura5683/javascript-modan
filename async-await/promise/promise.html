@@ -2,29 +2,13 @@
 <html>
 <head>
   <meta charset="utf-8"/>
-  <link href="css.css" rel="stylesheet">
-  <style type="text/css">
-    pre {
-        background: #1d1d1d;
-        color: #fff;
-        padding: 1rem;
-        line-height: 1.6;
-        border: 1px solid #1d1d1d;
-        border-radius: .5rem;
-    }
-    pre code {
-        font-size: inherit;
-        color: inherit;
-        word-break: normal;
-    }
-  </style>
+  <link href="../css.css" rel="stylesheet">
 </head>
 <body>
   <div class="wrapper">
     <h3>## Callbackより綺麗に書けるメソッドPromise</h3>
     <pre>
       <code>
-
         scrollEvent = function( trigger ) {
             return new Promise((resolve, reject) => {
               alert("hello world");
@@ -62,25 +46,9 @@
         Fulfilled成功した時のコールバック関数
 
         new promise は保留
-
       </code>
     </pre>
   </div>
-  <script type="text/javascript">
-      scrollEvent = function( trigger ) {
-          return new Promise((resolve, reject) => {
-            alert("hello world");
-            resolve();
-          }).then(() => {
-            setTimeout( function() {
-              alert("hello world second");
-            }, 200 );
-          }).catch(() => {
-            reject();
-          });
-      }
-      scrollEvent();
-
-  </script>
+  <script src="index.js"></script>
 </body>
 </html>

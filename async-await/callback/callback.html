@@ -2,29 +2,13 @@
 <html>
 <head>
   <meta charset="utf-8"/>
-  <link href="css.css" rel="stylesheet">
-  <style type="text/css">
-    pre {
-        background: #1d1d1d;
-        color: #fff;
-        padding: 1rem;
-        line-height: 1.6;
-        border: 1px solid #1d1d1d;
-        border-radius: .5rem;
-    }
-    pre code {
-        font-size: inherit;
-        color: inherit;
-        word-break: normal;
-    }
-  </style>
+  <link href="../css.css" rel="stylesheet">
 </head>
 <body>
   <div class="wrapper">
     <h3>## Callback地獄を回避したい</h3>
     <pre>
       <code>
-
         ## Callback地獄を回避したい
         という欲求がありました、なぜ回避したいかというと・・・
 
@@ -60,32 +44,6 @@
       </code>
     </pre>
   </div>
-  <script type="text/javascript">
-    let data1 = 1;
-    function getAData(callback) {
-      //  Aのデータを取りに行く 
-      let dataA = get();
-      callback(dataA);
-    }
-
-    function getBData(dataA, callback) {
-      // Bのデータを取りに行く  
-      let dataA = dataA + 1;
-      callback(dataA);
-    }
-
-    function getCData(dataB, callback) {
-      // Bのデータを取りに行く  
-      let dataB = dataB + 1;
-      callback(dataB);
-    }
-
-    getAData((data1) => {
-      getBData((data2) => {
-            getCData(data2);
-      })
-    })
-    console.log(getAData());
-  </script>
+  <script src="index.js"></script>
 </body>
 </html>
