@@ -4,56 +4,16 @@
   <title>jquery.inview - Example</title>
   <meta name="viewport" content="initial-scale=1.0, width=device-width, height=device-height">
   <link type="text/css" rel="stylesheet" href="animate.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="jquery.inview.js"></script>
+  <script class="inview" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script class="inview" src="jquery.inview.js"></script>
   <style>
-    /*===========
-    inview
-    ===========*/
-
-    .fadeIn {
-      opacity: 0;
-      transition: 2s;
-    }
-    .fadeIn.is-show {
-      opacity: 1;
-    }
-
-    /*===========
-    .imgBox
-    ===========*/
-
-    .imgBox {
-      text-align: center;
-      margin: 50px 0;
-    }
-    .imgBox img {
-      max-width: 100%;
-      height: auto;
-      vertical-align: top;
-    }
-
-    /*===========
-    .txtBox
-    ===========*/
-
-    .txtBox {
-      text-align: center;
-    }
-    .txtBox p {
-      font-size: 60px;
-      font-weight: bold;
-      padding: 2em 0;
-      margin: 0;
-    }
-
-    /*===========
-    base
-    ===========*/
-
+    /**
+    * base
+    **/
     html {
       margin: 0;
       padding: 0;
+      background: #f7d7b5;
     }
     body {
       font-family: YuGothic, "游ゴシック体", "Yu Gothic", "ヒラギノ角ゴ Pro", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
@@ -62,45 +22,345 @@
       line-height: 1.8;
       margin: 0;
       padding: 0;
+      overflow-x: hidden;
     }
     * {
       box-sizing: border-box;
     }
+
+    /**
+    * h2
+    **/
+    h2 {
+      margin: 0;
+      background: #351c75;
+      text-align: center;
+      color: white;
+    }
+
+    /**
+    * imgBox
+    **/
+    .imgBox {
+      text-align: center;
+      margin: 50px 0;
+      overflow: hidden;
+    }
+    .imgBox img {
+      max-width: 100%;
+      height: auto;
+      vertical-align: top;
+    }
+
+    /**
+    * inview
+    **/
+    .inview {
+      visibility: hidden;
+    }
+
+    /**
+    * media query
+    **/
+    @media screen and (max-width: 979px) {
+      .imgBox img {
+        width: calc(100% / 4);
+      }
+    }
   </style>
 </head>
 <body>
-  <div class="imgBox inview fadeIn" data-delay="0.2">
-    <img src="//placehold.jp/cc9999/993333/300x300.png">
-  </div>
-  <div class="imgBox inview fadeIn" data-delay="0.2">
-    <img src="//placehold.jp/cc9999/993333/300x300.png">
-  </div>
-  <div class="imgBox inview fadeIn" data-delay="0.2">
-    <img src="//placehold.jp/cc9999/993333/300x300.png">
-  </div>
-  <div class="imgBox inview fadeIn" data-delay="0.2">
-    <img src="//placehold.jp/cc9999/993333/300x300.png">
-  </div>
-  <div class="imgBox inview fadeIn" data-delay="0.2">
-    <img src="//placehold.jp/cc9999/993333/300x300.png">
-  </div>
-  <div class="imgBox inview fadeIn" data-delay="0.2">
-    <img src="//placehold.jp/cc9999/993333/300x300.png">
-  </div>
-  <div class="imgBox inview fadeIn" data-delay="0.2">
-    <img src="//placehold.jp/cc9999/993333/300x300.png">
-  </div>
-  <div class="imgBox inview fadeIn" data-delay="0.2">
-    <img src="//placehold.jp/cc9999/993333/300x300.png">
-  </div>
+  <div class="wrapper">
+    <h2>fadeIn</h2>
+    <div class="imgBox">
+      <img
+        src="//placehold.jp/cc9999/993333/300x300.png"
+        class="animate__animated inview"
+        data-animate="fadeIn"
+        data-delay="0.2"
+      />
+      <img
+        src="//placehold.jp/cc9999/993333/300x300.png"
+        class="animate__animated inview"
+        data-animate="fadeIn"
+        data-delay="0.4"
+      />
+      <img
+        src="//placehold.jp/cc9999/993333/300x300.png"
+        class="animate__animated inview"
+        data-animate="fadeIn"
+        data-delay="0.6"
+      />
+    </div>
+    <h2>fadeInDown</h2>
+    <div class="imgBox">
+      <img
+        src="//placehold.jp/cc9999/993333/300x300.png"
+        class="animate__animated inview"
+        data-animate="fadeInDown"
+        data-delay="0.2"
+      />
+      <img
+        src="//placehold.jp/cc9999/993333/300x300.png"
+        class="animate__animated inview"
+        data-animate="fadeInDown"
+        data-delay="0.4"
+      />
+      <img
+        src="//placehold.jp/cc9999/993333/300x300.png"
+        class="animate__animated inview"
+        data-animate="fadeInDown"
+        data-delay="0.6"
+      />
+    </div>
+    <h2>fadeInDownBig</h2>
+    <div class="imgBox">
+      <img
+        src="//placehold.jp/cc9999/993333/300x300.png"
+        class="animate__animated inview"
+        data-animate="fadeInDownBig"
+        data-delay="0.2"
+      />
+      <img
+        src="//placehold.jp/cc9999/993333/300x300.png"
+        class="animate__animated inview"
+        data-animate="fadeInDownBig"
+        data-delay="0.4"
+      />
+      <img
+        src="//placehold.jp/cc9999/993333/300x300.png"
+        class="animate__animated inview"
+        data-animate="fadeInDownBig"
+        data-delay="0.6"
+      />
+    </div>
+    <h2>fadeInLeft</h2>
+    <div class="imgBox">
+      <img
+        src="//placehold.jp/cc9999/993333/300x300.png"
+        class="animate__animated inview"
+        data-animate="fadeInLeft"
+        data-delay="0.2"
+      />
+      <img
+        src="//placehold.jp/cc9999/993333/300x300.png"
+        class="animate__animated inview"
+        data-animate="fadeInLeft"
+        data-delay="0.4"
+      />
+      <img
+        src="//placehold.jp/cc9999/993333/300x300.png"
+        class="animate__animated inview"
+        data-animate="fadeInLeft"
+        data-delay="0.6"
+      />
+    </div>
+    <h2>fadeInLeftBig</h2>
+    <div class="imgBox">
+      <img
+        src="//placehold.jp/cc9999/993333/300x300.png"
+        class="animate__animated inview"
+        data-animate="fadeInLeftBig"
+        data-delay="0.2"
+      />
+      <img
+        src="//placehold.jp/cc9999/993333/300x300.png"
+        class="animate__animated inview"
+        data-animate="fadeInLeftBig"
+        data-delay="0.4"
+      />
+      <img
+        src="//placehold.jp/cc9999/993333/300x300.png"
+        class="animate__animated inview"
+        data-animate="fadeInLeftBig"
+        data-delay="0.6"
+      />
+    </div>
+    <h2>fadeInRight</h2>
+    <div class="imgBox">
+      <img
+        src="//placehold.jp/cc9999/993333/300x300.png"
+        class="animate__animated inview"
+        data-animate="fadeInRight"
+        data-delay="0.2"
+      />
+      <img
+        src="//placehold.jp/cc9999/993333/300x300.png"
+        class="animate__animated inview"
+        data-animate="fadeInRight"
+        data-delay="0.4"
+      />
+      <img
+        src="//placehold.jp/cc9999/993333/300x300.png"
+        class="animate__animated inview"
+        data-animate="fadeInRight"
+        data-delay="0.6"
+      />
+    </div>
+    <h2>fadeInDownBig</h2>
+    <div class="imgBox">
+      <img
+        src="//placehold.jp/cc9999/993333/300x300.png"
+        class="animate__animated inview"
+        data-animate="fadeInDownBig"
+        data-delay="0.2"
+      />
+      <img
+        src="//placehold.jp/cc9999/993333/300x300.png"
+        class="animate__animated inview"
+        data-animate="fadeInDownBig"
+        data-delay="0.4"
+      />
+      <img
+        src="//placehold.jp/cc9999/993333/300x300.png"
+        class="animate__animated inview"
+        data-animate="fadeInDownBig"
+        data-delay="0.6"
+      />
+    </div>
+    <h2>fadeInUp</h2>
+    <div class="imgBox">
+      <img
+        src="//placehold.jp/cc9999/993333/300x300.png"
+        class="animate__animated inview"
+        data-animate="fadeInUp"
+        data-delay="0.2"
+      />
+      <img
+        src="//placehold.jp/cc9999/993333/300x300.png"
+        class="animate__animated inview"
+        data-animate="fadeInUp"
+        data-delay="0.4"
+      />
+      <img
+        src="//placehold.jp/cc9999/993333/300x300.png"
+        class="animate__animated inview"
+        data-animate="fadeInUp"
+        data-delay="0.6"
+      />
+    </div>
+    <h2>fadeInUpBig</h2>
+    <div class="imgBox">
+      <img
+        src="//placehold.jp/cc9999/993333/300x300.png"
+        class="animate__animated inview"
+        data-animate="fadeInUpBig"
+        data-delay="0.2"
+      />
+      <img
+        src="//placehold.jp/cc9999/993333/300x300.png"
+        class="animate__animated inview"
+        data-animate="fadeInUpBig"
+        data-delay="0.4"
+      />
+      <img
+        src="//placehold.jp/cc9999/993333/300x300.png"
+        class="animate__animated inview"
+        data-animate="fadeInUpBig"
+        data-delay="0.6"
+      />
+    </div>
+    <h2>fadeInTopLeft</h2>
+    <div class="imgBox">
+      <img
+        src="//placehold.jp/cc9999/993333/300x300.png"
+        class="animate__animated inview"
+        data-animate="fadeInTopLeft"
+        data-delay="0.2"
+      />
+      <img
+        src="//placehold.jp/cc9999/993333/300x300.png"
+        class="animate__animated inview"
+        data-animate="fadeInTopLeft"
+        data-delay="0.4"
+      />
+      <img
+        src="//placehold.jp/cc9999/993333/300x300.png"
+        class="animate__animated inview"
+        data-animate="fadeInTopLeft"
+        data-delay="0.6"
+      />
+    </div>
+    <h2>fadeInTopRight</h2>
+    <div class="imgBox">
+      <img
+        src="//placehold.jp/cc9999/993333/300x300.png"
+        class="animate__animated inview"
+        data-animate="fadeInTopRight"
+        data-delay="0.2"
+      />
+      <img
+        src="//placehold.jp/cc9999/993333/300x300.png"
+        class="animate__animated inview"
+        data-animate="fadeInTopRight"
+        data-delay="0.4"
+      />
+      <img
+        src="//placehold.jp/cc9999/993333/300x300.png"
+        class="animate__animated inview"
+        data-animate="fadeInTopRight"
+        data-delay="0.6"
+      />
+    </div>
+    <h2>fadeInBottomLeft</h2>
+    <div class="imgBox">
+      <img
+        src="//placehold.jp/cc9999/993333/300x300.png"
+        class="animate__animated inview"
+        data-animate="fadeInBottomLeft"
+        data-delay="0.2"
+      />
+      <img
+        src="//placehold.jp/cc9999/993333/300x300.png"
+        class="animate__animated inview"
+        data-animate="fadeInBottomLeft"
+        data-delay="0.4">
+      <img
+        src="//placehold.jp/cc9999/993333/300x300.png"
+        class="animate__animated inview"
+        data-animate="fadeInBottomLeft"
+        data-delay="0.6"
+      />
+    </div>
+    <h2>fadeInBottomRight</h2>
+    <div class="imgBox">
+      <img
+        src="//placehold.jp/cc9999/993333/300x300.png"
+        class="animate__animated inview"
+        data-animate="fadeInBottomRight"
+        data-delay="0.2"
+      >
+      <img
+        src="//placehold.jp/cc9999/993333/300x300.png"
+        class="animate__animated inview"
+        data-animate="fadeInBottomRight"
+        data-delay="0.4"
+      />
+      <img
+        src="//placehold.jp/cc9999/993333/300x300.png"
+        class="animate__animated inview"
+        data-animate="fadeInBottomRight"
+        data-delay="0.6"
+      />
+    </div>
 
 
+  </div>
   <script>
       animate_init = function(){
         //画面に入るたびに毎回動作する
         $(".inview").on("inview", function (event, isInView) {
           if (isInView) {
-            $(this).stop().addClass("is-show");
+            var delay = $(this).data('delay') ? $(this).data('delay') : 0;
+            $(this).css('visibility', 'visible');
+            if( delay > 0 ){
+              $(this).css('animation-delay', delay+ 's');
+            }
+            $(this).addClass('animate__'+ $(this).data('animate') );       
+          } else {
+            // $(this).removeClass('animate__'+ $(this).data('animate'));
+            // $(this).css('visibility', 'hidden');
+            // $(this).dequeue();
           }
         });
       };
