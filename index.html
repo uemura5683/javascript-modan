@@ -2,14 +2,14 @@
 <html lang="ja">
   <head>
     <meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <style type="text/css">
       body {
-      	margin: 0;
+        margin: 0;
       }
-	  *::before, *::after {
-		content: '';
-	  }
+      *::before, *::after {
+       content: '';
+      }
       html {
         font-size: 50%;
       }
@@ -27,11 +27,11 @@
         color: white;
       }
       .wrapper:before {
-		width: 100%;
-		height: 100vh;
-		background: #333333;
-		position: fixed;
-		}
+        width: 100%;
+        height: 100vh;
+        background: #333333;
+        position: fixed;
+      }
       #container {
         position: absolute;
         color: #333333;
@@ -53,9 +53,9 @@
         font-size: 1.6rem;
       }
       .card-wrap {
-		margin: .5rem;
-		width: calc(99.9% / 3 - 1rem);
-		text-align: center;
+        margin: .5rem;
+        width: calc(99.9% / 3 - 1rem);
+        text-align: center;
       }
       @media (min-width: 980px) {
         html {
@@ -66,41 +66,85 @@
         }
       }
       @media (max-width: 767px) {
-		.wrapper {
-			overflow: hidden;
-			clear: both;
-			width: 100%;
-			height: 100vh;
-		}
-		.wrapper:before {
-			z-index: 1000;
-		}
-		#container {
-			z-index: 1100;
-		}
-	  }
+        .wrapper {
+          overflow: hidden;
+          clear: both;
+          width: 100%;
+          height: 100vh;
+        }
+        .wrapper:before {
+          z-index: 1000;
+        }
+        #container {
+          z-index: 1100;
+        }
+      }
     </style>
   </head>
   <body>
-	<div class="wrapper">
-		<div id="container">
-			<div class="container-inner">
-				<h1>Javascript</h1>
-				<div class="card-wrap-list">
-					<div class="card-wrap"><a href="async-await/async/ndex.html">async await</a></div>
-					<div class="card-wrap"><a href="async-await/blockTime/index.html">blockTime</a></div>
-					<div class="card-wrap"><a href="async-await/callback/index.html">callback</a></div>
-					<div class="card-wrap"><a href="async-await/promise/index.html">promise</a></div>
-					<div class="card-wrap"><a href="async-await/settimeout/index.html">settimeout</a></div>
-					<div class="card-wrap"><a href="filereader-readastext/index.html">filereader-readastext</a></div>
-					<div class="card-wrap"><a href="intercept-js/intercept.js">intercept-js</a></div>
-					<div class="card-wrap"><a href="jquery_inview/index.html">jquery_inview</a></div>
-          <div class="card-wrap"><a href="jquery_inview2/index.html">jquery_inview2</a></div>
-					<div class="card-wrap"><a href="replaceState/index.html">replaceState</a></div>
-					<div class="card-wrap"><a href="scrolltoview/index.html">scrolltoview</a></div>
-    			</div>
-			</div>
-		</div>
-	</div>
+    <div class="wrapper">
+      <div id="container">
+        <div class="container-inner">
+          <h1>Javascript</h1>
+          <div class="card-wrap-list">
+            <div class="card-wrap">
+              <a href="async-await/async/index.html">
+                async await
+              </a>
+            </div>
+            <div class="card-wrap">
+              <a href="async-await/blockTime/index.html">
+                blockTime
+              </a>
+            </div>
+            <div class="card-wrap">
+              <a href="async-await/callback/index.html">
+                callback
+              </a>
+            </div>
+            <div class="card-wrap">
+              <a href="async-await/promise/index.html">
+                promise
+              </a>
+            </div>
+            <div class="card-wrap">
+              <a href="async-await/settimeout/index.html">
+                settimeout
+              </a>
+            </div>
+            <div class="card-wrap">
+              <a href="filereader-readastext/index.html">
+                filereader-readastext
+              </a>
+            </div>
+            <div class="card-wrap">
+              <a href="intercept-js/intercept.js">
+                intercept-js
+              </a>
+            </div>
+            <div class="card-wrap">
+              <a href="jquery_inview/index.html">
+                jquery_inview
+              </a>
+            </div>
+            <div class="card-wrap">
+              <a href="jquery_inview2/index.html">
+                jquery_inview2
+              </a>
+            </div>
+            <div class="card-wrap">
+              <a href="replaceState/index.html">
+                replaceState
+              </a>
+            </div>
+            <div class="card-wrap">
+              <a href="scrolltoview/index.html">
+                scrolltoview
+              </a>
+            </div>
+            </div>
+        </div>
+      </div>
+    </div>
   </body>
 </html>
