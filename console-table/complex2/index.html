@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <link href="../css.css" rel="stylesheet">
+</head>
+<body>
+  <div class="wrapper">
+    <h3>## Console.table() 複合的な型の集合2</h3>
+    <p>
+      配列の要素やオブジェクトのプロパティ自体が配列やオブジェクトである場合、それらの要素やプロパティを 1 列ずつ置く形で、各行に列挙します:
+    </p>
+    <pre><code>
+// オブジェクトの配列
+
+function Person(firstName, lastName, age, birthday) {
+  this.firstName = firstName;
+  this.lastName = lastName;
+  this.age = age;
+  this.birthday = birthday;
+}
+
+var john = new Person("John", "Smith", "24", "1996/1/5");
+var jane = new Person("Jane", "Doe", "32", "1988/10/3");
+var emily = new Person("Emily", "Jones", "27", "1993/4/23");
+var mike = new Person("Mike", "Jonson", "30", "1990/3/5");
+
+console.table([john, jane, emily, mike]);
+    </code></pre>
+  </div>
+  <script src="index.js"></script>
+</body>
+</html>

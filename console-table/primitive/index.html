@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <link href="../css.css" rel="stylesheet">
+</head>
+<body>
+  <div class="wrapper">
+    <h3>## Console.table() プリミティブ型の集合</h3>
+    <p>
+	表形式のデータを、表で表示します。<br>
+	<br>
+	この関数は必須の引数 data があり、これは配列またはオブジェクトでなければなりません。また、省略可能な引数 columns もあります。<br>
+	<br>
+	data を表として出力します。配列の各要素 (data がオブジェクトである場合は、列挙可能なプロパティ) が、表の行になります。<br>
+	<br>
+	表の 1 番目の列に、(添字) というラベルがつきます。data が配列である場合、この値は配列の添字になります。data がオブジェクトである場合、この値はプロパティ名になります。<br>
+	(Firefox では) console.table は表示する行が 1000 行 (最初の行は見出し) に制限されていますので注意してください。
+	</p>
+    <pre><code>
+	// 文字列の配列
+
+	console.table(["apples", "oranges", "bananas"]);
+    </code></pre>
+  </div>
+  <script src="index.js"></script>
+</body>
+</html>
