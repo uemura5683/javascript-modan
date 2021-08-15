@@ -9,51 +9,27 @@
     <h3>## async function</h3>
     <pre>
       <code>
-        promiseをもう少しわかりやすくしたのが
-        async function
-        json処理に使った方がいい
+        promiseをもう少しわかりやすくしたのが async function
 
-        async function blockTime(timeout) {
-          const startTime = Date.now();
-          `timeout`ミリ秒経過するまで無限ループをする
-            setTimeout(() => {
-              resolve("hello world");
-            }, 1000);
+        class Thenable {
+          constructor(num) {
+            this.num = num;
+          }
+          then(resolve, reject) {
+            alert(resolve); // function() { native code }
+            // 1000ms 後に this.num*2 で解決する
+            setTimeout(() => resolve(this.num * 2), 1000); // (*)
+          }
+        };
+
+        async function func() {
+          // 1秒待って、結果は 2　になる
+          let result = await new Thenable(1);
+          alert(result);
         }
 
-        ----------------------------------------------------------------------
-
-        // ユーザーのダッシュボードを表示する処理
-        async function showDashboard () {
-          doApiはPromiseオブジェクトを返す、async functionの場合、以下のように書ける
-          let userId = null
-          let userData = null
-          
-          // ログイン
-          await axios.get("login", { user, password }).then((user) => {
-            // ログイン後の処理
-            userId = user.id
-          }).catch((err) => {
-            console.log("ログインに失敗しました")
-            throw "ログインエラー発生"
-          })
-
-          // ログインしたユーザーの情報を取得する
-          await axios.get("user", { userId }).then((data) => {
-            userData = data
-          }).catch((err) => {
-            console.log("errorが発生しました")
-            throw "ログインエラー発生"
-          })
-
-          // 例外をthrowしたい場合はcatchを書かないなどの対応をして、
-        }
-
-        ダッシュボードを表示する
-        showDashboard()
-
-        res1 と res2 両方のデータを使う処理
-
+        func();
+        
         async functionの中にawaitを入れないと警告がでる
 
         await は通信が終わるまで待ってくれる
