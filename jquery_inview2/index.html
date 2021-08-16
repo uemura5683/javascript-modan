@@ -50,6 +50,7 @@
     .credit ul li {
       font-size: 16px;
       line-height: 1.6;
+      list-style-type: none;
     }
 
     /**
@@ -708,7 +709,8 @@
         //画面に入るたびに毎回動作する
         $(".inview").on("inview", function (event, isInView) {
           if (isInView) {
-            var delay = $(this).data('delay') ? $(this).data('delay') : 0;
+            var delay = $(this).data('delay') ? $(this).data('delay') : 0
+              , duration = $(this).data('duration') ? $(this).data('duration') : 0;
             $(this).css('visibility', 'visible');
             if( delay > 0 ){
               let animation = {
