@@ -6,17 +6,12 @@
   <link type="text/css" rel="stylesheet" href="lookbook/animate.css">
   <script class="inview" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script class="inview" src="lookbook/jquery.inview.js"></script>
-  <style>
+  <style> 
     /**
     * base
     **/
-    li {
-      list-style-type: none;
-    }
     .container {
       overflow-y: hidden;
-      max-width: 1200px;
-      margin: 0 auto;
     }
     .container * {
       box-sizing: border-box;
@@ -61,7 +56,10 @@
     * lookbook
     **/
     div[class*='lookbook'] {
-      margin: 0 0 3rem;
+      margin: 0 0 166px;
+    }
+    div[class*='lookbook']:last-child {
+      margin: 0 0 0px;      
     }
 
     /**
@@ -304,16 +302,112 @@
     * media query
     **/
     @media screen and (max-width: 979px) {
+      .title {
+        margin: 30px 0;
+        font-size: 24px;
+      }
+      .credit {
+        margin: 1.5rem 0 0;
+      }
+      .credit ul li {
+        font-size: 12px;
+      }
       .imgBox img {
         width: calc(100% / 4);
         padding: 0 .25rem;
       }
+      div[class*='lookbook'] {
+        margin: 0 0 3rem;
+      }
+      /**
+      * lookbook2
+      **/
+      .lookbook2 .credit {
+        top: 0%;
+        right: 0;
+        width: calc(100% / 3.4);
+      }
+      .lookbook2 img:nth-of-type(2) {
+        right: 29%;
+      }
+      /**
+      * lookbook3
+      **/
       .lookbook3 img:nth-of-type(1) {
         margin: 0 0 0.5rem;
       }
+      /**
+      * lookbook4
+      **/
+      .lookbook4 img:nth-of-type(2) {
+        top: 2rem;
+      }
+      .lookbook4 img:nth-of-type(4) {
+        top: 4rem;
+      }
+      .lookbook4 .credit {
+        margin: 8rem 0 0;
+      }
+      /**
+      * lookbook6
+      **/
+      .lookbook6 {
+        padding: 0 0 90%;
+      }
+      .lookbook6 .credit {
+        bottom: 0;
+        width: calc(100% / 2.5);
+        right: 0;
+      }
+      /**
+      * lookbook7
+      **/
+      .lookbook7 .credit {
+        bottom: 25%;
+        left: 0;
+        width: calc(100% / 2.8);
+      }
+      /**
+      * lookbook8
+      **/
+      .lookbook8 .credit {
+        top: 10%;
+        right: 0;
+        width: calc(100% / 3.2);
+      }
+      .lookbook8 img:nth-of-type(1) {
+        top: 0;
+        width: calc(100% / 2.5);
+      }
+      .lookbook8 img:nth-of-type(2) {
+        width: calc(100% / 3.5);
+        right: 31%;
+        top: 3%;
+      }
+      .lookbook8 img:nth-of-type(3) {
+        width: calc(100% / 1.7);
+        right: 0%;
+        bottom: 0;
+      }
+      /**
+      * lookbook9
+      **/
+      .lookbook9 {
+        padding: 0px 0px 95%;
+      }
+      .lookbook9 img:nth-of-type(3) {
+        bottom: 33%;
+      }
+      /**
+      * lookbook10
+      **/
+      .lookbook10 .credit {
+        width: auto;
+        bottom: 22%;
+        right: 3%;
+      }
     }
   </style>
-
 </head>
 <body>
   <div class="container">
@@ -323,12 +417,14 @@
         class="animate__animated inview column2"
         data-animate="fadeIn"
         data-delay="0.2"
+        dsta-duration="1.2"
       />
       <img
         src="lookbook/img.png"
         class="animate__animated inview column2"
         data-animate="fadeIn"
         data-delay="0.4"
+        dsta-duration="1.2"
       />
       <div class="credit">
         <ul>
@@ -344,18 +440,21 @@
         class="animate__animated inview column3"
         data-animate="fadeInLeft"
         data-delay="0.2"
+        dsta-duration="1.2"
       />
       <img
         src="lookbook/img.png"
         class="animate__animated inview column3"
         data-animate="fadeIn"
         data-delay="0.4"
+        dsta-duration="1.2"
       />
       <img
         src="lookbook/img.png"
         class="animate__animated inview column3"
         data-animate="fadeInBottomRight"
         data-delay="0.6"
+        dsta-duration="1.2"
       />
       <div class="credit">
         <ul>
@@ -371,18 +470,21 @@
         class="animate__animated inview column1"
         data-animate="fadeInDown"
         data-delay="0.2"
+        dsta-duration="1.2"
       />
       <img
         src="lookbook/img.png"
         class="animate__animated inview column2"
         data-animate="fadeInBottomLeft"
         data-delay="0.4"
+        dsta-duration="1.2"
       />
       <img
         src="lookbook/img.png"
         class="animate__animated inview column2"
         data-animate="fadeInBottomRight"
         data-delay="0.6"
+        dsta-duration="1.2"
       />
       <div class="credit">
         <ul>
@@ -398,18 +500,21 @@
         class="animate__animated inview column3"
         data-animate="fadeInUp"
         data-delay="0.2"
+        dsta-duration="1.2"
       />
       <img
         src="lookbook/img.png"
         class="animate__animated inview column3"
         data-animate="fadeInUp"
         data-delay="0.4"
+        dsta-duration="1.2"
       />
       <img
         src="lookbook/img.png"
         class="animate__animated inview column3"
         data-animate="fadeInUp"
         data-delay="0.6"
+        dsta-duration="1.2"
       />
       <div class="credit">
         <ul>
@@ -425,12 +530,14 @@
         class="animate__animated inview column2"
         data-animate="fadeIn"
         data-delay="0.2"
+        dsta-duration="1.2"
       />
       <img
         src="lookbook/img.png"
         class="animate__animated inview column2"
         data-animate="fadeIn"
         data-delay="0.4"
+        dsta-duration="1.2"
       />
       <div class="credit">
         <ul>
@@ -446,18 +553,21 @@
         class="animate__animated inview column3"
         data-animate="fadeInLeft"
         data-delay="0.2"
+        dsta-duration="1.2"
       />
       <img
         src="lookbook/img.png"
         class="animate__animated inview column3"
         data-animate="fadeIn"
         data-delay="0.4"
+        dsta-duration="1.2"
       />
       <img
         src="lookbook/img.png"
         class="animate__animated inview column3"
         data-animate="fadeInUp"
         data-delay="0.6"
+        dsta-duration="1.2"
       />
       <div class="credit">
         <ul>
@@ -474,18 +584,21 @@
         class="animate__animated inview column3"
         data-animate="fadeInUp"
         data-delay="0.2"
+        dsta-duration="1.2"
       />
       <img
         src="lookbook/img.png"
         class="animate__animated inview column3"
         data-animate="fadeInUp"
         data-delay="0.4"
+        dsta-duration="1.2"
       />
       <img
         src="lookbook/img2.png"
         class="animate__animated inview column3"
         data-animate="fadeInBottomRight"
         data-delay="0.6"
+        dsta-duration="1.2"
       />
       <div class="credit">
         <ul>
@@ -502,18 +615,21 @@
         class="animate__animated inview column3"
         data-animate="fadeInLeft"
         data-delay="0.2"
+        dsta-duration="1.2"
       />
       <img
         src="lookbook/img.png"
         class="animate__animated inview column3"
         data-animate="fadeInUp"
         data-delay="0.4"
+        dsta-duration="1.2"
       />
       <img
         src="lookbook/img2.png"
         class="animate__animated inview column3"
         data-animate="fadeInRight"
         data-delay="0.6"
+        dsta-duration="1.2"
       />
       <div class="credit">
         <ul>
@@ -530,18 +646,21 @@
         class="animate__animated inview column3"
         data-animate="fadeInTopLeft"
         data-delay="0.2"
+        dsta-duration="1.2"
       />
       <img
         src="lookbook/img2.png"
         class="animate__animated inview column3"
         data-animate="fadeInDown"
         data-delay="0.4"
+        dsta-duration="1.2"
       />
       <img
         src="lookbook/img2.png"
         class="animate__animated inview column3"
         data-animate="fadeInRight"
         data-delay="0.6"
+        dsta-duration="1.2"
       />
       <div class="credit">
         <ul>
@@ -558,18 +677,21 @@
         class="animate__animated inview column3"
         data-animate="fadeInLeft"
         data-delay="0.2"
+        dsta-duration="1.2"
       />
       <img
         src="lookbook/img.png"
         class="animate__animated inview column3"
         data-animate="fadeInLeft"
         data-delay="0.4"
+        dsta-duration="1.2"
       />
       <img
         src="lookbook/img.png"
         class="animate__animated inview column3"
         data-animate="fadeInRight"
         data-delay="0.6"
+        dsta-duration="1.2"
       />
       <div class="credit">
         <ul>
@@ -589,13 +711,13 @@
             var delay = $(this).data('delay') ? $(this).data('delay') : 0;
             $(this).css('visibility', 'visible');
             if( delay > 0 ){
-              $(this).css('animation-delay', delay+ 's');
+              let animation = {
+                'animation-delay': delay + 's',
+                'animation-duration': duration + 's'
+              }
+              $(this).css( animation );
             }
             $(this).addClass('animate__'+ $(this).data('animate') );       
-          } else {
-            $(this).removeClass('animate__'+ $(this).data('animate'));
-            $(this).css('visibility', 'hidden');
-            $(this).dequeue();
           }
         });
       };
