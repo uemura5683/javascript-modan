@@ -10,8 +10,13 @@
     /**
     * base
     **/
+    ul {
+      padding: 0;
+    }
     .container {
       overflow-y: hidden;
+      max-width: 1200px;
+      margin: 0 auto;
     }
     .container * {
       box-sizing: border-box;
@@ -81,9 +86,10 @@
       position: absolute;
     }
     .lookbook2 .credit {
-      width: auto;
-      top: 5%;
-      right: 4%;
+      width: calc(100% / 3.6);
+      top: 18%;
+      right: 0;
+      margin: 0;
     }
     .lookbook2 img:nth-of-type(1) {
       top: 7%;
@@ -138,9 +144,10 @@
       position: absolute;
     }
     .lookbook6 .credit {
-      width: auto;
+      width: calc(100% / 2.6);
       bottom: 5%;
-      right: 15%;
+      right: 0;
+      margin: 0;
     }
     .lookbook6 img:nth-of-type(1) {
       top: 0;
@@ -182,7 +189,7 @@
     .lookbook7 img:nth-of-type(2) {
       width: calc(100% / 2.5);
       right: 25%;
-      z-index: 10;
+      z-index: 15;
       top: 10%;
       transform: translateY(50%);
     }
@@ -232,7 +239,7 @@
     * lookbook8
     **/
     .lookbook9 {
-      padding: 0px 0 73%;
+      padding: 0px 0 75%;
     }
     .lookbook9 img,
     .lookbook9 .credit {
@@ -246,26 +253,26 @@
     }
     .lookbook9 img:nth-of-type(1) {
       top: 0;
-      width: calc(100% / 2.2);
+      width: calc(100% / 2);
       z-index: 15;
       right: 0;
     }
     .lookbook9 img:nth-of-type(2) {
-      width: calc(100% / 1.85);
+      width: calc(100% / 2.2);
       left: 0;
       z-index: 10;
       top: 0;
       transform: translateY(50%);
     }
     .lookbook9 img:nth-of-type(3) {
-      width: calc(100% / 1.85);
+      width: calc(100% / 2.2);
       left: 0%;
       z-index: 15;
-      bottom: 13%;
+      bottom: 16%;
     }
 
     /**
-    * lookbook8
+    * lookbook10
     **/
     .lookbook10 {
       padding: 0 0 65%;
@@ -288,7 +295,7 @@
     .lookbook10 img:nth-of-type(2) {
       width: calc(100% / 4);
       right: 31%;
-      z-index: 10;
+      z-index: 15;
       top: 42%;
       transform: translateY(50%);
     }
@@ -414,14 +421,14 @@
   <div class="container">
     <div class="imgBox lookbook1">
       <img
-        src="lookbook/img.png"
+        src="lookbook/img.jpg"
         class="animate__animated inview column2"
         data-animate="fadeIn"
         data-delay="0.2"
         data-duration="1.2"
       />
       <img
-        src="lookbook/img.png"
+        src="lookbook/img.jpg"
         class="animate__animated inview column2"
         data-animate="fadeIn"
         data-delay="0.4"
@@ -437,21 +444,21 @@
     </div>
     <div class="imgBox lookbook2">
       <img
-        src="lookbook/img.png"
+        src="lookbook/img.jpg"
         class="animate__animated inview column3"
         data-animate="fadeInLeft"
         data-delay="0.2"
         data-duration="1.2"
       />
       <img
-        src="lookbook/img.png"
+        src="lookbook/img.jpg"
         class="animate__animated inview column3"
         data-animate="fadeIn"
         data-delay="0.4"
         data-duration="1.2"
       />
       <img
-        src="lookbook/img.png"
+        src="lookbook/img.jpg"
         class="animate__animated inview column3"
         data-animate="fadeInBottomRight"
         data-delay="0.6"
@@ -467,21 +474,21 @@
     </div>
     <div class="imgBox lookbook3">
       <img
-        src="lookbook/img2.png"
+        src="lookbook/img2.jpg"
         class="animate__animated inview column1"
         data-animate="fadeInDown"
         data-delay="0.2"
         data-duration="1.2"
       />
       <img
-        src="lookbook/img.png"
+        src="lookbook/img.jpg"
         class="animate__animated inview column2"
         data-animate="fadeInBottomLeft"
         data-delay="0.4"
         data-duration="1.2"
       />
       <img
-        src="lookbook/img.png"
+        src="lookbook/img.jpg"
         class="animate__animated inview column2"
         data-animate="fadeInBottomRight"
         data-delay="0.6"
@@ -497,21 +504,21 @@
     </div>
     <div class="imgBox lookbook4">
       <img
-        src="lookbook/img.png"
+        src="lookbook/img.jpg"
         class="animate__animated inview column3"
         data-animate="fadeInUp"
         data-delay="0.2"
         data-duration="1.2"
       />
       <img
-        src="lookbook/img.png"
+        src="lookbook/img.jpg"
         class="animate__animated inview column3"
         data-animate="fadeInUp"
         data-delay="0.4"
         data-duration="1.2"
       />
       <img
-        src="lookbook/img.png"
+        src="lookbook/img.jpg"
         class="animate__animated inview column3"
         data-animate="fadeInUp"
         data-delay="0.6"
@@ -527,14 +534,14 @@
     </div>
     <div class="imgBox lookbook5">
       <img
-        src="lookbook/img.png"
+        src="lookbook/img.jpg"
         class="animate__animated inview column2"
         data-animate="fadeIn"
         data-delay="0.2"
         data-duration="1.2"
       />
       <img
-        src="lookbook/img.png"
+        src="lookbook/img.jpg"
         class="animate__animated inview column2"
         data-animate="fadeIn"
         data-delay="0.4"
@@ -550,21 +557,21 @@
     </div>
     <div class="imgBox lookbook6">
       <img
-        src="lookbook/img2.png"
+        src="lookbook/img2.jpg"
         class="animate__animated inview column3"
         data-animate="fadeInLeft"
         data-delay="0.2"
         data-duration="1.2"
       />
       <img
-        src="lookbook/img.png"
+        src="lookbook/img.jpg"
         class="animate__animated inview column3"
         data-animate="fadeIn"
         data-delay="0.4"
         data-duration="1.2"
       />
       <img
-        src="lookbook/img.png"
+        src="lookbook/img.jpg"
         class="animate__animated inview column3"
         data-animate="fadeInUp"
         data-delay="0.6"
@@ -581,21 +588,21 @@
 
     <div class="imgBox lookbook7">
       <img
-        src="lookbook/img2.png"
+        src="lookbook/img2.jpg"
         class="animate__animated inview column3"
         data-animate="fadeInUp"
         data-delay="0.2"
         data-duration="1.2"
       />
       <img
-        src="lookbook/img.png"
+        src="lookbook/img.jpg"
         class="animate__animated inview column3"
         data-animate="fadeInUp"
         data-delay="0.4"
         data-duration="1.2"
       />
       <img
-        src="lookbook/img2.png"
+        src="lookbook/img2.jpg"
         class="animate__animated inview column3"
         data-animate="fadeInBottomRight"
         data-delay="0.6"
@@ -612,21 +619,21 @@
 
     <div class="imgBox lookbook8">
       <img
-        src="lookbook/img.png"
+        src="lookbook/img.jpg"
         class="animate__animated inview column3"
         data-animate="fadeInLeft"
         data-delay="0.2"
         data-duration="1.2"
       />
       <img
-        src="lookbook/img.png"
+        src="lookbook/img.jpg"
         class="animate__animated inview column3"
         data-animate="fadeInUp"
         data-delay="0.4"
         data-duration="1.2"
       />
       <img
-        src="lookbook/img2.png"
+        src="lookbook/img2.jpg"
         class="animate__animated inview column3"
         data-animate="fadeInRight"
         data-delay="0.6"
@@ -643,21 +650,21 @@
 
     <div class="imgBox lookbook9">
       <img
-        src="lookbook/img.png"
+        src="lookbook/img.jpg"
         class="animate__animated inview column3"
         data-animate="fadeInTopLeft"
         data-delay="0.2"
         data-duration="1.2"
       />
       <img
-        src="lookbook/img2.png"
+        src="lookbook/img2.jpg"
         class="animate__animated inview column3"
         data-animate="fadeInDown"
         data-delay="0.4"
         data-duration="1.2"
       />
       <img
-        src="lookbook/img2.png"
+        src="lookbook/img2.jpg"
         class="animate__animated inview column3"
         data-animate="fadeInRight"
         data-delay="0.6"
@@ -674,21 +681,21 @@
 
     <div class="imgBox lookbook10">
       <img
-        src="lookbook/img2.png"
+        src="lookbook/img2.jpg"
         class="animate__animated inview column3"
         data-animate="fadeInLeft"
         data-delay="0.2"
         data-duration="1.2"
       />
       <img
-        src="lookbook/img.png"
+        src="lookbook/img.jpg"
         class="animate__animated inview column3"
         data-animate="fadeInLeft"
         data-delay="0.4"
         data-duration="1.2"
       />
       <img
-        src="lookbook/img.png"
+        src="lookbook/img.jpg"
         class="animate__animated inview column3"
         data-animate="fadeInRight"
         data-delay="0.6"
