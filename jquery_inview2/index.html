@@ -1,738 +1,306 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>jquery.inview - Example</title>
-  <meta name="viewport" content="initial-scale=1.0, width=device-width, height=device-height">
-  <link type="text/css" rel="stylesheet" href="lookbook/animate.css">
-  <script class="inview" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script class="inview" src="lookbook/jquery.inview.js"></script>
-  <style> 
-    /**
-    * base
-    **/
-    ul {
-      padding: 0;
-    }
-    .container {
-      overflow-y: hidden;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-    .container * {
-      box-sizing: border-box;
-    }
-    /**
-    * imgBox
-    **/
-    .imgBox {
-      text-align: center;
-      overflow: hidden;
-      display: flex;
-      flex-wrap: wrap;
-      position: relative;
-    }
-    .imgBox img.column1 {
-      width: 100%;
-    }
-    .imgBox img.column2 {
-      width: calc( 100% / 2 );
-    }
-    .imgBox img.column3 {
-      width: calc( 99.9% / 3 );
-    }
-    .imgBox img {
-      max-width: 100%;
-      height: auto;
-      vertical-align: top;
-      padding: 0 1rem;
-    }
+  <head>
+    <title>jquery.inview - Example</title>
+    <meta name="viewport" content="initial-scale=1.0, width=device-width, height=device-height">
+    <link type="text/css" rel="stylesheet" href="lookbook/animate.css">
+    <script class="inview" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script class="inview" src="lookbook/jquery.inview.js"></script>
+    <link href="lookbook/css.css" rel="stylesheet">
+  </head>
+  <body>
+    <div class="container">
+      <div class="imgBox lookbook1">
+        <img
+          src="lookbook/img.jpg"
+          class="animate__animated inview column2"
+          data-animate="fadeIn"
+          data-delay="0.2"
+          data-duration="1.2"
+        />
+        <img
+          src="lookbook/img.jpg"
+          class="animate__animated inview column2"
+          data-animate="fadeIn"
+          data-delay="0.4"
+          data-duration="1.2"
+        />
+        <div class="credit">
+          <ul>
+            <li>Set up <span>&yen;4,990</span></li>
+            <li>Tops <span>&yen;1990</span></li>
+            <li>Boots <span>&yen;7,990</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="imgBox lookbook2">
+        <img
+          src="lookbook/img.jpg"
+          class="animate__animated inview column3"
+          data-animate="fadeInLeft"
+          data-delay="0.2"
+          data-duration="1.2"
+        />
+        <img
+          src="lookbook/img.jpg"
+          class="animate__animated inview column3"
+          data-animate="fadeIn"
+          data-delay="0.4"
+          data-duration="1.2"
+        />
+        <img
+          src="lookbook/img.jpg"
+          class="animate__animated inview column3"
+          data-animate="fadeInBottomRight"
+          data-delay="0.6"
+          data-duration="1.2"
+        />
+        <div class="credit">
+          <ul>
+            <li>Set up <span>&yen;4,990</span></li>
+            <li>Tops <span>&yen;1990</span></li>
+            <li>Boots <span>&yen;7,990</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="imgBox lookbook3">
+        <img
+          src="lookbook/img2.jpg"
+          class="animate__animated inview column1"
+          data-animate="fadeInDown"
+          data-delay="0.2"
+          data-duration="1.2"
+        />
+        <img
+          src="lookbook/img.jpg"
+          class="animate__animated inview column2"
+          data-animate="fadeInBottomLeft"
+          data-delay="0.4"
+          data-duration="1.2"
+        />
+        <img
+          src="lookbook/img.jpg"
+          class="animate__animated inview column2"
+          data-animate="fadeInBottomRight"
+          data-delay="0.6"
+          data-duration="1.2"
+        />
+        <div class="credit">
+          <ul>
+            <li>Set up <span>&yen;4,990</span></li>
+            <li>Tops <span>&yen;1990</span></li>
+            <li>Boots <span>&yen;7,990</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="imgBox lookbook4">
+        <img
+          src="lookbook/img.jpg"
+          class="animate__animated inview column3"
+          data-animate="fadeInUp"
+          data-delay="0.2"
+          data-duration="1.2"
+        />
+        <img
+          src="lookbook/img.jpg"
+          class="animate__animated inview column3"
+          data-animate="fadeInUp"
+          data-delay="0.4"
+          data-duration="1.2"
+        />
+        <img
+          src="lookbook/img.jpg"
+          class="animate__animated inview column3"
+          data-animate="fadeInUp"
+          data-delay="0.6"
+          data-duration="1.2"
+        />
+        <div class="credit">
+          <ul>
+            <li>Set up <span>&yen;4,990</span></li>
+            <li>Tops <span>&yen;1990</span></li>
+            <li>Boots <span>&yen;7,990</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="imgBox lookbook5">
+        <img
+          src="lookbook/img.jpg"
+          class="animate__animated inview column2"
+          data-animate="fadeIn"
+          data-delay="0.2"
+          data-duration="1.2"
+        />
+        <img
+          src="lookbook/img.jpg"
+          class="animate__animated inview column2"
+          data-animate="fadeIn"
+          data-delay="0.4"
+          data-duration="1.2"
+        />
+        <div class="credit">
+          <ul>
+            <li>Set up <span>&yen;4,990</span></li>
+            <li>Tops <span>&yen;1990</span></li>
+            <li>Boots <span>&yen;7,990</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="imgBox lookbook6">
+        <img
+          src="lookbook/img2.jpg"
+          class="animate__animated inview column3"
+          data-animate="fadeInLeft"
+          data-delay="0.2"
+          data-duration="1.2"
+        />
+        <img
+          src="lookbook/img.jpg"
+          class="animate__animated inview column3"
+          data-animate="fadeIn"
+          data-delay="0.4"
+          data-duration="1.2"
+        />
+        <img
+          src="lookbook/img.jpg"
+          class="animate__animated inview column3"
+          data-animate="fadeInUp"
+          data-delay="0.6"
+          data-duration="1.2"
+        />
+        <div class="credit">
+          <ul>
+            <li>Set up <span>&yen;4,990</span></li>
+            <li>Tops <span>&yen;1990</span></li>
+            <li>Boots <span>&yen;7,990</span></li>
+          </ul>
+        </div>
+      </div>
 
-    .credit {
-      width: 100%;
-      align-items: center;
-      margin: 3rem 0 0;
-    }
-    .credit ul li {
-      font-size: 16px;
-      line-height: 1.6;
-      list-style-type: none;
-    }
+      <div class="imgBox lookbook7">
+        <img
+          src="lookbook/img2.jpg"
+          class="animate__animated inview column3"
+          data-animate="fadeInUp"
+          data-delay="0.2"
+          data-duration="1.2"
+        />
+        <img
+          src="lookbook/img.jpg"
+          class="animate__animated inview column3"
+          data-animate="fadeInUp"
+          data-delay="0.4"
+          data-duration="1.2"
+        />
+        <img
+          src="lookbook/img2.jpg"
+          class="animate__animated inview column3"
+          data-animate="fadeInBottomRight"
+          data-delay="0.6"
+          data-duration="1.2"
+        />
+        <div class="credit">
+          <ul>
+            <li>Set up <span>&yen;4,990</span></li>
+            <li>Tops <span>&yen;1990</span></li>
+            <li>Boots <span>&yen;7,990</span></li>
+          </ul>
+        </div>
+      </div>
 
-    /**
-    * lookbook
-    **/
-    div[class*='lookbook'] {
-      margin: 0 0 166px;
-    }
-    div[class*='lookbook']:last-child {
-      margin: 0 0 0px;      
-    }
+      <div class="imgBox lookbook8">
+        <img
+          src="lookbook/img.jpg"
+          class="animate__animated inview column3"
+          data-animate="fadeInLeft"
+          data-delay="0.2"
+          data-duration="1.2"
+        />
+        <img
+          src="lookbook/img.jpg"
+          class="animate__animated inview column3"
+          data-animate="fadeInUp"
+          data-delay="0.4"
+          data-duration="1.2"
+        />
+        <img
+          src="lookbook/img2.jpg"
+          class="animate__animated inview column3"
+          data-animate="fadeInRight"
+          data-delay="0.6"
+          data-duration="1.2"
+        />
+        <div class="credit">
+          <ul>
+            <li>Set up <span>&yen;4,990</span></li>
+            <li>Tops <span>&yen;1990</span></li>
+            <li>Boots <span>&yen;7,990</span></li>
+          </ul>
+        </div>
+      </div>
 
-    /**
-    * inview
-    **/
-    .inview {
-      visibility: hidden;
-    }
+      <div class="imgBox lookbook9">
+        <img
+          src="lookbook/img.jpg"
+          class="animate__animated inview column3"
+          data-animate="fadeInTopLeft"
+          data-delay="0.2"
+          data-duration="1.2"
+        />
+        <img
+          src="lookbook/img2.jpg"
+          class="animate__animated inview column3"
+          data-animate="fadeInDown"
+          data-delay="0.4"
+          data-duration="1.2"
+        />
+        <img
+          src="lookbook/img2.jpg"
+          class="animate__animated inview column3"
+          data-animate="fadeInRight"
+          data-delay="0.6"
+          data-duration="1.2"
+        />
+        <div class="credit">
+          <ul>
+            <li>Set up <span>&yen;4,990</span></li>
+            <li>Tops <span>&yen;1990</span></li>
+            <li>Boots <span>&yen;7,990</span></li>
+          </ul>
+        </div>
+      </div>
 
-    /**
-    * lookbook2
-    **/
-    .lookbook2 {
-      padding: 0 0 80%;
-    }
-    .lookbook2 img,
-    .lookbook2 .credit {
-      position: absolute;
-    }
-    .lookbook2 .credit {
-      width: calc(100% / 3.6);
-      top: 18%;
-      right: 0;
-      margin: 0;
-    }
-    .lookbook2 img:nth-of-type(1) {
-      top: 7%;
-      width: calc(100% / 2.5);
-    }
-    .lookbook2 img:nth-of-type(2) {
-      width: calc(100% / 2.5);
-      right: 26%;
-      z-index: 10;
-    }
-    .lookbook2 img:nth-of-type(3) {
-      width: calc(100% / 3);
-      right: 0%;
-      z-index: 5;
-      bottom: 0;
-    }
-
-    /**
-    * lookbook3
-    **/
-    .lookbook3 img:nth-of-type(1) {
-      margin: 0 0 2rem;
-    }
-
-    /**
-    * lookbook4
-    **/
-    .lookbook4 img{
-      position: relative;
-    }
-    .lookbook4 img:nth-of-type(1) {
-      top: 0;
-    }
-    .lookbook4 img:nth-of-type(2) {
-      top: 3rem;
-    }
-    .lookbook4 img:nth-of-type(3) {
-      top: 6rem;
-    }
-    .lookbook4 .credit {
-      margin: 9rem 0 0;
-    }
-
-    /**
-    * lookbook6
-    **/
-    .lookbook6 {
-      padding: 0 0 80%;
-    }
-    .lookbook6 img,
-    .lookbook6 .credit {
-      position: absolute;
-    }
-    .lookbook6 .credit {
-      width: calc(100% / 2.6);
-      bottom: 5%;
-      right: 0;
-      margin: 0;
-    }
-    .lookbook6 img:nth-of-type(1) {
-      top: 0;
-      width: calc(100% / 1.25);
-    }
-    .lookbook6 img:nth-of-type(2) {
-      width: calc(100% / 2.5);
-      right: 0%;
-      z-index: 10;
-      top: 10%;
-    }
-    .lookbook6 img:nth-of-type(3) {
-      width: calc(100% / 3.5);
-      left: 12%;
-      z-index: 5;
-      bottom: 0;
-    }
-
-    /**
-    * lookbook7
-    **/
-    .lookbook7 {
-      padding: 0 0 75%;
-    }
-    .lookbook7 img,
-    .lookbook7 .credit {
-      position: absolute;
-    }
-    .lookbook7 .credit {
-      width: auto;
-      bottom: 0;
-      left: 15%;
-    }
-    .lookbook7 img:nth-of-type(1) {
-      top: 0;
-      width: calc(100% / 2);
-      z-index: 15;
-    }
-    .lookbook7 img:nth-of-type(2) {
-      width: calc(100% / 2.5);
-      right: 25%;
-      z-index: 15;
-      top: 10%;
-      transform: translateY(50%);
-    }
-    .lookbook7 img:nth-of-type(3) {
-      width: calc(100% / 2.25);
-      right: 0%;
-      z-index: 15;
-      bottom: 0;
-    }
-
-    /**
-    * lookbook8
-    **/
-    .lookbook8 {
-      padding: 0 0 80%;
-    }
-    .lookbook8 img,
-    .lookbook8 .credit {
-      position: absolute;
-    }
-    .lookbook8 .credit {
-      width: auto;
-      top: 10%;
-      right: 4%;
-      margin: 0;
-    }
-    .lookbook8 img:nth-of-type(1) {
-      top: 0;
-      width: calc(100% / 2);
-      z-index: 15;
-    }
-    .lookbook8 img:nth-of-type(2) {
-      width: calc(100% / 3);
-      right: 17%;
-      z-index: 10;
-      top: 3%;
-      transform: translateY(50%);
-    }
-    .lookbook8 img:nth-of-type(3) {
-      width: calc(100% / 2.25);
-      right: 0%;
-      z-index: 15;
-      bottom: 0;
-    }
-
-    /**
-    * lookbook8
-    **/
-    .lookbook9 {
-      padding: 0px 0 75%;
-    }
-    .lookbook9 img,
-    .lookbook9 .credit {
-      position: absolute;
-    }
-    .lookbook9 .credit {
-      width: auto;
-      bottom: 0%;
-      left: 50%;
-      transform: translateX(-50%);
-    }
-    .lookbook9 img:nth-of-type(1) {
-      top: 0;
-      width: calc(100% / 2);
-      z-index: 15;
-      right: 0;
-    }
-    .lookbook9 img:nth-of-type(2) {
-      width: calc(100% / 2.2);
-      left: 0;
-      z-index: 10;
-      top: 0;
-      transform: translateY(50%);
-    }
-    .lookbook9 img:nth-of-type(3) {
-      width: calc(100% / 2.2);
-      left: 0%;
-      z-index: 15;
-      bottom: 16%;
-    }
-
-    /**
-    * lookbook10
-    **/
-    .lookbook10 {
-      padding: 0 0 65%;
-    }
-    .lookbook10 img,
-    .lookbook10 .credit {
-      position: absolute;
-    }
-    .lookbook10 .credit {
-      width: auto;
-      bottom: 22%;
-      right: 15%;
-    }
-    .lookbook10 img:nth-of-type(1) {
-      top: 0;
-      width: calc(100% / 2);
-      z-index: 15;
-      right: 0;
-    }
-    .lookbook10 img:nth-of-type(2) {
-      width: calc(100% / 4);
-      right: 31%;
-      z-index: 15;
-      top: 42%;
-      transform: translateY(50%);
-    }
-    .lookbook10 img:nth-of-type(3) {
-      width: calc(100% / 2.25);
-      left: 0;
-      z-index: 15;
-      top: 0;
-    }
-
-    /**
-    * media query
-    **/
-    @media screen and (max-width: 979px) {
-      .title {
-        margin: 30px 0;
-        font-size: 24px;
-      }
-      .credit {
-        margin: 1.5rem 0 0;
-      }
-      .credit ul li {
-        font-size: 12px;
-      }
-      .imgBox img {
-        width: calc(100% / 4);
-        padding: 0 .25rem;
-      }
-      div[class*='lookbook'] {
-        margin: 0 0 3rem;
-      }
-      /**
-      * lookbook2
-      **/
-      .lookbook2 .credit {
-        top: 0%;
-        right: 0;
-        width: calc(100% / 3.4);
-      }
-      .lookbook2 img:nth-of-type(2) {
-        right: 29%;
-      }
-      /**
-      * lookbook3
-      **/
-      .lookbook3 img:nth-of-type(1) {
-        margin: 0 0 0.5rem;
-      }
-      /**
-      * lookbook4
-      **/
-      .lookbook4 img:nth-of-type(2) {
-        top: 2rem;
-      }
-      .lookbook4 img:nth-of-type(4) {
-        top: 4rem;
-      }
-      .lookbook4 .credit {
-        margin: 8rem 0 0;
-      }
-      /**
-      * lookbook6
-      **/
-      .lookbook6 {
-        padding: 0 0 90%;
-      }
-      .lookbook6 .credit {
-        bottom: 0;
-        width: calc(100% / 2.5);
-        right: 0;
-      }
-      /**
-      * lookbook7
-      **/
-      .lookbook7 .credit {
-        bottom: 25%;
-        left: 0;
-        width: calc(100% / 2.8);
-      }
-      /**
-      * lookbook8
-      **/
-      .lookbook8 .credit {
-        top: 10%;
-        right: 0;
-        width: calc(100% / 3.2);
-      }
-      .lookbook8 img:nth-of-type(1) {
-        top: 0;
-        width: calc(100% / 2.5);
-      }
-      .lookbook8 img:nth-of-type(2) {
-        width: calc(100% / 3.5);
-        right: 31%;
-        top: 3%;
-      }
-      .lookbook8 img:nth-of-type(3) {
-        width: calc(100% / 1.7);
-        right: 0%;
-        bottom: 0;
-      }
-      /**
-      * lookbook9
-      **/
-      .lookbook9 {
-        padding: 0px 0px 95%;
-      }
-      .lookbook9 img:nth-of-type(3) {
-        bottom: 33%;
-      }
-      /**
-      * lookbook10
-      **/
-      .lookbook10 .credit {
-        width: auto;
-        bottom: 22%;
-        right: 3%;
-      }
-    }
-  </style>
-</head>
-<body>
-  <div class="container">
-    <div class="imgBox lookbook1">
-      <img
-        src="lookbook/img.jpg"
-        class="animate__animated inview column2"
-        data-animate="fadeIn"
-        data-delay="0.2"
-        data-duration="1.2"
-      />
-      <img
-        src="lookbook/img.jpg"
-        class="animate__animated inview column2"
-        data-animate="fadeIn"
-        data-delay="0.4"
-        data-duration="1.2"
-      />
-      <div class="credit">
-        <ul>
-          <li>Set up <span>&yen;4,990</span></li>
-          <li>Tops <span>&yen;1990</span></li>
-          <li>Boots <span>&yen;7,990</span></li>
-        </ul>
+      <div class="imgBox lookbook10">
+        <img
+          src="lookbook/img2.jpg"
+          class="animate__animated inview column3"
+          data-animate="fadeInLeft"
+          data-delay="0.2"
+          data-duration="1.2"
+        />
+        <img
+          src="lookbook/img.jpg"
+          class="animate__animated inview column3"
+          data-animate="fadeInLeft"
+          data-delay="0.4"
+          data-duration="1.2"
+        />
+        <img
+          src="lookbook/img.jpg"
+          class="animate__animated inview column3"
+          data-animate="fadeInRight"
+          data-delay="0.6"
+          data-duration="1.2"
+        />
+        <div class="credit">
+          <ul>
+            <li>Set up <span>&yen;4,990</span></li>
+            <li>Tops <span>&yen;1990</span></li>
+            <li>Boots <span>&yen;7,990</span></li>
+          </ul>
+        </div>
       </div>
     </div>
-    <div class="imgBox lookbook2">
-      <img
-        src="lookbook/img.jpg"
-        class="animate__animated inview column3"
-        data-animate="fadeInLeft"
-        data-delay="0.2"
-        data-duration="1.2"
-      />
-      <img
-        src="lookbook/img.jpg"
-        class="animate__animated inview column3"
-        data-animate="fadeIn"
-        data-delay="0.4"
-        data-duration="1.2"
-      />
-      <img
-        src="lookbook/img.jpg"
-        class="animate__animated inview column3"
-        data-animate="fadeInBottomRight"
-        data-delay="0.6"
-        data-duration="1.2"
-      />
-      <div class="credit">
-        <ul>
-          <li>Set up <span>&yen;4,990</span></li>
-          <li>Tops <span>&yen;1990</span></li>
-          <li>Boots <span>&yen;7,990</span></li>
-        </ul>
-      </div>
-    </div>
-    <div class="imgBox lookbook3">
-      <img
-        src="lookbook/img2.jpg"
-        class="animate__animated inview column1"
-        data-animate="fadeInDown"
-        data-delay="0.2"
-        data-duration="1.2"
-      />
-      <img
-        src="lookbook/img.jpg"
-        class="animate__animated inview column2"
-        data-animate="fadeInBottomLeft"
-        data-delay="0.4"
-        data-duration="1.2"
-      />
-      <img
-        src="lookbook/img.jpg"
-        class="animate__animated inview column2"
-        data-animate="fadeInBottomRight"
-        data-delay="0.6"
-        data-duration="1.2"
-      />
-      <div class="credit">
-        <ul>
-          <li>Set up <span>&yen;4,990</span></li>
-          <li>Tops <span>&yen;1990</span></li>
-          <li>Boots <span>&yen;7,990</span></li>
-        </ul>
-      </div>
-    </div>
-    <div class="imgBox lookbook4">
-      <img
-        src="lookbook/img.jpg"
-        class="animate__animated inview column3"
-        data-animate="fadeInUp"
-        data-delay="0.2"
-        data-duration="1.2"
-      />
-      <img
-        src="lookbook/img.jpg"
-        class="animate__animated inview column3"
-        data-animate="fadeInUp"
-        data-delay="0.4"
-        data-duration="1.2"
-      />
-      <img
-        src="lookbook/img.jpg"
-        class="animate__animated inview column3"
-        data-animate="fadeInUp"
-        data-delay="0.6"
-        data-duration="1.2"
-      />
-      <div class="credit">
-        <ul>
-          <li>Set up <span>&yen;4,990</span></li>
-          <li>Tops <span>&yen;1990</span></li>
-          <li>Boots <span>&yen;7,990</span></li>
-        </ul>
-      </div>
-    </div>
-    <div class="imgBox lookbook5">
-      <img
-        src="lookbook/img.jpg"
-        class="animate__animated inview column2"
-        data-animate="fadeIn"
-        data-delay="0.2"
-        data-duration="1.2"
-      />
-      <img
-        src="lookbook/img.jpg"
-        class="animate__animated inview column2"
-        data-animate="fadeIn"
-        data-delay="0.4"
-        data-duration="1.2"
-      />
-      <div class="credit">
-        <ul>
-          <li>Set up <span>&yen;4,990</span></li>
-          <li>Tops <span>&yen;1990</span></li>
-          <li>Boots <span>&yen;7,990</span></li>
-        </ul>
-      </div>
-    </div>
-    <div class="imgBox lookbook6">
-      <img
-        src="lookbook/img2.jpg"
-        class="animate__animated inview column3"
-        data-animate="fadeInLeft"
-        data-delay="0.2"
-        data-duration="1.2"
-      />
-      <img
-        src="lookbook/img.jpg"
-        class="animate__animated inview column3"
-        data-animate="fadeIn"
-        data-delay="0.4"
-        data-duration="1.2"
-      />
-      <img
-        src="lookbook/img.jpg"
-        class="animate__animated inview column3"
-        data-animate="fadeInUp"
-        data-delay="0.6"
-        data-duration="1.2"
-      />
-      <div class="credit">
-        <ul>
-          <li>Set up <span>&yen;4,990</span></li>
-          <li>Tops <span>&yen;1990</span></li>
-          <li>Boots <span>&yen;7,990</span></li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="imgBox lookbook7">
-      <img
-        src="lookbook/img2.jpg"
-        class="animate__animated inview column3"
-        data-animate="fadeInUp"
-        data-delay="0.2"
-        data-duration="1.2"
-      />
-      <img
-        src="lookbook/img.jpg"
-        class="animate__animated inview column3"
-        data-animate="fadeInUp"
-        data-delay="0.4"
-        data-duration="1.2"
-      />
-      <img
-        src="lookbook/img2.jpg"
-        class="animate__animated inview column3"
-        data-animate="fadeInBottomRight"
-        data-delay="0.6"
-        data-duration="1.2"
-      />
-      <div class="credit">
-        <ul>
-          <li>Set up <span>&yen;4,990</span></li>
-          <li>Tops <span>&yen;1990</span></li>
-          <li>Boots <span>&yen;7,990</span></li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="imgBox lookbook8">
-      <img
-        src="lookbook/img.jpg"
-        class="animate__animated inview column3"
-        data-animate="fadeInLeft"
-        data-delay="0.2"
-        data-duration="1.2"
-      />
-      <img
-        src="lookbook/img.jpg"
-        class="animate__animated inview column3"
-        data-animate="fadeInUp"
-        data-delay="0.4"
-        data-duration="1.2"
-      />
-      <img
-        src="lookbook/img2.jpg"
-        class="animate__animated inview column3"
-        data-animate="fadeInRight"
-        data-delay="0.6"
-        data-duration="1.2"
-      />
-      <div class="credit">
-        <ul>
-          <li>Set up <span>&yen;4,990</span></li>
-          <li>Tops <span>&yen;1990</span></li>
-          <li>Boots <span>&yen;7,990</span></li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="imgBox lookbook9">
-      <img
-        src="lookbook/img.jpg"
-        class="animate__animated inview column3"
-        data-animate="fadeInTopLeft"
-        data-delay="0.2"
-        data-duration="1.2"
-      />
-      <img
-        src="lookbook/img2.jpg"
-        class="animate__animated inview column3"
-        data-animate="fadeInDown"
-        data-delay="0.4"
-        data-duration="1.2"
-      />
-      <img
-        src="lookbook/img2.jpg"
-        class="animate__animated inview column3"
-        data-animate="fadeInRight"
-        data-delay="0.6"
-        data-duration="1.2"
-      />
-      <div class="credit">
-        <ul>
-          <li>Set up <span>&yen;4,990</span></li>
-          <li>Tops <span>&yen;1990</span></li>
-          <li>Boots <span>&yen;7,990</span></li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="imgBox lookbook10">
-      <img
-        src="lookbook/img2.jpg"
-        class="animate__animated inview column3"
-        data-animate="fadeInLeft"
-        data-delay="0.2"
-        data-duration="1.2"
-      />
-      <img
-        src="lookbook/img.jpg"
-        class="animate__animated inview column3"
-        data-animate="fadeInLeft"
-        data-delay="0.4"
-        data-duration="1.2"
-      />
-      <img
-        src="lookbook/img.jpg"
-        class="animate__animated inview column3"
-        data-animate="fadeInRight"
-        data-delay="0.6"
-        data-duration="1.2"
-      />
-      <div class="credit">
-        <ul>
-          <li>Set up <span>&yen;4,990</span></li>
-          <li>Tops <span>&yen;1990</span></li>
-          <li>Boots <span>&yen;7,990</span></li>
-        </ul>
-      </div>
-    </div>
-  </div>
-
-  <script>
-      animate_init = function(){
-        //画面に入るたびに毎回動作する
-        $(".inview").on("inview", function (event, isInView) {
-          if (isInView) {
-            var delay = $(this).data('delay') ? $(this).data('delay') : 0
-              , duration = $(this).data('duration') ? $(this).data('duration') : 0;
-            $(this).css('visibility', 'visible');
-            if( delay > 0 ){
-              let animation = {
-                'animation-delay': delay + 's',
-                'animation-duration': duration + 's'
-              }
-              $(this).css( animation );
-            }
-            $(this).addClass('animate__'+ $(this).data('animate') );       
-          }
-        });
-      };
-      $(document).ready(function(){
-        animate_init();
-      });
-  </script> 
-</body>
+    <script src="lookbook/common.js"></script>
+  </body>
 </html>
