@@ -1,2 +1,0 @@
-ECMAScript
-Javascriptの標準規約
