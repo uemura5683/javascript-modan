@@ -1,2 +1,5 @@
 javascript : ajaxリクエストを適切にデバウンスする方法
 https://www.fixes.pub/program/297475.html
+
+jQuery ver
+http://benalman.com/code/projects/jquery-throttle-debounce/examples/debounce/
