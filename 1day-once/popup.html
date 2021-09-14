@@ -1,0 +1,112 @@
+  
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>1day once</title>
+    <style type="text/css">
+    .modal {
+      width: 100%;
+      height: 100vh;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 9999;
+      align-items: center;
+      display: none;
+    }
+    .modal.is_active {
+      display: flex;
+    }
+    .modal_bg {
+      background-color: rgba(0, 0, 0, 0.5);
+      width: 100%;
+      height: 100vh;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 9998;
+    }
+    .modal_wrap {
+      text-align: right;
+      width: 100%;
+      margin: 0 auto;
+      padding: 20px;
+      z-index: 10000;
+      position: relative;
+    }
+    .modal_inner {
+      background-color: #fff;
+      text-align: left;
+      padding: 30px 30px 40px;
+      font-size: 16px;
+    }
+    .modal_close {
+      color: #fff;
+      font-size: 32px;
+      position: absolute;
+      top: -30px;
+      right: 18px;
+    }
+    </style>
+  </head>
+  <body>
+
+    <div id="js_modal" class="modal">
+      <div class="js_modal_close modal_bg"></div>
+      <div class="modal_wrap">
+        <a class="js_modal_close modal_close">
+          閉じる
+        </a>
+        <div class="modal_inner">
+          
+        </div>
+      </div>
+    </div>
+
+    <script type="text/javascript">
+    window.onload = function() {
+     
+      // cookieを配列に格納する
+      const cookieArray = new Array();
+      alert(document.cookie);
+      if(document.cookie != ''){
+        const tmp = document.cookie.split('; ');
+        for(let i=0;i<tmp.length;i++){
+          const data = tmp[i].split('=');
+          cookieArray[data[0]] = decodeURIComponent(data[1]);
+        }
+      }
+     
+      // cookieの配列からmodalBrowseを取得する
+      const modalBrowse = cookieArray["modalBrowse"];
+      const modal = document.getElementById("js_modal");
+      console.log(modalBrowse);
+     
+      // modalBrowseが無い場合のみモーダルを表示しつつ今日の23:59:59を期限にしたcookieをセット
+      if (!modalBrowse) {
+        modal.classList.add("is_active");
+        const date = new Date();
+        const todayEnd = new Date(date.getFullYear(), date.getMonth(), date.getDate(), 23, 59, 59);
+        const dateTime = date.getTime();
+        const todayEndTime = todayEnd.getTime();
+        const remainingTime = Math.ceil((todayEndTime - dateTime) / 1000);
+        document.cookie = 'modalBrowse=allready; max-age=' + remainingTime;
+        // ▼ 24時間後でよければ、下記１行でOK
+        // document.cookie = 'modalBrowse=allready; max-age=86400'; // 86400秒
+      }
+     
+      // 閉じるボタン
+      const modalClose = document.getElementsByClassName('js_modal_close');
+      for( var i = 0; i < modalClose.length; i++ ) {
+        modalClose[i].onclick = function () {
+          modal.classList.remove("is_active");
+        }
+      }
+     
+    }
+    </script>
+
+  </body>
+</html>
