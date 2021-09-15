@@ -1,0 +1,44 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Vanilla-tilt.js</title>
+  </head>
+  <body>
+    <form method="post" action="">
+      <select name="menu-category" id="menu-category">
+        <option value="question">お問い合わせ</option>
+        <option value="estimate">お見積り</option>
+        <option value="order">ご注文</option>
+        <option value="other">その他</option>
+      </select>
+    </form>
+    <script type="text/javascript">
+        var params = getParameter();
+        $("#menu-category").val('modalshift');
+        if(params['cc']!==""){
+            $("#menu-category").val(params['cc']);
+        }
+         
+        function getParameter(){
+          var paramsArray = [];
+          var url = location.href; 
+          parameters = url.split("#");
+          if( parameters.length > 1 ) {
+            url = parameters[0];
+          }
+          parameters = url.split("?");
+          if( parameters.length > 1 ) {
+            var params = parameters[1].split("&amp;");
+            for ( i = 0; i < params.length; i++ ) {
+               var paramItem = params[i].split("=");
+               paramsArray[paramItem[0]] = paramItem[1];
+            }
+          }
+          return paramsArray;
+        };
+    </script>
+  </body>
+</html>
