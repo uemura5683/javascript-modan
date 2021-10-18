@@ -10,107 +10,45 @@
 		  margin-right:15px;
 		}
     </style>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/16.4.2/umd/react.production.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.4.2/umd/react-dom.production.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prop-types/15.6.2/prop-types.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
   </head>
   <body>
-    <div id="app"></div>
-
-
+    <p>
+    https://codepen.io/Pustur/pen/xaaEZN
+    <div id="CountDown"></div>
+    </p>
+    <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
     <script type="text/babel">
-		const App = props => {
-		  return (
-		    <Countdown toDate={new Date(2021, 09, 19)}>
-		      {props => (
-		        <CountdownDisplay
-		          days={props.days}
-		          asDays={props.asDays}
-		          hours={props.hours}
-		          minutes={props.minutes}
-		          seconds={props.seconds}
-		        />
-		      )}
-		    </Countdown>
-		  );
-		};
+        'use strict';
+        class CountDown extends React.Component {
+            constructor(props) {
+                super(props);
+                this.state = { voted: false };
+            }
 
-		const CountdownDisplay = props => {
-		  const { years, months, days, asDays, hours, minutes, seconds } = props;
+            render() {
+                if (this.state.voted) {
+                    return (
+                        <button onClick={() => this.setState({ voted: false })}>
+                            voted
+                        </button>
+                    )
+                } else {
+                    return (
+                        <button onClick={() => this.setState({ voted: true })}>
+                            vote
+                        </button>
+                    );
+                }
+            }
+        }
 
-		  return (
-		    <time
-		      className="CountdownDisplay"
-		      datetime={`P${asDays}DT${hours}H${minutes}M${seconds}S`}
-		    >
-		      <span className="CountdownDisplay__days">
-		        {String(days).padStart(2, 0)} days
-		      </span>
-		      <span className="CountdownDisplay__hours">
-		        {String(hours).padStart(2, 0)} hours
-		      </span>
-		      <span className="CountdownDisplay__minutes">
-		        {String(minutes).padStart(2, 0)} minutes
-		      </span>
-		      <span className="CountdownDisplay__seconds">
-		        {String(seconds).padStart(2, 0)} seconds
-		      </span>
-		    </time>
-		  );
-		};
-
-		CountdownDisplay.propTypes = {
-		  days: PropTypes.number.isRequired,
-		  asDays: PropTypes.number.isRequired,
-		  hours: PropTypes.number.isRequired,
-		  minutes: PropTypes.number.isRequired,
-		  seconds: PropTypes.number.isRequired,
-		};
-
-		class Countdown extends React.Component {
-		  constructor(props) {
-		    super(props);
-		    this.state = { now: new Date() };
-		  }
-
-		  componentDidMount() {
-		    this.intervalId = setInterval(() => {
-		      this.setState({ now: new Date() });
-		    }, this.props.intervalDelay);
-		  }
-
-		  componentWillUnmount() {
-		    clearInterval(this.intervalId);
-		  }
-
-		  render() {
-		    const { now } = this.state;
-		    const { toDate } = this.props;
-		    const delta = toDate - now;
-
-		    return this.props.children({
-		      days: Math.floor((delta / 1000 / 60 / 60 / 24) % 30),
-		      hours: Math.floor((delta / 1000 / 60 / 60) % 24),
-		      minutes: Math.floor((delta / 1000 / 60) % 60),
-		      seconds: Math.floor((delta / 1000) % 60),
-		      milliseconds: delta,
-		      asDays: Math.floor(delta / 1000 / 60 / 60 / 24)
-		    });
-		  }
-		}
-
-		Countdown.propTypes = {
-		  toDate: PropTypes.instanceOf(Date).isRequired,
-		  intervalDelay: PropTypes.number
-		};
-
-		Countdown.defaultProps = {
-		  intervalDelay: 1000
-		};
-
-		ReactDOM.render(<App />, document.getElementById("app"));
-
+        ReactDOM.render(
+            React.createElement(CountDown),
+            document.getElementById('CountDown')
+        );
     </script>
   </body>
 </html>
