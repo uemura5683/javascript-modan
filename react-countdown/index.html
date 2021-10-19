@@ -4,52 +4,111 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
     <title>React countdown</title>
-    <style type="text/css">
-		.CountdownDisplay > * {
-		  display: inline-block;
-		  margin-right:15px;
-		}
-    </style>
   </head>
   <body>
-    <p>
     https://codepen.io/Pustur/pen/xaaEZN
     https://code-database.com/knowledges/106
-    <div id="CountDown"></div>
-    </p>
+  	
+    <div id="p-main-banner-desc-6"></div>
     <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
-    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
-    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
-    <script type="text/babel">
-        'use strict';
-        class CountDown extends React.Component {
-            constructor(props) {
-                super(props);
-                this.state = { voted: false };
-            }
+	<script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+	<script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+	<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/prop-types/15.6.2/prop-types.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
+	<script type="text/babel">
+	    const { Component, Fragment } = React;
+	    class CountDown extends Component {
+	      state = {
+	        remaining: {
+	          days: 0, hours: 0, minutes: 0, seconds: 0
+	        },
+	        isExpired: false
+	      };
+	      timer;
+	      distance;
 
-            render() {
-                if (this.state.voted) {
-                    return (
-                        <button onClick={() => this.setState({ voted: false })}>
-                            voted
-                        </button>
-                    )
-                } else {
-                    return (
-                        <button onClick={() => this.setState({ voted: true })}>
-                            vote
-                        </button>
-                    );
-                }
-            }
-        }
+	      componentDidMount() {
+	        this.setDate();
+	        this.counter();
+	      }
 
-        ReactDOM.render(
-            React.createElement(CountDown),
-            document.getElementById('CountDown')
-        );
-    </script>
+	      setDate = () => {
+	        const { targetDate, targetTime } = this.props,
+
+            now = new Date().getTime(),
+
+            countDownDate = new Date(targetDate + " " + targetTime).getTime();
+	        
+	        // target date and time is less than current date and time
+	        if (this.distance < 0) {
+	          clearInterval(this.timer);
+	          this.setState({ isExpired: true });
+	        } else {
+	          this.setState({
+	            remaining: {
+	              時間: Math.floor((countDownDate - now) / 1000 / 3600),
+	              分:   Math.floor((countDownDate - now) / 1000 / 60) % 60,
+	              秒:   Math.floor((countDownDate - now) / 1000) % 60 
+	            },
+	            isExpired: false
+	          });
+	        }
+	      };
+
+	      counter = () => {
+	        this.timer = setInterval(() => {
+	          this.setDate();
+	        }, 1000);
+	      };
+
+	      render() {
+	        const { remaining, isExpired } = this.state,
+	        {targetDate, targetTime} = this.props;
+	        
+	        return (
+	          <Fragment>
+	            {!isExpired && targetDate && targetTime ? (
+	              <div className="counter">
+	                {Object.entries(remaining).map((el, i) => (
+	                  <div key={i} className="entry">
+	                    <div key={el[1]} className="entry-value">
+	                      <span className="count">{el[1]}</span>
+	                    </div>
+	                    <div className="entry-title">{el[0].toUpperCase()}</div>
+	                  </div>
+	                ))}
+	              </div>
+	            ) : (
+	              <p className="alert-danger">Expired</p>
+	            )}
+	          </Fragment> 
+	        );
+	      }
+	    }
+
+	    const app = <CountDown targetDate="Oct 19, 2021" targetTime="20:00:00" />;
+
+	    ReactDOM.render(app, document.querySelector("#p-main-banner-desc-6"));
+	</script>
+	<style type="text/css">
+	  div[id*="p-main-banner-desc-"] {
+	      position: absolute;
+	      bottom: 12px;
+	      width: 100%;
+	  }
+	  div[id*="p-main-banner-desc-"] .counter {
+	      display: flex;
+	      flex-wrap: wrap;
+	      justify-content: center;
+	      line-height: 3vw;
+	  }
+	  div[id*="p-main-banner-desc-"] .entry {
+	      display: flex;
+	      flex-wrap: wrap;
+	      margin: 0 0 10px;
+	      font-size: 3vw;
+	  }
+	</style>
   </body>
 </html>
