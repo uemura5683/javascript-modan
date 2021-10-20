@@ -10,7 +10,6 @@
     https://code-database.com/knowledges/106
   	
     <div id="p-main-banner-desc-6"></div>
-    <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
 	<script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
 	<script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
 	<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
@@ -41,7 +40,8 @@
             countDownDate = new Date(targetDate + " " + targetTime).getTime();
 	        
 	        // target date and time is less than current date and time
-	        if (this.distance < 0) {
+
+	        if (Math.floor((countDownDate - now) / 1000) < 0) {
 	          clearInterval(this.timer);
 	          this.setState({ isExpired: true });
 	        } else {
@@ -73,22 +73,20 @@
 	                {Object.entries(remaining).map((el, i) => (
 	                  <div key={i} className="entry">
 	                    <div key={el[1]} className="entry-value">
-	                      <span className="count">{el[1]}</span>
+	                      <span className="count">{el[1]} </span>
 	                    </div>
-	                    <div className="entry-title">{el[0].toUpperCase()}</div>
+	                    <div className="entry-title">{el[0].toUpperCase()}　</div>
 	                  </div>
 	                ))}
 	              </div>
 	            ) : (
-	              <p className="alert-danger">Expired</p>
+	              <p></p>
 	            )}
 	          </Fragment> 
 	        );
 	      }
 	    }
-
-	    const app = <CountDown targetDate="Oct 19, 2021" targetTime="20:00:00" />;
-
+	    const app = <CountDown targetDate="Oct 22, 2021" targetTime="10:39:00" />;
 	    ReactDOM.render(app, document.querySelector("#p-main-banner-desc-6"));
 	</script>
 	<style type="text/css">
