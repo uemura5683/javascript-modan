@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <script src="jquery-1.11.1.min.js"></script>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="title" content="" />
+    <meta name="robots" content="index, follow" />
+    <meta name="copyright" content="" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <title></title>
+    <link href="swiper/css/swiper.min.css" rel="stylesheet">
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="p-main-visual">
+        <div class="p-main-visual__container swiper-container js-main-visual-slider">
+          <ul class="swiper-wrapper">
+            <li class="swiper-slide p-main-visual__image is-countdown">
+              <a class="p-main-visual__anhor" href="/">
+                <img class="swiper-lazy p-main-visual__image" src="img.jpg" alt=1>
+              </a>
+            </li>
+            <li class="swiper-slide p-main-visual__image ">
+              <a class="p-main-visual__anhor" href="/">
+                <img class="swiper-lazy p-main-visual__image" src="img.jpg" alt=2>
+              </a>
+            </li>
+            <li class="swiper-slide p-main-visual__image ">
+              <a class="p-main-visual__anhor" href="/">
+                <img class="swiper-lazy p-main-visual__image" src="img.jpg" alt=3>
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="swiper-pagination"></div>
+      </div>
+
+      <div class="p-countdown-dom" style="display: none;"></div>
+
+      <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+      <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+      <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/prop-types/15.6.2/prop-types.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
+      <script type="text/babel">
+          const { Component, Fragment } = React;
+          class CountDown extends Component {
+            state = {
+              remaining: {
+                days: 0, hours: 0, minutes: 0, seconds: 0
+              },
+              isExpired: false
+            };
+            timer;
+            distance;
+
+            componentDidMount() {
+              this.setDate();
+              this.counter();
+            }
+
+            setDate = () => {
+              const { targetDate, targetTime } = this.props,
+
+              now = new Date().getTime(),
+
+              countDownDate = new Date(targetDate + " " + targetTime).getTime();
+              
+              // target date and time is less than current date and time
+
+              if (Math.floor((countDownDate - now) / 1000) < 0) {
+                clearInterval(this.timer);
+                this.setState({ isExpired: true });
+              } else {
+                this.setState({
+                  remaining: {
+                    時間: Math.floor((countDownDate - now) / 1000 / 3600),
+                    分:   Math.floor((countDownDate - now) / 1000 / 60) % 60,
+                    秒:   Math.floor((countDownDate - now) / 1000) % 60 
+                  },
+                  isExpired: false
+                });
+              }
+            };
+
+            counter = () => {
+              this.timer = setInterval(() => {
+                this.setDate();
+              }, 1000);
+            };
+
+            render() {
+              const { remaining, isExpired } = this.state,
+              {targetDate, targetTime} = this.props;
+              
+              return (
+                <Fragment>
+                  {!isExpired && targetDate && targetTime ? (
+                    <div className="counter">
+                      {Object.entries(remaining).map((el, i) => (
+                        <div key={i} className="entry">
+                          <div key={el[1]} className="entry-value">
+                            <span className="count">{el[1]}</span>
+                          </div>
+                          <div className="entry-title">{el[0].toUpperCase()}</div>
+                        </div>
+                      ))}
+                    </div>
+                  ) : (
+                    <p></p>
+                  )}
+                </Fragment> 
+              );
+            }
+          }
+          const app = <CountDown targetDate="Dec 29, 2021" targetTime="10:00:00" />;
+
+          document.querySelectorAll('.p-countdown-dom')
+                  .forEach(domContainer => {
+                      ReactDOM.render(
+                          app,
+                          domContainer
+                      );
+                  });
+
+      </script>
+      <style type="text/css">
+        .p-countdown-dom {
+          position: absolute;
+          bottom: 13%;
+          width: 100%;
+          transform: translateY(50%);
+        }
+        .p-countdown-dom .counter {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          line-height: 3vw;
+        }
+        .p-countdown-dom .entry {
+          display: flex;
+          flex-wrap: wrap;
+          margin: 0 0 10px 2vw;
+          font-size: 3.8vw;
+          color:#ffffff;
+          line-height: 3.2vw;
+          font-family:ヒラギノ角ゴ Pro W6;
+          font-weight:bold;
+        }
+        .p-countdown-dom .entry:first-child {
+          margin: 0 0 10px 0;
+        }
+      </style> 
+    </div>
+    <script src="swiper/js/swiper.min.js"></script>
+  </body>
+</html>
