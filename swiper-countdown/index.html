@@ -10,34 +10,94 @@
     <meta name="keywords" content="" />
     <title></title>
     <link href="swiper/css/swiper.min.css" rel="stylesheet">
+    <style type="text/css">
+        img {
+          width: 100%;
+        }
+        ul li {
+          list-style-type: none;
+        }
+        .p-main-visual {
+          position: relative;
+          margin: 0 0 10px;
+        }
+        .swiper-pagination {
+          inset: calc(100% - 10px) 0 0 0;
+          display: flex;
+          flex-wrap: wrap;
+          gap: 10px;
+          justify-content: center;
+        }
+        .swiper-pagination span {
+
+        }
+        .p-countdown-dom {
+          position: absolute;
+          bottom: 13%;
+          width: 100%;
+          transform: translateY(50%);
+        }
+        .p-countdown-dom .counter {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          line-height: 3vw;
+        }
+        .p-countdown-dom .entry {
+          display: flex;
+          flex-wrap: wrap;
+          margin: 0 0 10px 2vw;
+          font-size: 3.8vw;
+          color:#ffffff;
+          line-height: 3.2vw;
+          font-family:ヒラギノ角ゴ Pro W6;
+          font-weight:bold;
+        }
+        .p-countdown-dom .entry:first-child {
+          margin: 0 0 10px 0;
+        }
+    </style>
   </head>
   <body>
     <div class="wrapper">
       <div class="p-main-visual">
         <div class="p-main-visual__container swiper-container js-main-visual-slider">
           <ul class="swiper-wrapper">
-            <li class="swiper-slide p-main-visual__image is-countdown">
-              <a class="p-main-visual__anhor" href="/">
-                <img class="swiper-lazy p-main-visual__image" src="img.jpg" alt=1>
+            <li class="swiper-slide is-countdown">
+              <a
+                href="/"
+              >
+                <img
+                  src="img/bnr1.png"
+                  alt="banner1"
+                >
               </a>
             </li>
-            <li class="swiper-slide p-main-visual__image ">
-              <a class="p-main-visual__anhor" href="/">
-                <img class="swiper-lazy p-main-visual__image" src="img.jpg" alt=2>
+            <li class="swiper-slide ">
+              <a
+                href="/"
+              >
+                <img
+                  src="img/bnr2.png"
+                  alt="banner2"
+                >
               </a>
             </li>
-            <li class="swiper-slide p-main-visual__image ">
-              <a class="p-main-visual__anhor" href="/">
-                <img class="swiper-lazy p-main-visual__image" src="img.jpg" alt=3>
+            <li class="swiper-slide ">
+              <a
+                href="/"
+              >
+                <img
+                  src="img/bnr3.png"
+                  alt="banner3"
+                >
               </a>
             </li>
           </ul>
         </div>
         <div class="swiper-pagination"></div>
       </div>
-
       <div class="p-countdown-dom" style="display: none;"></div>
-
       <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
       <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
       <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
@@ -125,34 +185,132 @@
                   });
 
       </script>
-      <style type="text/css">
-        .p-countdown-dom {
-          position: absolute;
-          bottom: 13%;
-          width: 100%;
-          transform: translateY(50%);
-        }
-        .p-countdown-dom .counter {
-          display: flex;
-          flex-wrap: wrap;
-          justify-content: center;
-          line-height: 3vw;
-        }
-        .p-countdown-dom .entry {
-          display: flex;
-          flex-wrap: wrap;
-          margin: 0 0 10px 2vw;
-          font-size: 3.8vw;
-          color:#ffffff;
-          line-height: 3.2vw;
-          font-family:ヒラギノ角ゴ Pro W6;
-          font-weight:bold;
-        }
-        .p-countdown-dom .entry:first-child {
-          margin: 0 0 10px 0;
-        }
-      </style> 
     </div>
     <script src="swiper/js/swiper.min.js"></script>
+  <script type="text/javascript">
+
+
+    $(function(){
+
+      /*
+      * Swiper
+      */
+      var SwiperObject = (function() {
+
+        var SwiperObject = function( el, option, resize_flag ) {
+          this.$el = el;
+          this.instances = [];
+          this.w_width;
+          this.slider_option = option;
+          this.resize_flag = resize_flag;
+        }
+        SwiperObject.prototype = {
+          init: function() {
+            this.load();
+            if ( this.resize_flag ) {
+              this.resize();
+            }
+          },
+          get_width: function() {
+            this.w_width = window.innerWidth || $(document).$(documentElement).clientWidth || $( window ).innerWidth();
+            return this.w_width;
+          },
+          create: function() {
+            this.instances[0] = new Swiper ( this.$el, this.slider_option );
+          },
+          destroy: function() {
+            if ( this.instances.length > 0 ) {
+              this.instances[0].destroy( true, true );
+              this.instances = [];
+            }
+          },
+          resize: function() {
+            var timer = false,
+                self = this;
+            $( window ).resize( function() {
+                if ( timer !== false ) {
+                    clearTimeout( timer );
+                }
+                timer = setTimeout( function() {
+                  if ( ( self.get_width() >= 768 ) && ( self.instances.length == 0 ) ) {
+                    self.create();
+                  } else if ( ( self.get_width() <= 767 ) && ( self.instances.length > 0 ) )  {
+                    self.destroy();
+                  } 
+                }, 200);
+            });
+          },
+          load: function() {
+            if ( this.resize_flag ) {
+              if ( this.get_width() >= 768 ) {
+                this.create();
+              }
+            }
+            else {
+              this.create();
+            }
+          }
+        }
+
+        return SwiperObject;
+
+      })();
+
+      $(window).on('load', function(){
+        function countdown(num) {
+            let countdom   = 'p-countdown-dom'
+              , classname  = 'is-countdown'
+              , parentdom  = 'p-main-visual'
+              , swipername = 'swiper-slide'
+            if( $('.' + countdom).length > 0 ) {
+              if( $('.' + parentdom + ' .' + swipername).eq(num).hasClass(classname) ) {
+                $('.' + countdom).appendTo($('.' + parentdom + ' .' + swipername).eq(num));
+                $('.' + countdom).css('display', 'block');
+              } else {
+                $('.' + parentdom).after($('.' + countdom));
+                $('.' + countdom).css('display', 'none');
+              }
+            }
+         }
+
+        if ( $( '.js-main-visual-slider' ).length > 0 ) {
+          var top_main_slider_option = {
+            autoplay: {
+              delay: 5000,
+            },
+            slidesPerView: 1.44,
+            spaceBetween: 4,
+            centeredSlides : true,
+            loop: true,
+            pagination: {
+              el: '.p-main-visual .swiper-pagination',
+              clickable: true
+            },
+            preloadImages: false,
+            lazy: true,
+            loopAdditionalSlides: 1,
+            on: {
+              init: function() {
+                this.lazy.loadInSlide(this.activeIndex - 1);
+                countdown(this.activeIndex);
+              },
+              slideChange: function () {
+                countdown(this.activeIndex);
+              }
+            },
+            breakpoints: {
+              979: {
+                slidesPerView: 1.05,
+              }
+            }
+          },
+          top_main_slider =  new SwiperObject( '.js-main-visual-slider', top_main_slider_option, false );
+          top_main_slider.init();
+        }
+      })
+
+    });
+
+  </script>
   </body>
 </html>
