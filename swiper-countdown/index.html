@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja">
   <head>
-    <script src="jquery-1.11.1.min.js"></script>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <meta name="title" content="" />
     <meta name="robots" content="index, follow" />
@@ -27,9 +26,6 @@
           flex-wrap: wrap;
           gap: 10px;
           justify-content: center;
-        }
-        .swiper-pagination span {
-
         }
         .p-countdown-dom {
           position: absolute;
@@ -98,219 +94,94 @@
         <div class="swiper-pagination"></div>
       </div>
       <div class="p-countdown-dom" style="display: none;"></div>
-      <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
-      <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
-      <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/prop-types/15.6.2/prop-types.min.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
-      <script type="text/babel">
-          const { Component, Fragment } = React;
-          class CountDown extends Component {
-            state = {
-              remaining: {
-                days: 0, hours: 0, minutes: 0, seconds: 0
-              },
-              isExpired: false
-            };
-            timer;
-            distance;
-
-            componentDidMount() {
-              this.setDate();
-              this.counter();
-            }
-
-            setDate = () => {
-              const { targetDate, targetTime } = this.props,
-
-              now = new Date().getTime(),
-
-              countDownDate = new Date(targetDate + " " + targetTime).getTime();
-              
-              // target date and time is less than current date and time
-
-              if (Math.floor((countDownDate - now) / 1000) < 0) {
-                clearInterval(this.timer);
-                this.setState({ isExpired: true });
-              } else {
-                this.setState({
-                  remaining: {
-                    時間: Math.floor((countDownDate - now) / 1000 / 3600),
-                    分:   Math.floor((countDownDate - now) / 1000 / 60) % 60,
-                    秒:   Math.floor((countDownDate - now) / 1000) % 60 
-                  },
-                  isExpired: false
-                });
-              }
-            };
-
-            counter = () => {
-              this.timer = setInterval(() => {
-                this.setDate();
-              }, 1000);
-            };
-
-            render() {
-              const { remaining, isExpired } = this.state,
-              {targetDate, targetTime} = this.props;
-              
-              return (
-                <Fragment>
-                  {!isExpired && targetDate && targetTime ? (
-                    <div className="counter">
-                      {Object.entries(remaining).map((el, i) => (
-                        <div key={i} className="entry">
-                          <div key={el[1]} className="entry-value">
-                            <span className="count">{el[1]}</span>
-                          </div>
-                          <div className="entry-title">{el[0].toUpperCase()}</div>
-                        </div>
-                      ))}
-                    </div>
-                  ) : (
-                    <p></p>
-                  )}
-                </Fragment> 
-              );
-            }
-          }
-          const app = <CountDown targetDate="Dec 29, 2021" targetTime="10:00:00" />;
-
-          document.querySelectorAll('.p-countdown-dom')
-                  .forEach(domContainer => {
-                      ReactDOM.render(
-                          app,
-                          domContainer
-                      );
-                  });
-
-      </script>
     </div>
+
+    <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prop-types/15.6.2/prop-types.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
     <script src="swiper/js/swiper.min.js"></script>
-  <script type="text/javascript">
+    <script src="swiper/js/swiper.render.js"></script>
+    <script type="text/babel">
+        const { Component, Fragment } = React;
+        class CountDown extends Component {
+          state = {
+            remaining: {
+              hours: 0, minutes: 0, seconds: 0
+            },
+            isExpired: false
+          };
+          timer;
+          distance;
 
+          componentDidMount() {
+            this.setDate();
+            this.counter();
+          }
 
-    $(function(){
+          setDate = () => {
+            const { targetDate, targetTime } = this.props,
 
-      /*
-      * Swiper
-      */
-      var SwiperObject = (function() {
+            now = new Date().getTime(),
 
-        var SwiperObject = function( el, option, resize_flag ) {
-          this.$el = el;
-          this.instances = [];
-          this.w_width;
-          this.slider_option = option;
-          this.resize_flag = resize_flag;
-        }
-        SwiperObject.prototype = {
-          init: function() {
-            this.load();
-            if ( this.resize_flag ) {
-              this.resize();
+            countDownDate = new Date(targetDate + " " + targetTime).getTime();
+
+            if (Math.floor((countDownDate - now) / 1000) < 0) {
+              clearInterval(this.timer);
+              this.setState({ isExpired: true });
+            } else {
+              this.setState({
+                remaining: {
+                  時間: Math.floor((countDownDate - now) / 1000 / 3600),
+                  分:   Math.floor((countDownDate - now) / 1000 / 60) % 60,
+                  秒:   Math.floor((countDownDate - now) / 1000) % 60 
+                },
+                isExpired: false
+              });
             }
-          },
-          get_width: function() {
-            this.w_width = window.innerWidth || $(document).$(documentElement).clientWidth || $( window ).innerWidth();
-            return this.w_width;
-          },
-          create: function() {
-            this.instances[0] = new Swiper ( this.$el, this.slider_option );
-          },
-          destroy: function() {
-            if ( this.instances.length > 0 ) {
-              this.instances[0].destroy( true, true );
-              this.instances = [];
-            }
-          },
-          resize: function() {
-            var timer = false,
-                self = this;
-            $( window ).resize( function() {
-                if ( timer !== false ) {
-                    clearTimeout( timer );
-                }
-                timer = setTimeout( function() {
-                  if ( ( self.get_width() >= 768 ) && ( self.instances.length == 0 ) ) {
-                    self.create();
-                  } else if ( ( self.get_width() <= 767 ) && ( self.instances.length > 0 ) )  {
-                    self.destroy();
-                  } 
-                }, 200);
-            });
-          },
-          load: function() {
-            if ( this.resize_flag ) {
-              if ( this.get_width() >= 768 ) {
-                this.create();
-              }
-            }
-            else {
-              this.create();
-            }
+          };
+
+          counter = () => {
+            this.timer = setInterval(() => {
+              this.setDate();
+            }, 1000);
+          };
+
+          render() {
+            const { remaining, isExpired } = this.state,
+            {targetDate, targetTime} = this.props;
+            
+            return (
+              <Fragment>
+                {!isExpired && targetDate && targetTime ? (
+                  <div className="counter">
+                    {Object.entries(remaining).map((el, i) => (
+                      <div key={i} className="entry">
+                        <div key={el[1]} className="entry-value">
+                          <span className="count">{el[1]}</span>
+                        </div>
+                        <div className="entry-title">{el[0].toUpperCase()}</div>
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  <p>オープン！</p>
+                )}
+              </Fragment> 
+            );
           }
         }
+        const app = <CountDown targetDate="Dec 29, 2021" targetTime="10:00:00" />;
 
-        return SwiperObject;
+        document.querySelectorAll('.p-countdown-dom')
+                .forEach(domContainer => {
+                    ReactDOM.render(
+                        app,
+                        domContainer
+                    );
+                });
+    </script>
 
-      })();
-
-      $(window).on('load', function(){
-        function countdown(num) {
-            let countdom   = 'p-countdown-dom'
-              , classname  = 'is-countdown'
-              , parentdom  = 'p-main-visual'
-              , swipername = 'swiper-slide'
-            if( $('.' + countdom).length > 0 ) {
-              if( $('.' + parentdom + ' .' + swipername).eq(num).hasClass(classname) ) {
-                $('.' + countdom).appendTo($('.' + parentdom + ' .' + swipername).eq(num));
-                $('.' + countdom).css('display', 'block');
-              } else {
-                $('.' + parentdom).after($('.' + countdom));
-                $('.' + countdom).css('display', 'none');
-              }
-            }
-         }
-
-        if ( $( '.js-main-visual-slider' ).length > 0 ) {
-          var top_main_slider_option = {
-            autoplay: {
-              delay: 5000,
-            },
-            slidesPerView: 1.44,
-            spaceBetween: 4,
-            centeredSlides : true,
-            loop: true,
-            pagination: {
-              el: '.p-main-visual .swiper-pagination',
-              clickable: true
-            },
-            preloadImages: false,
-            lazy: true,
-            loopAdditionalSlides: 1,
-            on: {
-              init: function() {
-                this.lazy.loadInSlide(this.activeIndex - 1);
-                countdown(this.activeIndex);
-              },
-              slideChange: function () {
-                countdown(this.activeIndex);
-              }
-            },
-            breakpoints: {
-              979: {
-                slidesPerView: 1.05,
-              }
-            }
-          },
-          top_main_slider =  new SwiperObject( '.js-main-visual-slider', top_main_slider_option, false );
-          top_main_slider.init();
-        }
-      })
-
-    });
-
-  </script>
   </body>
 </html>

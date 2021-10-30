@@ -3,3 +3,6 @@ https://www.fixes.pub/program/297475.html
 
 jQuery ver
 http://benalman.com/code/projects/jquery-throttle-debounce/examples/debounce/
+
+Javascript
+https://q-az.net/none-jquery-after-before-appendto-prepend/
