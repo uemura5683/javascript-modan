@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <style type="text/css">
+    body {
+      overflow-x: hidden
+    }
+    h1 {
+      background: #87bbe2;
+      text-align: center;
+      margin: 0;
+      padding: 10px;
+    }
+    code {
+      width: calc(100% - 4rem);
+    }
+    code pre{
+      background: black;
+      color: white;
+      padding: 2rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <h1>UserAgent</h1>
+    <div class="wrapper_inner">
+      <h2>UserAgentの実例集め</h2>
+      <ul>        
+        <li>Twitter</li>
+        <li>Facebook</li>
+        <li>Instagram</li>
+        <li>LINE</li>
+        <li>Slack</li>
+        <li>Discord</li>
+      </ul>
+      <h3>iOS</h3>
+      <div class="ios">
+        <code>
+          <pre>
+# Safari
+Mozilla/5.0 (iPhone; CPU iPhone OS 14_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.1 Mobile/15E148 Safari/604.1
+
+# Chrome
+Mozilla/5.0 (iPhone; CPU iPhone OS 14_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) CriOS/91.0.4472.80 Mobile/15E148 Safari/604.1
+
+# Twitter
+Mozilla/5.0 (iPhone; CPU iPhone OS 14_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.1 Mobile/15E148 Safari/604.1
+
+# Facebook
+Mozilla/5.0 (iPhone; CPU iPhone OS 14_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 [FBAN/FBIOS;FBDV/iPhone13,3;FBMD/iPhone;FBSN/iOS;FBSV/14.5;FBSS/3;FBID/phone;FBLC/ja_JP;FBOP/5]
+
+# Instagram
+Mozilla/5.0 (iPhone; CPU iPhone OS 14_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 Instagram 193.0.0.29.121 (iPhone13,3; iOS 14_5; ja_JP; ja-JP; scale=3.00; 1170x2532; 299401192) NW/3
+
+# LINE
+Mozilla/5.0 (iPhone; CPU iPhone OS 14_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 Safari Line/11.10.0
+
+# Slack
+Mozilla/5.0 (iPhone; CPU iPhone OS 14_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.1 Mobile/15E148 Safari/604.1
+
+# Discord
+Mozilla/5.0 (iPhone; CPU iPhone OS 14_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.1 Mobile/15E148 Safari/604.1
+          </pre>
+        </code>
+      </div>
+
+      <h3>Android</h3>
+      <div class="android">
+        <code>
+          <pre>
+# Chrome
+Mozilla/5.0 (Linux; Android 11; Pixel 4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.210 Mobile Safari/537.36
+
+# Twitter
+Mozilla/5.0 (Linux; Android 11; Pixel 4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.210 Mobile Safari/537.36
+
+# Facebook
+Mozilla/5.0 (Linux; Android 11; Pixel 4 Build/RQ2A.210405.005; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/90.0.4430.210 Mobile Safari/537.36 [FB_IAB/FB4A;FBAV/324.0.0.48.120;]
+
+# Instagram
+Mozilla/5.0 (Linux; Android 11; Pixel 4 Build/RQ2A.210405.005; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/90.0.4430.210 Mobile Safari/537.36 Instagram 193.0.0.45.120 Android (30/11; 440dpi; 1080x2236; Google/google; Pixel 4; flame; flame; ja_JP; 300078998)
+
+# LINE
+Mozilla/5.0 (Linux; Android 11; Pixel 4 Build/RQ2A.210405.005; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/90.0.4430.210 Mobile Safari/537.36 Line/11.10.2/IAB
+
+# Slack
+Mozilla/5.0 (Linux; Android 11; Pixel 4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.210 Mobile Safari/537.36
+
+# Discord
+Mozilla/5.0 (Linux; Android 11; Pixel 4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.210 Mobile Safari/537.36
+          </pre>
+        </code>
+      </div>
+      <p>Twitter、Slack、DiscordはChromeと全く同じUserAgentなので、判別できなさそう</p>
+    </div>
+
+    <div class="wrapper_inner">
+      <h2>判定する関数の実装</h2>
+      <p>上記をもとに、どのアプリ内ブラウザかを判定する関数 detectInAppBrowser を実装する。</p>
+      <code>
+        <pre>
+/*
+  Detect in-app browser by UserAgent.
+  e.g. `console.log('your browser ' + detectInAppBrowser(navigator.userAgent))`
+  
+  @param {string} ua UserAgent　string
+  @returns {string | null} [is|maybe]_[safari|chrome|facebook|instagram|line]_[ios|android|unknown]
+ */
+export function detectInAppBrowser(ua) {
+  ua = ua.toLowerCase().trim();
+
+  // iOS Chrome
+  if (ua.includes('crios')) {
+    return 'is_chrome_ios';
+  }
+  
+  const isIOS =
+    ua.includes('iphone') || ua.includes('ipod') || ua.includes('ipad');
+  const isAndroid = ua.includes('android');
+
+  // Facebook
+  if (ua.includes('fbios') || ua.includes('fb_iab')) {
+    return isIOS
+      ? 'is_facebook_ios'
+      : isAndroid
+      ? 'is_facebook_android'
+      : 'is_facebook_unknown';
+  }
+
+  // Instagram
+  if (ua.includes('instagram')) {
+    return isIOS
+      ? 'is_instagram_ios'
+      : isAndroid
+      ? 'is_instagram_android'
+      : 'is_instagram_unknown';
+  }
+
+  // LINE
+  if (ua.includes(' line/')) {
+    return isIOS
+      ? 'is_line_ios'
+      : isAndroid
+      ? 'is_line_android'
+      : 'is_line_unknown';
+  }
+
+  // iOS Safari|Twitter|Slack|Discord|etc
+  if (isIOS && /safari\/[0-9.]+$/.test(ua)) {
+    return 'maybe_safari_ios';
+  }
+
+  // Android Chrome|Twitter|Slack|Discord|etc
+  if (isAndroid && ua.includes('chrome') && /safari\/[0-9.]+$/.test(ua)) {
+    return 'maybe_chrome_android';
+  }
+
+  return null;
+}
+        </pre>
+      </code>
+
+      <h3>例：</h3>
+
+      <code>
+        <pre>
+const result = detectInAppBrowser(window.navigator.userAgent);
+
+if (result.startsWith('is_facebook_')) {
+  console.log('Facebook');
+  if (result.endsWith('_ios')) {
+    console.log('のiOS版');
+  }　else if (result.endsWith('_android')) {
+    console.log('のAndroid版');
+  }
+}
+        </pre>
+      </code>
+
+
+    </div>
+
+  </div>
+  <script src="index.js"></script>
+  <script src="index_spec.js"></script>
+</body>
+</html>
