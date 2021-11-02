@@ -1,0 +1,5 @@
+https://qiita.com/paddy-oti/items/fae9ecca9facc9797035
+
+https://zenn.dev/kecy/articles/f51851e42c4243
+
+https://codesandbox.io/s/detect-in-app-browser-s4owq?file=/index.spec.js:0-3041
