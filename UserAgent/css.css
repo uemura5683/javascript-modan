@@ -1,0 +1,17 @@
+    body {
+      overflow-x: hidden
+    }
+    h1 {
+      background: #87bbe2;
+      text-align: center;
+      margin: 0;
+      padding: 10px;
+    }
+    code {
+      width: calc(100% - 4rem);
+    }
+    code pre{
+      background: black;
+      color: white;
+      padding: 2rem;
+    }

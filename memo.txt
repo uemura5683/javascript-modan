@@ -12,3 +12,13 @@ https://p5js.org/
 
 Handtrack.js
 https://paiza.hatenablog.com/entry/2021/02/10/150000
+
+/**
+* intersection-observer
+**/
+https://ics.media/entry/190902/
+
+/**
+* resize-observer
+**/ 
+https://mdn.github.io/dom-examples/resize-observer/resize-observer-text.html
