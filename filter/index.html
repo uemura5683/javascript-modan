@@ -2,9 +2,273 @@
 <html>
 <head>
   <meta charset="utf-8"/>
+  <style type="text/css">
+  	.title {
+  		text-align: center;
+  		padding: 10px 0;
+  		border: 1px solid gray;
+  		margin: 0 0 10px;
+  	}
+  	.img {
+  		display: flex;
+  		flex-wrap: wrap;
+  	}
+    .img .img-area {
+    	width: 25%;
+    	height: auto;
+    }
+    .img .img-area img {
+    	width: 100%;
+    }
+    code pre{
+    	background: #303030;
+    	color: white;
+    	padding: 10px;
+    }
+  </style>
 </head>
 <body>
-  <div>filter</div>
+  <div class="title">method list</div>
   <script src="index.js"></script>
+  <h2>Images</h2>
+  <div class="img">
+  	<div class="img-area">
+	  <img src="img.jpg">
+    </div>
+  	<div class="img-area">
+	  <img src="img2.jpg">
+    </div>
+  </div>
+    <h2>filter</h2>
+    <code>
+    	<pre>
+/**
+* filter
+* https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Array/filter
+**/
+function isBigEnough(value) {
+  return value >= 10
+}
+let filtered = [12, 5, 8, 130, 44].filter(isBigEnough);
+
+console.log( 'filter' );
+console.log( filtered );
+    	</pre>
+    </code>
+    <h2>find</h2>
+	<code>    
+    	<pre>
+/**
+* find
+* https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Array/find
+**/
+const inventory = [
+  {name: 'apples', quantity: 2},
+  {name: 'bananas', quantity: 0},
+  {name: 'cherries', quantity: 5}
+];
+
+function isCherries(fruit) {
+  return fruit.name === 'cherries';
+}
+
+console.log( 'find' );
+console.log( inventory.find( isCherries ) );
+    	</pre>
+    </code>
+    <h2>findIndex</h2>
+	<code>    
+    	<pre>
+/**
+* findIndex
+* https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex
+**/
+let fruits = ["apple", "banana", "cantaloupe", "blueberries", "grapefruit"];
+let index = fruits.findIndex(fruit => fruit === "blueberries");
+
+console.log( 'findIndex' );
+console.log( index );
+console.log( fruits[index] );
+    	</pre>
+    </code>
+    <h2>some</h2>
+	<code>    
+    	<pre>
+/**
+* some
+* https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Array/some
+**/
+function checkAvailability(arr, val) {
+  return arr.some(arrVal => val === arrVal);
+}
+
+console.log( 'some' );
+checkAvailability( fruits, 'kela' );
+checkAvailability( fruits, 'banana' );
+    	</pre>
+    </code>
+    <h2>every</h2>
+	<code>    
+    	<pre>
+/**
+* every
+* https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Array/every
+**/
+function isBigEnough(element, index, array) {
+  return element >= 10;
+}
+[12, 5, 8, 130, 44].every(isBigEnough);
+[12, 54, 18, 130, 44].every(isBigEnough);
+    	</pre>
+    </code>
+    <h2>reverse</h2>
+	<code>    
+    	<pre>
+/**
+* reverse
+**/
+console.log( 'reverce' );
+const reverses = {0: 1, 1: 2, 2: 3, length: 3};
+console.log(reverses);
+
+Array.prototype.reverse.call(reverses);
+console.log(reverses);
+    	</pre>
+    </code>
+    <h2>shift</h2>
+	<code>    
+    	<pre>
+/**
+* shift
+* https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Array/shift
+**/
+var myFish = ['angel', 'clown', 'mandarin', 'surgeon'];
+
+console.log( 'shift' );
+console.log('myFish before:', JSON.stringify(myFish));
+
+var shifted = myFish.shift();
+
+console.log('myFish 処理後:', myFish);
+console.log('取り除いた要素:', shifted);
+    	</pre>
+    </code>
+    <h2>pop</h2>
+	<code>    
+    	<pre>
+/**
+* pop
+* https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Array/pop
+**/
+let popped = myFish.pop();
+
+console.log( 'pop' );
+console.log(myFish);
+
+console.log(popped);
+    	</pre>
+    </code>
+    <h2>push</h2>
+	<code>    
+    	<pre>
+/**
+* push
+* https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Array/push
+**/
+let vegetables = ['parsnip', 'potato']
+let moreVegs = ['celery', 'beetroot']
+
+Array.prototype.push.apply(vegetables, moreVegs)
+
+console.log( 'push' );
+console.log(vegetables)
+    	</pre>
+    </code>
+    <h2>at</h2>
+	<code>    
+    	<pre>
+/**
+* at
+* https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/at
+**/
+
+const array1 = [5, 12, 8, 130, 44];
+let indexat = 4;
+
+console.log( 'at' );
+console.log(`Using an index of ${indexat} the item returned is ${array1.at(indexat)}`);
+
+indexat = -2;
+console.log(`Using an index of ${indexat} item returned is ${array1.at(indexat)}`);
+
+    	</pre>
+    </code>
+    <h2>fill</h2>
+	<code>    
+    	<pre>
+/**
+* fill
+* https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/fill
+**/
+
+const array_fill = [1, 2, 3, 4];
+
+console.log( 'fill' );
+console.log(array_fill.fill(0, 2, 4));
+console.log(array_fill.fill(5, 1));
+console.log(array_fill.fill(6));
+    	</pre>
+    </code>
+    <h2>join</h2>
+	<code>    
+    	<pre>
+/**
+* join
+* https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/join
+**/
+
+const elements_join = ['Fire', 'Air', 'Water'];
+
+console.log( 'join' );
+console.log(elements_join.join());
+console.log(elements_join.join(''));
+console.log(elements_join.join('-'));
+    	</pre>
+    </code>
+    <h2>unshift</h2>
+	<code>    
+    	<pre>
+/**
+* unshift
+* https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/unshift
+**/
+const array_unshift = [1, 2, 3];
+
+console.log( 'unshift' );
+console.log(array_unshift.unshift(4, 5));
+console.log(array1);
+
+    	</pre>
+    </code>
+    <h2>includes</h2>
+	<code>    
+    	<pre>
+/**
+* includes
+* https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/includes
+**/
+console.log( 'includes' );
+
+const array_includes = [1, 2, 3];
+
+console.log(array_includes.includes(2));
+
+const pets = ['cat', 'dog', 'bat'];
+
+console.log(pets.includes('cat'));
+console.log(pets.includes('at'));
+    	</pre>
+    </code>
+  </div>
 </body>
 </html>
