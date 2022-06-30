@@ -1,60 +1,72 @@
 class MyClass {
   // public field
-  apple = "public field: 1.apple";
+  foo = "public field: 寿司";
   // private field
-  banana = "private field: 2.banana";
+  #bar = "private field: ラーメン";
 
   // public static field
-  static orange = "public static field: 3.orange";
-
+  static qux = "public static field: うどん";
   // private static field
-  static melon = "private static field: 4.melon";
+  static #corge = "private static field: 麻婆豆腐";
 
   // public method
-  melon() {
-    return console.log("public method: 5.water melon");
+  grault() {
+    return console.log("public method: みかん");
   }
 
   // private method
-  grape() {
-    return console.log("private method: 6.grape");
+  #garply() {
+    return console.log("private method: ぶどう");
   }
 
   // public static method
-  static pineapple() {
-    return console.log("public static method: 7.pineapple");
+  static waldo() {
+    return console.log("public static method: みかん");
   }
 
   // private static method
-  static kiwi() {
-    return console.log("private static method: 8.Kiwi");
+  static #fred() {
+    return console.log("private static method: ぶどう");
   }
 
   constructor() {
-    console.log(this.banana); /*banana*/
-    console.log(MyClass.melon); /*4.melon*/
-    this.grape(); /*6.grape*/
-    MyClass.kiwi(); /*8.kiwi*/
+    console.log(this.#bar);
+    console.log(MyClass.#corge);
+    this.#garply();
+    MyClass.#fred();
   }
 }
 
-console.log(MyClass.orange);/*3.orange*/
-MyClass.pineapple(); /*7.pineapple*/
+console.log(MyClass.qux);
+MyClass.waldo();
+// 実行してしまうとprivateにつきエラー
+// console.log(MyClass.#corge);
+// MyClass.#fred();
 
 const myInstance = new MyClass();
-console.log(myInstance.apple); /*1.apple*/
-myInstance.melon(); /*watermelon*/
+console.log(myInstance.foo);
+myInstance.grault();
+// 実行してしまうとprivateにつきエラー
+// console.log(MyClass.#bar);
+// MyClass.#garply();
+
 
 /**
-result
+* #を使ってプライベートなフィールドを宣言する
+**/
 
-public static field: 3.orange
-public static method: 7.pineapple
-private field: 2.banana
-private static field: 4.melon
-private method: 6.grape
-private static method: 8.Kiwi
-public field: 1.apple
-public method: 5.water melon
+class MyClass2 {
+  // プライベートなフィールド
+  #name;
+  
+  constructor(name) {
+    this.#name = name
+  }
 
-*/
+  hello() {
+    console.log(`こんにちは${this.#name}さん！`)
+  }
+}
+
+const foo = new MyClass2("田中");
+foo.hello(); // 「こんにちは田中さん！」と出力される
