@@ -1,72 +1,58 @@
 class MyClass {
   // public field
-  foo = "public field: 寿司";
+  apple = "public field: 1.apple";
   // private field
-  #bar = "private field: ラーメン";
+  banana = "private field: 2.banana";
 
   // public static field
-  static qux = "public static field: うどん";
+  static orange = "public static field: 3.orange";
+
   // private static field
-  static #corge = "private static field: 麻婆豆腐";
+  static melon = "private static field: 4.melon";
 
   // public method
-  grault() {
-    return console.log("public method: みかん");
+  melon() {
+    return console.log("public method: 5.water melon");
   }
 
   // private method
-  #garply() {
-    return console.log("private method: ぶどう");
+  grape() {
+    return console.log("private method: 6.grape");
   }
 
   // public static method
-  static waldo() {
-    return console.log("public static method: みかん");
+  static pineapple() {
+    return console.log("public static method: 7.pineapple");
   }
 
   // private static method
-  static #fred() {
-    return console.log("private static method: ぶどう");
+  static kiwi() {
+    return console.log("private static method: 8.Kiwi");
   }
 
   constructor() {
-    console.log(this.#bar);
-    console.log(MyClass.#corge);
-    this.#garply();
-    MyClass.#fred();
+    console.log(this.banana); /*banana*/
+    console.log(MyClass.melon); /*4.melon*/
+    this.grape(); /*6.grape*/
+    MyClass.kiwi(); /*8.kiwi*/
   }
 }
 
-console.log(MyClass.qux);
-MyClass.waldo();
-// 実行してしまうとprivateにつきエラー
-// console.log(MyClass.#corge);
-// MyClass.#fred();
+console.log(MyClass.orange);/*3.orange*/
+MyClass.pineapple(); /*7.pineapple*/
 
 const myInstance = new MyClass();
-console.log(myInstance.foo);
-myInstance.grault();
-// 実行してしまうとprivateにつきエラー
-// console.log(MyClass.#bar);
-// MyClass.#garply();
-
+console.log(myInstance.apple); /*1.apple*/
+myInstance.melon(); /*watermelon*/
 
 /**
-* #を使ってプライベートなフィールドを宣言する
-**/
-
-class MyClass2 {
-  // プライベートなフィールド
-  #name;
-  
-  constructor(name) {
-    this.#name = name
-  }
-
-  hello() {
-    console.log(`こんにちは${this.#name}さん！`)
-  }
-}
-
-const foo = new MyClass2("田中");
-foo.hello(); // 「こんにちは田中さん！」と出力される
+result
+public static field: 3.orange
+public static method: 7.pineapple
+private field: 2.banana
+private static field: 4.melon
+private method: 6.grape
+private static method: 8.Kiwi
+public field: 1.apple
+public method: 5.water melon
+*/
