@@ -226,4 +226,166 @@ inを使ってシンプルにブランドチェックができるので、
 この提案の名前は「Ergonomic brand checks」（使いやすいブランドチェック）なのです。
 */
 
+/************************************
+* asyncなしでもawaitが使えるようになる、トップレベルでのawait
+************************************/
+
+/**
+* ES2021以前のawait
+**/
+
+const main_2021 = async () => {
+  await new Promise((resolve) => {
+    setTimeout(() => {
+      console.log("ヨーソロー！ 2021");
+      resolve();
+    }, 1000);
+  });
+}
+main_2021();
+
+/**
+* ES2022のawait
+* トップレベルでの awaitは、モジュールでのみ使用可能です。
+* scriptタグでJavaScriptを読み込む際に type="module"とすることで、JavaScriptがモジュールで実行されます。
+**/
+
+await new Promise((resolve) => {
+  setTimeout(() => {
+    console.log("ヨーソロー！ 2022");
+    resolve();
+  }, 1000);
+});
+
+
+/************************************
+* 配列の「最後の要素」が簡単に取得できるようになるat()
+************************************/
+
+/**
+* 今までの実装方法
+**/
+
+const myArray = ["りんご", "バナナ", "ぶどう"];
+console.log(myArray[myArray.length - 1]); // ぶどう
+
+/**
+* ES2022
+**/
+
+const myArray_2022 = ["りんご", "バナナ", "ぶどう"];
+console.log(myArray_2022.at(-1)); // ぶどう
+
+/************************************
+* オブジェクトが指定のプロパティを持っているかを簡単にチェックできる
+* Object.hasOwn()()
+************************************/
+
+const myObject = {
+  name: '植村',
+}
+
+console.log('Object.hasOwn()_' + Object.hasOwn(myObject, 'name'));
+console.log('Object.hasOwn()_' + Object.hasOwn(myObject, 'names'));
+
+const myObject2 = {
+  name: "鈴木",
+  hasOwnProperty: () => {
+    return false;
+  },
+}
+
+console.log('Object.hasOwn()_' + Object.hasOwn(myObject2, "name"));
+
+/************************************
+* JavaScriptで「staticイニシャライザー」ができるように
+* static イニシャライザーは、クラス定義時に初期化処理を一度だけ実行できる処理です。
+************************************/
+
+class MyClass_il {
+  static x;
+  
+  static {
+    this.x = "こんにちは"
+  }
+}
+
+console.log(MyClass_il.x); // こんにちは
+
+class FruitsEnum {
+  static apple = Symbol("りんご");
+  static orange = Symbol("みかん");
+  static grape = Symbol("ぶどう");
+
+  static {
+    this.allFruits = Object.keys(this);
+  }
+}
+
+console.log(FruitsEnum.allFruits);
+
+/************************************
+* 複数のエラーをチェインし、原因を追跡しやすくできる
+************************************/
+
+// 50%の確率でエラー
+const function1 = () => {
+  try {
+    if (Math.random() > 0.5) {
+      foo.bar;
+    }
+  } catch (error) {
+    throw new Error("fooが存在しないですよ😡", {
+      cause: error
+    });
+  }
+};
+
+// 50%の確率でエラー
+const function2 = () => {
+  try {
+    if (Math.random() > 0.5) {
+      baz.qux;
+    }
+  } catch (error) {
+    throw new Error("bazが存在しないですよ🤯", {
+      cause: error
+    });
+  }
+};
+
+// function1とfunction2を実行する
+try {
+  function1();
+  function2();
+  console.log("成功です！");
+} catch (error) {
+  console.log(error);
+  console.log(error.cause);
+}
+
+// function1とfunction2でエラーが発生すると、
+// それぞれ次のような出力になります。
+// いずれも、エラーメッセージと、error.causeから
+// 元エラー（ReferenceError）の情報が取得できているのがわかります。
+
+
+/************************************
+* 正規表現で、マッチ部分の開始・終了インデックスを取得できるdフラグ
+* dフラグとは、正規表現でマッチ部分の開始・終了インデックスを取得できるものです。
+************************************/
+
+// 正規表現
+const regrex = /私の姓は(?<family>.*)、名前は(?<name>.*)です/du;
+
+const result = '私の姓は山田、名前は太郎です'.match(regrex);
+
+// ☆ indicesプロパティでマッチ部分の開始・終了インデックスを取得する
+const indicesGroups = result.indices.groups;
+
+console.log("↓山田の開始・終了インデックス");
+console.log(indicesGroups.family);
+
+console.log("↓太郎の開始・終了インデックス");
+console.log(indicesGroups.name);
 
