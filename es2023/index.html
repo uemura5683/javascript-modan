@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <link type="text/css" rel="stylesheet" href="css.css">
+</head>
+<body>
+  <div class="wrapper">
+    <header id="header">
+      <h1>ES2023</h1>
+    </header>
+    <code>
+      <pre>
+const array = [{ value: 1 }, { value: 2 }, { value: 3 }, { value: 4 }];
+
+array.find(n => n.value % 2 === 1); // { value: 1 }
+array.findIndex(n => n.value % 2 === 1); // 0
+
+array.findLastIndex(n => n.value % 2 === 1); // 2
+array.findLastIndex(n => n.value === 42); // -1
+      </pre>      
+
+    </code>
+
+    <code>
+      <pre>
+#!/usr/bin/env node
+// in the Script Goal
+'use strict';
+console.log(1);
+      </pre>      
+    </code>
+  </div>
+  <script type="module" src="index.js"></script>
+</body>
+</html>
