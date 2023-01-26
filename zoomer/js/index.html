@@ -3,32 +3,17 @@
 	<head>
 		<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
 		<meta http-equiv="X-UA-Compatible" content="IE=Edge">
-
 		<title>Zoomer Demo</title>
-
 		<link href="http://formstone.it/css/demo.css" rel="stylesheet" type="text/css" media="all">
-
+		<link href="../jquery.fs.zoomer.css" rel="stylesheet" type="text/css" media="all">
+		<link href="css.css" rel="stylesheet">
 		<!--[if LTE IE 8]>
 			<link href="http://formstone.it/css/demo.ie.css" rel="stylesheet" type="text/css" media="all">
 		<![endif]-->
-
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 		<script src="http://formstone.it/js/demo.js"></script>
-
-		<link href="../jquery.fs.zoomer.css" rel="stylesheet" type="text/css" media="all">
 		<script src="../jquery.fs.zoomer.js"></script>
-
-		<!--[DEMO:START-RESOURCES]-->
-
 		<script src="ie/jquery.fs.zoetrope.min.js"></script>
-
-		<style>
-			.demo .zoomer_wrapper { border: 1px solid #ddd; border-radius: 3px; height: 500px; margin: 10px 0; overflow: hidden; width: 100%; }
-
-			.demo .zoomer.dark_zoomer { background: #333 url(http://formstone.it/files/demo/zoomer-bg-dark.png) repeat center; }
-			.demo .zoomer.dark_zoomer img { box-shadow: 0 0 5px rgba(0, 0, 0, 0.5); }
-		</style>
-
 		<script>
 			$(document).ready(function() {
 				$(".demo .zoomer_basic").zoomer();
@@ -70,9 +55,7 @@
 				});
 			});
 		</script>
-
 		<!--[DEMO:END-RESOURCES]-->
-
 	</head>
 	<body class="gridlock demo">
 		<header id="header">
@@ -89,9 +72,7 @@
 					<br>
 					<a href="http://formstone.it/zoomer/" class="button">View Documentation</a>
 				</header>
-
 				<!--[DEMO:START-CONTENT]-->
-
 				<!-- Basic -->
 				<h2>Basic</h2>
 				<p>Create a new Zoomer by simply including an image inside the target wrapper. The target wrapper should have a predefined height and width as the new markup will fill all available space:</p>
@@ -106,7 +87,6 @@
 				<div class="zoomer_wrapper zoomer_basic">
 					<img src="http://formstone.it/files/demo/nasa-bw-1.jpg">
 				</div>
-
 				<!-- GALLERY -->
 				<h2>Gallery</h2>
 				<p>Zoomer will auto detect multiple image and build a gallery:</p>

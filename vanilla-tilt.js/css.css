@@ -1,0 +1,63 @@
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+a {
+  text-decoration: none;
+  color: #333;
+}
+[class*='logo'] {
+  display: block;
+  width: 100%;
+  max-width: 600px;
+  height: 250px;
+  line-height: 250px;
+  text-align: center;
+  font-size: 2em;
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  -webkit-transform: perspective(500px);
+  transform: perspective(500px);
+  margin-bottom: 75px;
+  color: #fff;
+  background: url(https://uemu-engineer.com/images/logo.png) no-repeat center center #000;
+  border: 1px solid #000;
+}
+[class*='logo'] > span {
+  position: relative;
+  display: block;
+  -webkit-transform: translateZ(50px) scale(0.7);
+  transform: translateZ(50px) scale(0.7);
+}
+[class*='logo']:hover > span:after {
+  opacity: 0;
+  transform: translateX(-50%) translateY(10px);
+}
+[class*='logo']:hover > span:before {
+  opacity: 0.8;
+  transform: translateX(-50%);
+}
+[class*='logo']:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: #333;
+  box-shadow: 0 20px 70px -10px rgba(51, 51, 51, 0.7), 0 50px 100px 0 rgba(51, 51, 51, 0.2);
+  z-index: -1;
+  -webkit-transform: translateZ(-50px);
+  transform: translateZ(-50px);
+  -webkit-transition: .3s;
+  transition: .3s;
+}

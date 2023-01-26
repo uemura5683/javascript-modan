@@ -1,0 +1,14 @@
+.demo .zoomer_wrapper { 
+  border: 1px solid #ddd; 
+  border-radius: 3px; 
+  height: 500px; 
+  margin: 10px 0; 
+  overflow: hidden; 
+  width: 100%; 
+}
+.demo .zoomer.dark_zoomer {
+  background: #333 url(http://formstone.it/files/demo/zoomer-bg-dark.png) repeat center; 
+}
+.demo .zoomer.dark_zoomer img { 
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5); 
+}

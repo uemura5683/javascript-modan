@@ -5,56 +5,52 @@
 <meta http-equiv="X-UA-Compatible" content="IE=Edge">
 <title>Zoomer Demo</title>
 <link href="css/demo.css" rel="stylesheet" type="text/css" media="all">
+<link href="js/jquery.fs.zoomer.css" rel="stylesheet" type="text/css" media="all">
+
+<link href="css.css" rel="stylesheet">
+
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script src="js/demo.js"></script>
-
-<link href="js/jquery.fs.zoomer.css" rel="stylesheet" type="text/css" media="all">
 <script src="js/jquery.fs.zoomer.js"></script>
-
-<style>
-.demo .zoomer_wrapper { border: 1px solid #ddd; border-radius: 3px; height: 500px; margin: 10px 0; overflow: hidden; width: 100%; }
-.demo .zoomer.dark_zoomer { background: #333 url(http://formstone.it/files/demo/zoomer-bg-dark.png) repeat center; }
-.demo .zoomer.dark_zoomer img { box-shadow: 0 0 5px rgba(0, 0, 0, 0.5); }
-</style>
 
 <script>
 $(document).ready(function() {
-$(".demo .zoomer_basic").zoomer();
-$(".demo .zoomer_custom").zoomer({
-controls: {
-zoomIn: ".zoomer_custom_zoom_in",
-zoomOut: ".zoomer_custom_zoom_out"
-},
-customClass: "dark_zoomer",
-increment: 0.03,
-interval: 0.1,
-marginMax: 50
-});
+  $(".demo .zoomer_basic").zoomer();
+  $(".demo .zoomer_custom").zoomer({
+    controls: {
+      zoomIn: ".zoomer_custom_zoom_in",
+      zoomOut: ".zoomer_custom_zoom_out"
+    },
+    customClass: "dark_zoomer",
+    increment: 0.03,
+    interval: 0.1,
+    marginMax: 50
+  });
 
-$(".demo .load_zoomer_tiled").one("click", function() {
-$(this).after('<div class="zoomer_wrapper zoomer_tiled"></div>').remove();
-$(".demo .zoomer_tiled").zoomer({
-source:{
-thumbnail: "http://formstone.it/files/demo/space-tiled/tiled_thumbnail.jpg",
-tiles: [
-["http://formstone.it/files/demo/space-tiled/tiled_01.jpg", "http://formstone.it/files/demo/space-tiled/tiled_02.jpg", "http://formstone.it/files/demo/space-tiled/tiled_03.jpg", ],
-["http://formstone.it/files/demo/space-tiled/tiled_04.jpg", "http://formstone.it/files/demo/space-tiled/tiled_05.jpg", "http://formstone.it/files/demo/space-tiled/tiled_06.jpg", ],
-["http://formstone.it/files/demo/space-tiled/tiled_07.jpg", "http://formstone.it/files/demo/space-tiled/tiled_08.jpg", "http://formstone.it/files/demo/space-tiled/tiled_09.jpg", ],
-]
-}
-});
-});
+  $(".demo .load_zoomer_tiled").one("click", function() {
+    $(this).after('<div class="zoomer_wrapper zoomer_tiled"></div>').remove();
+    $(".demo .zoomer_tiled").zoomer({
+      source:{
+      thumbnail: "http://formstone.it/files/demo/space-tiled/tiled_thumbnail.jpg",
+      tiles: [
+      ["http://formstone.it/files/demo/space-tiled/tiled_01.jpg", "http://formstone.it/files/demo/space-tiled/tiled_02.jpg", "http://formstone.it/files/demo/space-tiled/tiled_03.jpg", ],
+      ["http://formstone.it/files/demo/space-tiled/tiled_04.jpg", "http://formstone.it/files/demo/space-tiled/tiled_05.jpg", "http://formstone.it/files/demo/space-tiled/tiled_06.jpg", ],
+      ["http://formstone.it/files/demo/space-tiled/tiled_07.jpg", "http://formstone.it/files/demo/space-tiled/tiled_08.jpg", "http://formstone.it/files/demo/space-tiled/tiled_09.jpg", ],
+      ]
+      }
+    });
+  });
 
-$(window).on("resize", function(e) {
-$(".demo .zoomer_wrapper").zoomer("resize");
-});
+  $(window).on("resize", function(e) {
+    $(".demo .zoomer_wrapper").zoomer("resize");
+  });
 
-$(window).one("pronto.load", function() {
-$(".demo .zoomer_basic").zoomer("destroy");
-$(".demo .zoomer_custom").zoomer("destroy");
-$(".demo .zoomer_tiled").zoomer("destroy");
-$(".demo .load_zoomer_tiled").off("click");
-});
+  $(window).one("pronto.load", function() {
+    $(".demo .zoomer_basic").zoomer("destroy");
+    $(".demo .zoomer_custom").zoomer("destroy");
+    $(".demo .zoomer_tiled").zoomer("destroy");
+    $(".demo .load_zoomer_tiled").off("click");
+  });
 });
 </script>
 
