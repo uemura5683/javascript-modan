@@ -1,0 +1,98 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <title>movie</title>
+    <style type="text/css">
+      video {
+        width: 50%;
+      }
+    </style>
+  </head>
+  <body>
+    <section class="maxWidth movie">
+      <div id="startArea" class="startArea">
+        <div class="startArea_inner">
+          <p class="startArea_countDown">
+            <span id="countDown_hour"></span>:<span id="countDown_min"></span>:<span id="countDown_sec"></span>
+          </p>
+          <p class="startArea_title">WEBセミナーは23時から開始です</p>
+        </div>
+      </div>
+      <div id="liveArea" class="liveArea">
+        <div class="liveArea_inner">
+          <video id="video" src="https//xxx" autoplay muted playsinline type="video/mp4"></video>
+        </div>
+        <div id="sound" class="liveArea_attention">
+          ここをタップして音声をオンにする
+        </div>
+      </div>
+      <div id="endArea" class="endArea">
+        <div class="endArea_inner">
+          <p class="endArea_title">WEBセミナーの放送は終了しました</p>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>
+<script type="text/javascript">
+  const date = new Date();
+  const start = new Date(date.getFullYear(), date.getMonth(), date.getDate(), 23, 25, 0);
+  const end = ((0 * 60 * 60) + (25 * 60) + 6 + 1) * 1000;
+
+  const videoElem = document.getElementById('video');
+  $(function () {
+    const elapsedTime = Math.floor((date.getTime() - start.getTime()) / 1000);
+
+    if (elapsedTime > 0) {
+      videoElem.muted = true;
+    }
+    $('#sound').click(function () {
+      videoElem.muted = false;
+      $('#sound').css('display', 'none');
+    });
+  });
+
+
+  // 特定時間ごとの表示設定
+  let time = setInterval(function () {
+    const date = new Date();
+    const dateCurrent = date.getTime();
+    const startLine = start.getTime();
+    const endLine = Math.floor(start.getTime() + end);
+
+    const startArea = document.getElementById("startArea");
+    const liveArea = document.getElementById("liveArea");
+    const endArea = document.getElementById("endArea");
+    const remainTime = start - date;
+
+    if (dateCurrent < startLine) {
+      startArea.style.display = "block";
+      liveArea.style.display = "none";
+      endArea.style.display = "none";
+
+      const difHour = Math.floor(remainTime / 1000 / 60 / 60) % 24;
+      const difMin = Math.floor(remainTime / 1000 / 60) % 60;
+      const difSec = Math.floor(remainTime / 1000) % 60;
+
+      document.getElementById("countDown_hour").textContent = ('00' + difHour).slice(-2);
+      document.getElementById("countDown_min").textContent = ('00' + difMin).slice(-2);
+      document.getElementById("countDown_sec").textContent = ('00' + difSec).slice(-2);
+    } else if (endLine < dateCurrent) {
+      startArea.style.display = "none";
+      liveArea.style.display = "none";
+      endArea.style.display = "block";
+
+      if (document.getElementById('movie')) {
+        document.getElementById('movie').remove();
+      }
+    } else {
+      startArea.style.display = "none";
+      liveArea.style.display = "block";
+      endArea.style.display = "none";
+    }
+  }, 1000);
+</script>
