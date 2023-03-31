@@ -1,0 +1,37 @@
+body {
+  margin: 0;
+}
+.wrapper {
+  margin: 1rem;
+}
+h1 {
+  background: #73818b;
+  text-align: center;
+  margin: 0;
+  padding: 10px 0;
+  font-weight: normal;
+  font-size: 1rem;
+}
+section {
+  border: 1px solid #73818b;
+  margin: 0 0 1rem;
+  padding: 1rem;
+}
+h2 {
+  border-bottom: 1px solid #73818b;
+  border-left: 1px solid #73818b;
+  font-weight: normal;
+  margin: 0;
+  padding: 10px;
+  font-size: 1rem;
+}
+pre {
+  background: #0e0b0b;
+  padding: 1rem;
+}
+code {
+  color: white;
+}
+a {
+  color: #73818b;
+}

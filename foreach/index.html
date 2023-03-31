@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8"/>
+  <link type="text/css" rel="stylesheet" href="css.css">
+</head>
+<body>
+  <div class="wrapper">
+    <h1>JavaScriptの配列メソッド: オブジェクトの配列を扱うときに役立つ便利な配列メソッドを分かりやすく解説1</h1>
+    <section>
+      <h2>filter()</h2>
+      <pre><code>
+let listUser = [
+  { id: 1, name: 'Alice', status: 'active' },
+  { id: 2, name: 'Bob', status: 'inactive' },
+  { id: 3, name: 'Charlie', status: 'active' },
+  { id: 4, name: 'Dave', status: 'active' }
+];
+ 
+let activeUsers = listUser.filter(object => object.status === 'active');
+ 
+console.log(activeUsers); 
+// [{ id: 1, name: 'Alice', status: 'active' }, { id: 3, name: 'Charlie', status: 'active' }, { id: 4, name: 'Dave', status: 'active' }]
+      </code></pre>
+      <a href="https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Array/filter" target="_blank">Array.prototype.filter() -MDN 日本語版</a>
+    </section>
+    <section>
+      <h2>find() </h2>
+      <pre><code>
+let listUser = [
+  { id: 1, name: 'Alice' },
+  { id: 2, name: 'Bob' },
+  { id: 3, name: 'Charlie' },
+  { id: 4, name: 'Dave' }
+];
+ 
+let result = listUser.find(object => object.id === 3);
+ 
+console.log(result); 
+// { id: 3, name: 'Charlie' }
+      </code></pre>
+      <a href="https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Array/find" target="_blank">Array.prototype.find() -MDN 日本語版</a>
+    </section>
+    <section>
+      <h2>findIndex()</h2>
+      <pre><code>
+let listUser = [
+  { id: 1, name: 'Alice' },
+  { id: 2, name: 'Bob' },
+  { id: 3, name: 'Charlie' },
+  { id: 4, name: 'Dave' }
+];
+ 
+let index = listUser.findIndex(object => object.id === 3);
+ 
+console.log(index); 
+// 2
+      </code></pre>
+      <a href="https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" target="_blank">Array.prototype.findIndex() -MDN 日本語版</a>
+    </section>
+    <section>
+      <h2>reduce()</h2>
+      <pre><code>
+let listProduct = [
+  { name: 'Product 1', quantity: 5 },
+  { name: 'Product 2', quantity: 3 },
+  { name: 'Product 3', quantity: 7 }
+];
+ 
+let totalQuantity = listProduct.reduce((sum, object) => sum + object.quantity, 0);
+ 
+console.log(totalQuantity); 
+// 15
+      </code></pre>
+      <a href="https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce" target="_blank">Array.prototype.reduce() -MDN 日本語版s</a>
+    </section>
+  </div>
+  <script src="index.js"></script>
+</body>
+</html>
