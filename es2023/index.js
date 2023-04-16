@@ -2,13 +2,13 @@
 * findILast / findLastIndex
 ************************************/
 
-const array = [{ value: 1 }, { value: 2 }, { value: 3 }, { value: 4 }];
+const array1 = [5, 12, 8, 130, 4];
 
-array.find(n => n.value % 2 === 1); // { value: 1 }
-array.findIndex(n => n.value % 2 === 1); // 0
+console.log(array1.find(element => element > 10));     // 12
+console.log(array1.findLast(element => element > 10)); // 130
 
-array.findLastIndex(n => n.value % 2 === 1); // 2
-array.findLastIndex(n => n.value === 42); // -1
+console.log(array1.findIndex(element => element > 10));     // 1
+console.log(array1.findLastIndex(element => element > 10)); // 3
 
 /************************************
 * #!/usr/bin/env node
