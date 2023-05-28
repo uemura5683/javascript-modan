@@ -1,0 +1,14 @@
+@charset 'UTF-8';
+
+/**
+* reset
+**/
+body {
+  margin: 0;
+}
+#create_customer {
+  padding: 1rem;
+}
+.form-field {
+  margin: 0 0 .5rem;
+}
