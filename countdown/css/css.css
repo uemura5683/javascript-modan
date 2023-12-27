@@ -1,0 +1,413 @@
+/**
+* common
+**/
+:root {
+  --gray: #666;
+  --white: #fff;
+  --black: #000;
+  --pink: #d77584;
+  --pinktwo: #ff9db5;
+  --green: #ebffeb;
+  --brown: #752b42;
+  --pinkthree: #f0608b;
+  --red: #af2d13;
+  --waterblue: #8ed3dd;
+  --green: #77B236;
+  --browntwo: #9b6e35;
+}
+.kirby_wrap *:before,
+.kirby_wrap *:after {
+  content: "";
+}
+
+/**
+* kirby
+**/
+.kirby_wrap {
+  position: absolute;
+  transform: translateX(-50%) translateY(-50%);
+  top: 55%;
+  left: 50%;
+  width: 15%;
+  height: auto;  
+}
+.doragon_cap {
+  background: var(--green);
+  border-radius: 42% 45% 42% 42% / 100% 100% 0% 0%;
+  position: absolute;
+  transform: translateX(-50%) translateY(-50%);
+  top: 12%;
+  left: 50%;
+  width: 95%;
+  height: 40%;
+  z-index: 10;
+  box-shadow: 0 0 0 1px var(--black);
+}
+.doragon_cap:after {
+  background: var(--pinktwo);
+  border-radius: 42% 45% 42% 42% / 100% 100% 0% 0%;
+  position: absolute;
+  transform: translateX(-50%) translateY(-50%);
+  top: 85%;
+  left: 50%;
+  width: 100%;
+  height: 50%;
+  z-index: 10;
+  box-shadow: 0 -1px 0 0 var(--black);
+}
+.dragon_year {
+    width: 40%;
+    height: 40%;
+    border-radius: 50% 50% 0 0/100% 100% 0 0;
+    background: var(--green);
+    transform: rotate(135deg);
+    box-shadow: 0px 0px 0 1px var(--black);
+    z-index: 10;
+    position: absolute;
+    right: -7%;
+}
+.dragon_year:after {
+    position: absolute;
+    width: 40%;
+    height: 150%;
+    background: var(--green);
+    left: 65%;
+    top: -25%;
+}
+.dragon_year.two {
+    transform: rotate(45deg) rotateX(180deg);
+    right: 65%;
+}
+.dragon_hair, .dragon_hair:before, .dragon_hair:after{
+    position: absolute;
+    background-color: var(--browntwo);
+    width: 42%;
+    height: 100%;
+    z-index: 20;
+}
+.dragon_hair:before, .dragon_hair:after{width: 100%;height: 100%;}
+.dragon_hair {
+    left: 50%;
+    top: -42%;
+    transform: translate(-50%, 0) scaleY(0.6) scaleX(1.1);
+}
+.dragon_hair:before {
+    transform: rotate(30deg);
+}
+.dragon_hair:after {
+    transform: rotate(-30deg);
+}
+.dragon_hair.bg, .dragon_hair.bg:before, .dragon_hair.bg:after{
+  box-shadow: 0px 0px 0px 1px var(--black);
+  z-index: 11;
+}
+.dragon_horn {
+
+}
+.kirby_content {
+  animation: kirbymove .25s ease-in-out infinite;
+}
+.kirby_content .kirby_inner {
+  background: linear-gradient(135deg, var(--pinktwo) 70%, var(--pink));
+  border-radius: 50%;
+  width: 100%;
+  padding: 100% 0 0;
+  box-shadow: 0 0 0 0.05vw var(--black);
+}
+.kirby_content .kirby_inner .tears,
+.kirby_content .kirby_inner .eye,
+.kirby_content .kirby_inner .mouth,
+.kirby_content .kirby_inner .cheek,
+.kirby_content .kirby_inner .hand,
+.kirby_content .kirby_inner .foot {
+  position: absolute;
+  transition: all ease-in-out .3s;
+}
+.kirby_content .kirby_inner .eye {
+  width: 10%;
+  padding: 30% 0 0;
+  background: var(--black);
+  border-radius: 44%;
+  top: 23%;
+  left: 34%;
+  animation: eye 5s ease-out infinite;
+  z-index: 30;
+} 
+.kirby_content .kirby_inner .eye:before {
+  background-color: var(--white);
+  position: absolute;
+  width: 60%;
+  height: 45%;
+  border-radius: 44%;
+  top: 3%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  animation: eye-before 5s ease-out infinite;
+}
+.kirby_content .kirby_inner .eye:after {
+  width: 100%;
+  height: auto;
+  display: none;
+  position: absolute;
+  top: -10%;
+  z-index: 1111;
+  transform: rotate(60deg);
+  left: -27%;
+  padding: 150% 0 0;
+  background-image: linear-gradient(90deg, var(--pinktwo) 0 95%, var(--black) 95% 100%);
+}
+.kirby_content .kirby_inner .eye.two {
+  left: 65%;
+}
+.kirby_content .kirby_inner .eye.two:after {
+  transform: rotate(-60deg);
+  background-image: linear-gradient(-90deg, var(--pinktwo) 0 95%, var(--black) 95% 100%);
+  left: 27%;
+}
+.kirby_content .kirby_inner .mouth {
+  position: absolute;
+  top: 65%;
+  left: 48%;
+  z-index: 50;
+  height: 12%;
+  width: 15%;
+  border-radius: 47% 53% 50% 50% / 15% 13% 87% 85%;
+  background: var(--brown);
+  animation: mouthmove 1s ease-in-out infinite alternate;
+}
+.kirby_content .kirby_inner .mouth:after {
+  width: 100%;
+  height: 100%;
+  padding: 0% 0 0 0;
+  position: absolute;
+  background: var(--white);
+  filter: blur(2vw);
+  will-change: filter;
+  z-index: 500;
+  border-radius: 60% 60% 50% 50%/60% 60% 50% 50%;
+  right: 0;
+  bottom: 0%;
+  opacity: 0;
+  animation: 1s linear infinite mokumoku 1s;
+}
+.kirby_content .kirby_inner .mouth:before {
+  bottom: 3%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50%;
+  height: 50%;
+  border-radius: 40% 40% 50% 50%/40% 40% 50% 50%;
+  background: var(--pinkthree);
+  display: block;
+  position: absolute;
+}
+.kirby_content .kirby_inner .tears {
+  top: 57%;
+  right: 27%;
+  display: none;
+  width: 0%;
+  height: 0%;
+  background: var(--waterblue);
+  border-radius: 70% 70% 50% 50%/70% 70% 50% 50%;
+  animation: tears 5s ease-out infinite;
+}
+.kirby_content .kirby_inner .cheek {
+  background-color: var(--pinkthree);
+  position: absolute;
+  top: 56%;
+  left: 16%;
+  filter: blur(0.1vw);
+  width: 20%;
+  height: 10%;
+  border-radius: 50%;
+  transform: rotate(-10deg);
+  z-index: 3;
+}
+.kirby_content .kirby_inner .cheek.two {
+  left: auto;
+  right: 5%;
+  transform: rotate(10deg);
+}
+.kirby_content .kirby_inner .hand {
+  position: absolute;
+  top: 34%;
+  left: -15%;
+  background: linear-gradient(-155deg, var(--pinktwo) 70%, var(--pink));
+  border-radius: 60% 40% 40% 60% / 60% 40% 60% 40%;
+  width: 30%;
+  padding: 30% 0 0;
+  box-shadow: 0 0 0 0.05vw var(--black);
+  transform: rotate(0deg);
+}
+.kirby_content .kirby_inner .hand:after {
+  background: var(--pinktwo);
+  width: 50%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  right: -20%;
+  transform: rotate(-3deg);
+}
+.kirby_content .kirby_inner .hand.two {
+  top: 32%;
+  left: auto;
+  right: -14%;
+  background: linear-gradient(-35deg, var(--pinktwo) 60%, var(--pink));
+  transform: rotate(180deg);
+  box-shadow: 0 0 0 0.05vw var(--black);
+  z-index: -1;
+}
+.kirby_content .kirby_inner .hand.two:after {
+  right: -20%;
+  transform: rotate(11deg);
+}
+.kirby_content [class*='foot'] {
+  width: 50%;
+  height: 35%;
+  position: absolute;
+  background: var(--red);
+  border-radius: 78% 22% 70% 30% / 59% 29% 71% 41%;
+  z-index: -1;
+  box-shadow: inset 0.25vw -1vw 0.1vw 0 var(--brown), 0 0 0 0.05vw var(--black);
+}
+.kirby_content .foot-right {
+  bottom: -6%;
+  left: -10%;
+  transform: rotate(19deg);
+}
+.kirby_content .foot-left {
+  right: -10%;
+  bottom: -7%;
+  transform: rotate(15deg);
+}
+
+.p-countdown-dom {
+  position: absolute;
+  bottom: 13%;
+  width: 100%;
+  transform: translateY(50%);
+}
+.p-countdown-dom .counter {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  line-height: 3vw;
+}
+.p-countdown-dom .entry {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 0 10px 2vw;
+  font-size: 3.8vw;
+  color:#000000;
+  line-height: 3.2vw;
+  font-weight:bold;
+}
+.p-countdown-dom .entry:first-child {
+  margin: 0 0 10px 0;
+}
+
+@keyframes eye {
+  0% {
+    background: var(--black);
+  }
+  51% {
+    background: var(--black);
+  }
+  51.5% {
+    background: transparent;
+  }
+  52% {
+    background: var(--black);
+  }
+  52.5% {
+    background: transparent;
+  }
+  53% {
+    background: var(--black);
+  }
+  98% {
+    background: var(--black);
+  }
+  98.5% {
+    background: transparent;
+  }
+  99% {
+    background: var(--black);
+  }
+  99.5% {
+    background: transparent;
+  }
+  100% {
+    background: var(--black);
+  }
+}
+
+@keyframes eye-before {
+  0% {
+    top: 3%;
+    background-color: var(--white);
+    width: 60%;
+    height: 45%;
+  }
+  51% {
+    top: 3%;
+    background-color: var(--white);
+    width: 60%;
+    height: 45%;
+  }
+  51.5% {
+    top: 60%;
+    background-color: var(--black);
+    width: 200%;
+    height: 2%;
+  }
+  52% {
+    top: 3%;
+    background-color: var(--white);
+    width: 60%;
+    height: 45%;
+  }
+  52.5% {
+    top: 60%;
+    background-color: var(--black);
+    width: 200%;
+    height: 2%;
+  }
+  53% {
+    top: 3%;
+    background-color: var(--white);
+    width: 60%;
+    height: 45%;
+  }
+  98% {
+    top: 3%;
+    background-color: var(--white);
+    width: 60%;
+    height: 45%;
+  }
+  98.5% {
+    top: 60%;
+    background-color: var(--black);
+    width: 200%;
+    height: 2%;
+  }
+  99% {
+    top: 3%;
+    background-color: var(--white);
+    width: 60%;
+    height: 45%;
+  }
+  99.5% {
+    top: 60%;
+    background-color: var(--black);
+    width: 200%;
+    height: 2%;
+  }
+  100% {
+    top: 3%;
+    background-color: var(--white);
+    width: 60%;
+    height: 45%;
+  }
+} 

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="title" content="" />
+    <meta name="robots" content="index, follow" />
+    <meta name="copyright" content="" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <link href="css/css.css" rel="stylesheet">
+    <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prop-types/15.6.2/prop-types.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>    
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="kirby_wrap">
+        <div class="doragon_cap">
+          <div class="dragon_horn"></div>
+          <div class="dragon_horn two"></div>
+          <div class="dragon_hair"></div>
+          <div class="dragon_hair bg"></div>
+          <div class="dragon_year"></div>
+          <div class="dragon_year two"></div>
+        </div>
+        <div class="kirby_content">
+          <div class="kirby_inner">
+            <div class="eye"></div>
+            <div class="tears"></div>
+            <div class="eye two"></div>
+            <div class="mouth"></div>
+            <div class="cheek"></div>
+            <div class="cheek two"></div>
+            <div class="hand"></div>
+            <div class="hand two"></div>
+          </div>
+          <div class="foot-right"></div>
+          <div class="foot-left"></div>
+        </div>  
+      </div> 
+      <div class="p-countdown-dom"></div>
+    </div>
+    <script type="text/babel">
+      const { Component, Fragment } = React;
+      class CountDown extends Component {
+        state = {
+          remaining: {
+            hours: 0, minutes: 0, seconds: 0
+          },
+          isExpired: false
+        };
+        timer;
+        distance;
+
+        componentDidMount() {
+          this.setDate();
+          this.counter();
+        }
+
+        setDate = () => {
+          const { targetDate, targetTime } = this.props,
+
+          now = new Date().getTime(),
+
+          countDownDate = new Date(targetDate + " " + targetTime).getTime();
+
+          if (Math.floor((countDownDate - now) / 1000) < 0) {
+            clearInterval(this.timer);
+            this.setState({ isExpired: true });
+          } else {
+            this.setState({
+              remaining: {
+                時間: Math.floor((countDownDate - now) / 1000 / 3600),
+                分:   Math.floor((countDownDate - now) / 1000 / 60) % 60,
+                秒:   Math.floor((countDownDate - now) / 1000) % 60 
+              },
+              isExpired: false
+            });
+          }
+        };
+
+        counter = () => {
+          this.timer = setInterval(() => {
+            this.setDate();
+          }, 1000);
+        };
+
+        render() {
+          const { remaining, isExpired } = this.state,
+          {targetDate, targetTime} = this.props;
+          
+          return (
+            <Fragment>
+              {!isExpired && targetDate && targetTime ? (
+                <div className="counter">
+                  {Object.entries(remaining).map((el, i) => (
+                    <div key={i} className="entry">
+                      <div key={el[1]} className="entry-value">
+                        <span className="count">{el[1]}</span>
+                      </div>
+                      <div className="entry-title">{el[0].toUpperCase()}</div>
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                <p>オープン！</p>
+              )}
+            </Fragment> 
+          );
+        }
+      }
+      const app = <CountDown targetDate="1 1, 2024" targetTime="00:00:00" />;
+
+      document.querySelectorAll('.p-countdown-dom')
+        .forEach(domContainer => {
+            ReactDOM.render(
+                app,
+                domContainer
+            );
+        });
+    </script>
+  </body>
+</html>
