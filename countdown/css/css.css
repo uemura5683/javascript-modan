@@ -4,6 +4,7 @@
 :root {
   --gray: #666;
   --white: #fff;
+  --yellow: #EECA5D;
   --black: #000;
   --pink: #d77584;
   --pinktwo: #ff9db5;
@@ -13,6 +14,7 @@
   --red: #af2d13;
   --waterblue: #8ed3dd;
   --green: #77B236;
+  --green2: #446124;
   --browntwo: #9b6e35;
 }
 .kirby_wrap *:before,
@@ -36,10 +38,10 @@
   border-radius: 42% 45% 42% 42% / 100% 100% 0% 0%;
   position: absolute;
   transform: translateX(-50%) translateY(-50%);
-  top: 12%;
+  top: 10%;
   left: 50%;
   width: 95%;
-  height: 40%;
+  height: 50%;
   z-index: 10;
   box-shadow: 0 0 0 1px var(--black);
 }
@@ -48,48 +50,127 @@
   border-radius: 42% 45% 42% 42% / 100% 100% 0% 0%;
   position: absolute;
   transform: translateX(-50%) translateY(-50%);
-  top: 85%;
+  top: 90%;
   left: 50%;
-  width: 100%;
-  height: 50%;
+  width: 103%;
+  height: 30%;
   z-index: 10;
   box-shadow: 0 -1px 0 0 var(--black);
 }
+.dragon_nose {
+  width: 25%;
+  height: 30%;
+  border-radius: 50% 50% 50% 50% / 50% 50% 50% 50%;
+  background: var(--green);
+  transform: rotate(-0deg);
+  box-shadow: 0px 0px 0 1px var(--black), 0px 0px 0 5px var(--green2);
+  position: absolute;
+  right: 34%;
+  top: 43%;
+  z-index: 20;
+}
+.dragon_nose:before,
+.dragon_nose:after{
+  width: 10%;
+  height: 15%;
+  border-radius: 50% 50% 50% 50% / 50% 50% 50% 50%;
+  background: var(--black);
+  transform: rotate(-0deg);
+  box-shadow: 0px 0px 0 1px var(--black);
+  position: absolute;
+  right: 65%;
+  top: 30%;
+  z-index: 20;
+}
+.dragon_nose:after{
+  right: 25%;
+}
+.dragon_beard{
+  position: absolute;
+  background-color: var(--yellow);
+  width: 3%;
+  height: 30%;
+  top: 53%;
+  right: 22%;
+  border-radius: 50% 50% 50% 50% / 10% 10% 50% 50%;
+  z-index: 20;
+  transform: rotate(-60deg);
+  box-shadow: 0 0 0 1px black;
+}
+.dragon_beard:after {
+  position: absolute;
+  background-color: var(--yellow);
+  width: 100%;
+  height: 200%;
+  top: 60%;
+  right: 300%;
+  border-radius: 50% 50% 50% 50% / 10% 10% 50% 50%;
+  z-index: 10;
+  transform: rotate(40deg);
+  box-shadow: 1px 0 0 0px black, -1px 0 0 0 black;
+}
+.dragon_beard.two {
+  top: 54%;
+  right: 68%;
+  transform: rotate(60deg);
+}
+.dragon_beard.two:after {
+  transform: rotate(-40deg);
+  right: -300%;
+}
+.dragon_eyebrows {
+  width: 15%;
+  height: 10%;
+  border-radius: 50% 50% 50% 50% / 50% 50% 50% 50%;
+  background: var(--browntwo);
+  transform: rotate(-10deg);
+  box-shadow: 0px 0px 0 1px var(--black);
+  position: absolute;
+  right: 14%;
+  top: 23%;
+  z-index: 20;
+}
+.dragon_eyebrows.two {
+  right: 63%;
+  top: 23%;
+  transform: rotate(10deg);
+}
 .dragon_year {
-    width: 40%;
-    height: 40%;
-    border-radius: 50% 50% 0 0/100% 100% 0 0;
+    width: 30%;
+    height: 30%;
+    border-radius: 50% 50% 47% 53% / 36% 35% 65% 64%;
     background: var(--green);
-    transform: rotate(135deg);
+    transform: rotate(180deg);
     box-shadow: 0px 0px 0 1px var(--black);
     z-index: 10;
     position: absolute;
-    right: -7%;
+    right: -8%;
+    top: 10%;
 }
 .dragon_year:after {
     position: absolute;
     width: 40%;
-    height: 150%;
+    height: 120%;
     background: var(--green);
-    left: 65%;
-    top: -25%;
+    left: 80%;
+    top: -30%;
 }
 .dragon_year.two {
-    transform: rotate(45deg) rotateX(180deg);
-    right: 65%;
+    transform: rotate(0deg) rotateX(180deg);
+    right: 77%;
 }
 .dragon_hair, .dragon_hair:before, .dragon_hair:after{
     position: absolute;
     background-color: var(--browntwo);
-    width: 42%;
-    height: 100%;
+    width: 32%;
+    height: 76%;
     z-index: 20;
 }
 .dragon_hair:before, .dragon_hair:after{width: 100%;height: 100%;}
 .dragon_hair {
-    left: 50%;
-    top: -42%;
-    transform: translate(-50%, 0) scaleY(0.6) scaleX(1.1);
+    left: 52%;
+    top: -35%;
+    transform: translate(-50%, 0) scaleY(.4) scaleX(1);
 }
 .dragon_hair:before {
     transform: rotate(30deg);
@@ -101,9 +182,53 @@
   box-shadow: 0px 0px 0px 1px var(--black);
   z-index: 11;
 }
-.dragon_horn {
-
+.dragon_eye {
+  position: absolute;
+  background: var(--black);
+  width: 4%;
+  height: 20%;
+  z-index: 100;
+  border-radius: 50%;
+  transform: rotate(-180deg);
+  top: 35%;
+  left: 33%;
 }
+.dragon_eye.two {
+  transform: rotate(-0deg) rotateX(-155deg);
+  top: 35%;
+  left: 70%;
+}
+.dragon_horn, .dragon_horn:before, .dragon_horn:after {
+  position: absolute;
+  background-color: var(--browntwo);
+  width: 5%;
+  height: 100%;
+  top: -80%;
+  right: 10%;
+  border-radius: 50% 50% 0 0 / 10% 10% 0 0;
+  z-index: 10;
+  transform: rotate(25deg);
+}
+.dragon_horn:before {
+  height: 50%;
+  width: 75%;
+  border-radius: 50% 50% 0 0 / 20% 20% 0 0;
+  top: 10%;
+  left: 90%;
+  transform: rotate(25deg);
+  z-index: -1;
+}
+.dragon_horn:after {
+  height: 50%;
+  width: 75%;
+  border-radius: 50% 50% 0 0 / 20% 20% 0 0;
+  top: 20%;
+  left: -70%;
+  transform: rotate(-25deg);
+  z-index: -1;
+}
+.dragon_horn.two {right: 85%;transform: rotate(-25deg);}
+
 .kirby_content {
   animation: kirbymove .25s ease-in-out infinite;
 }
