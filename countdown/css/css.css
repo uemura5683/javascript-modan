@@ -7,17 +7,18 @@
   --white: #fff;
   --yellow: #EECA5D;
   --yellowtwo: #f6e464;
-  --black: #000;
+  --black: #222;
   --pink: #d77584;
-  --pinktwo: #ff9db5;
+  --pinktwo: #FCC7E4;
   --green: #ebffeb;
-  --brown: #752b42;
+  --brown: #7b3047;
   --pinkthree: #f0608b;
-  --red: #af2d13;
+  --red: #d24022;
   --waterblue: #8ed3dd;
   --green: #77B236;
   --green2: #446124;
   --browntwo: #9b6e35;
+  --blue: #2e2a71;
 }
 .kirby_wrap *:before,
 .kirby_wrap *:after {
@@ -28,9 +29,32 @@ body {
   margin: 0;
   font-family: monospace;
 }
-
+body:after {
+  content: '';
+  width: 100%;
+  height: 100vh;
+  background-color: white;
+  z-index: 10000000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  -webkit-animation: fadeout .5s linear 0s infinite;
+      -ms-animation: fadeout .5s linear 0s infinite;
+          animation: fadeout .5s linear 0s infinite;
+  -webkit-animation-fill-mode: forwards;
+      -ms-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+  -webkit-animation-iteration-count: 1;
+      -ms-animation-iteration-count: 1;
+          animation-iteration-count: 1;
+}
+@keyframes fadeout {
+  0% { opacity: 1; }
+  60% { opacity: 1; }
+  100% { opacity: 0; z-index: -1; }
+}
 .wrapper {
-  background-color: var(--yellowtwo);
+  background: linear-gradient(0deg, var(--yellow), var(--yellowtwo));
   height: 100vh;
 }
 
@@ -45,41 +69,42 @@ body {
   width: 15%;
   height: auto;  
 }
-.doragon_cap {
-  background: var(--green);
+.dragon_cap {
+  display: none;
   border-radius: 42% 45% 42% 42% / 100% 100% 0% 0%;
   position: absolute;
   transform: translateX(-50%) translateY(-50%);
-  top: 10%;
+  top: 7%;
   left: 50%;
   width: 95%;
   height: 50%;
   z-index: 10;
-  box-shadow: 0 0 0 1px var(--black);
 }
-.doragon_cap:after {
-  background: var(--pinktwo);
-  border-radius: 42% 45% 42% 42% / 100% 100% 0% 0%;
-  position: absolute;
-  transform: translateX(-50%) translateY(-50%);
-  top: 90%;
-  left: 50%;
-  width: 103%;
-  height: 30%;
-  z-index: 10;
-  box-shadow: 0 -1px 0 0 var(--black);
+.dragon_cap_front_top {
+    z-index: 400;
+}
+.dragon_cap_front {
+    background: var(--green);
+    width: 100%;
+    height: 100%;
+    border-radius: 42% 45% 42% 42% / 100% 100% 0% 0%;
+    top: 0;
+    left: 0;
+    position: relative;
+    box-shadow: 0 0 0 .05vw var(--black);
+    z-index: 300;
 }
 .dragon_nose {
-  width: 35%;
-  height: 35%;
-  border-radius: 50% 50% 50% 50% / 50% 50% 50% 50%;
-  background: var(--green);
-  transform: rotate(-0deg);
-  box-shadow: 0px 0px 0 1px var(--black);
-  position: absolute;
-  right: 28%;
-  top: 41%;
-  z-index: 50;
+    width: 45%;
+    height: 45%;
+    border-radius: 50% 50% 50% 50% / 50% 50% 50% 50%;
+    background: var(--green);
+    transform: rotate(-0deg);
+    box-shadow: 0 0 0 0.05vw var(--black);
+    position: absolute;
+    right: 23%;
+    top: 37%;
+    z-index: 700;
 }
 .dragon_nose:before,
 .dragon_nose:after{
@@ -88,7 +113,7 @@ body {
   border-radius: 50% 50% 50% 50% / 50% 50% 50% 50%;
   background: var(--black);
   transform: rotate(-0deg);
-  box-shadow: 0px 0px 0 1px var(--black);
+  box-shadow: 0 0 0 .1vw var(--black);
   position: absolute;
   right: 65%;
   top: 30%;
@@ -103,67 +128,62 @@ body {
   border-radius: 50% 50% 50% 50% / 50% 50% 50% 50%;
   background: var(--green);
   transform: rotate(-0deg);
-  box-shadow: 1px 0 0 0 var(--black);
+  box-shadow: 0.05vw 0 0 0 var(--black);
   position: absolute;
-  right: -15%;
+  right: -10%;
   top: 20%;
   z-index: 50;
 }
-.dragon_nose_sub.two {right: 65%;box-shadow: -1px 0 0 0 var(--black);}
+.dragon_nose_sub.two {
+  right: 60%;
+  box-shadow: -0.05vw 0 0 0 var(--black);
+}
+.dragon_month {
+    width: 48%;
+    height: 45%;
+    border-radius: 50% 50% 50% 50% / 50% 50% 50% 50%;
+    background: var(--yellow);
+    transform: rotate(-0deg);
+    box-shadow: 0 0 0 0.05vw var(--black);
+    position: absolute;
+    right: 21%;
+    top: 41%;
+    z-index: 400;
+}
 .dragon_fang {
   background: #ffffff;
-  height: calc(tan(60deg) * 35% / 2);
-  width: 100%;
-  right: -35%;
-  top: 70%;
+  height: calc(tan(45deg) * 25% / 2);
+  width: 25%;
+  right: 0%;
+  top: 75%;
   clip-path: polygon(50% 0, 50% 100%, 0 100%);
-  transform: rotate(110deg);
   position: absolute;
-  z-index: 60;
+  z-index: 0;
+  transform: rotate(-100deg);
 }
-.dragon_fang.two {right: 32%;transform: rotate(80deg);}
+.dragon_fang.two {
+  right: 76%;
+  transform: rotate(-70deg);
+}
 .dragon_beard{
-  position: absolute;
-  background-color: var(--yellow);
-  width: 3%;
-  height: 30%;
-  top: 51%;
-  right: 19%;
-  border-radius: 50% 50% 50% 50% / 10% 10% 50% 50%;
-  z-index: 50;
-  transform: rotate(-60deg);
-  box-shadow: 0 0 0 1px black;
-}
-.dragon_beard:before {
-  position: absolute;
-  background-color: var(--yellow);
-  width: 80%;
-  height: 18%;
-  top: 70%;
-  right: 18%;
-  z-index: 20;
-  border-radius: 50%;
-}
-.dragon_beard:after {
-  position: absolute;
-  background-color: var(--yellow);
-  width: 100%;
-  height: 200%;
-  top: 60%;
-  right: 300%;
-  border-radius: 50% 50% 50% 50% / 10% 10% 50% 50%;
-  z-index: 10;
-  transform: rotate(40deg);
-  box-shadow: 1px 0 0 0px black, -1px 0 0 0 black;
+    position: absolute;
+    top: 60%;
+    right: 15%;
+    border-radius: 50% 50% 50% 50% / 10% 10% 50% 50%;
+    z-index: 500;
+    transform: rotate(-20deg);
+    border-right: .5vw solid var(--yellow);
+    border-bottom-right-radius: 80%;
+    border-top-right-radius: 40%;
+    height: 80%;
+    width: 12%;
 }
 .dragon_beard.two {
-  top: 54%;
-  right: 68%;
-  transform: rotate(60deg);
-}
-.dragon_beard.two:after {
-  transform: rotate(-40deg);
-  right: -300%;
+  top: 63%;
+  right: 60%;
+  transform: rotate(180deg);
+  border-bottom-left-radius: 40%;
+  border-top-left-radius: 80%;
 }
 .dragon_eyebrows {
   width: 15%;
@@ -171,24 +191,24 @@ body {
   border-radius: 50% 50% 50% 50% / 50% 50% 50% 50%;
   background: var(--browntwo);
   transform: rotate(-10deg);
-  box-shadow: 0px 0px 0 1px var(--black);
+  box-shadow: 0 0 0 0.05vw var(--black);
   position: absolute;
   right: 14%;
-  top: 20%;
+  top: 16%;
   z-index: 20;
 }
 .dragon_eyebrows.two {
-  right: 63%;
-  top: 20%;
+  right: 62%;
+  top: 16%;
   transform: rotate(10deg);
 }
 .dragon_year {
     width: 30%;
     height: 30%;
-    border-radius: 50% 50% 47% 53% / 36% 35% 65% 64%;
+    border-radius: 49% 51% 50% 50% / 87% 86% 14% 13%;
     background: var(--green);
     transform: rotate(180deg);
-    box-shadow: 0px 0px 0 1px var(--black);
+    box-shadow: 0 0 0 0.05vw var(--black);
     z-index: 10;
     position: absolute;
     right: -8%;
@@ -206,56 +226,102 @@ body {
     transform: rotate(0deg) rotateX(180deg);
     right: 77%;
 }
-.dragon_hair, .dragon_hair:before, .dragon_hair:after{
+.dragon_hair_top, .dragon_hair_top:before, .dragon_hair_top:after,
+.dragon_hair_top_bk, .dragon_hair_top_bk:before, .dragon_hair_top_bk:after{
     position: absolute;
     background-color: var(--browntwo);
     width: 32%;
     height: 76%;
     z-index: 20;
 }
-.dragon_hair:before, .dragon_hair:after{width: 100%;height: 100%;}
-.dragon_hair {
+.dragon_hair_top:before, .dragon_hair_top:after,
+.dragon_hair_top_bk:before, .dragon_hair_top_bk:after{
+  width: 100%;height: 100%;
+}
+.dragon_hair_top,
+.dragon_hair_top_bk {
     left: 52%;
     top: -35%;
     transform: translate(-50%, 0) scaleY(.4) scaleX(1);
 }
-.dragon_hair:before {
+.dragon_hair_top:before,
+.dragon_hair_top_bk:before {
     transform: rotate(30deg);
 }
-.dragon_hair:after {
+.dragon_hair_top:after,
+.dragon_hair_top_bk:after {
     transform: rotate(-30deg);
 }
-.dragon_hair.bg, .dragon_hair.bg:before, .dragon_hair.bg:after{
-  box-shadow: 0px 0px 0px 1px var(--black);
-  z-index: 11;
+.dragon_hair_top_bk,
+.dragon_hair_top_bk:before,
+.dragon_hair_top_bk:after {
+  box-shadow: 0 0 0 0.1vw var(--black);
+  z-index: 1;
+}
+.dragon_hair_bk{
+    position: absolute;
+    top: -15%;
+    right: -15%;
+    transform: rotate(-80deg);
+    border-left: 1.5vw solid var(--green2);
+    border-bottom-left-radius: 80%;
+    border-top-left-radius: 40%;
+    height: 80%;
+    width: 32%;
+    will-change: filter;
+    filter: drop-shadow(-1.56vw 0.56vw 0px var(--green2));
+    -webkit-filter: drop-shadow(-1.56vw 0.56vw 0px var(--green2));
+    z-index: -1;
+}
+.dragon_hair_bk.two {
+    right: 78%;
+    transform: rotate(-100deg);
+    z-index: 0;
+    border-bottom-left-radius: 40%;
+    border-top-left-radius: 80%;
+    -webkit-filter: drop-shadow(-1.9vw 0vw 0px var(--green2));
 }
 .dragon_eye {
   position: absolute;
-  background: var(--black);
-  width: 4%;
+  background: var(--white);
+  width: 10%;
   height: 20%;
   z-index: 100;
   border-radius: 50%;
   transform: rotate(-180deg);
+  top: 26%;
+  left: 30%;
+  box-shadow: 0 0 0 .05vw var(--black);
+}
+.dragon_eye:before {
+  position: absolute;
+  background: var(--black);
+  width: 50%;
+  height: 50%;
+  z-index: 100;
+  border-radius: 50%;
+  transform: rotate(-180deg);
   top: 30%;
-  left: 33%;
+  left: 10%;
 }
 .dragon_eye.two {
-  transform: rotate(-0deg) rotateX(-155deg);
-  top: 30%;
-  left: 70%;
+    transform: rotate(60deg);
+    left: 69%;
 }
-.dragon_horn, .dragon_horn:before, .dragon_horn:after {
-  position: absolute;
-  background-color: var(--browntwo);
-  width: 5%;
-  height: 100%;
-  top: -80%;
-  right: 10%;
-  border-radius: 50% 50% 0 0 / 10% 10% 0 0;
-  z-index: 10;
-  transform: rotate(25deg);
+.dragon_horn,
+.dragon_horn:before,
+.dragon_horn:after {
+    position: absolute;
+    background-color: var(--browntwo);
+    width: 5%;
+    height: 100%;
+    top: -80%;
+    right: 11%;
+    border-radius: 50% 50% 0 0 / 10% 10% 0 0;
+    z-index: 10;
+    transform: rotate(25deg);
 }
+.dragon_horn {}
 .dragon_horn:before {
   height: 50%;
   width: 75%;
@@ -266,18 +332,32 @@ body {
   z-index: -1;
 }
 .dragon_horn:after {
-  height: 50%;
-  width: 75%;
-  border-radius: 50% 50% 0 0 / 20% 20% 0 0;
-  top: 20%;
-  left: -70%;
-  transform: rotate(-25deg);
-  z-index: -1;
+    height: 50%;
+    width: 75%;
+    border-radius: 50% 50% 0 0 / 20% 20% 0 0;
+    top: 20%;
+    left: -78%;
+    transform: rotate(-25deg);
+    z-index: -1;
 }
-.dragon_horn.two {right: 85%;transform: rotate(-25deg);}
-
+.dragon_horn.two {
+    right: 85%;
+    transform: rotate(-25deg);
+}
+.dragon_cap_bottom {
+  background: var(--pinktwo);
+  border-radius: 42% 45% 42% 42% / 100% 100% 0% 0%;
+  position: absolute;
+  transform: translateX(-50%) translateY(-50%);
+  top: 89%;
+  left: 50%;
+  width: 100%;
+  height: 30%;
+  z-index: 300;
+}
 .kirby_content {
   animation: kirbymove .25s ease-in-out infinite;
+  z-index: 40;
 }
 .kirby_content .kirby_inner {
   background: linear-gradient(135deg, var(--pinktwo) 70%, var(--pink));
@@ -337,14 +417,28 @@ body {
   background-image: linear-gradient(-90deg, var(--pinktwo) 0 95%, var(--black) 95% 100%);
   left: 27%;
 }
+.kirby_content .kirby_inner .eye_inner {
+    width: 60%;
+    padding: 80% 0 0;
+    background: var(--black);
+    border-radius: 44%;
+    top: 53%;
+    left: 21%;
+    z-index: 30;
+    position: absolute;
+    will-change: filter;
+    filter: drop-shadow(.0vw .5vw 0px #5049c3);
+    -webkit-filter: drop-shadow(.0vw .5vw 0px #5049c3);
+    animation: eye 5s ease-out infinite;
+}
 .kirby_content .kirby_inner .mouth {
   position: absolute;
   top: 65%;
-  left: 48%;
+  left: 53%;
   z-index: 50;
-  height: 12%;
-  width: 15%;
-  border-radius: 47% 53% 50% 50% / 15% 13% 87% 85%;
+  height: 5%;
+  width: 5%;
+  border-radius: 47% 53% 50% 50% / 45% 43% 57% 55%;
   background: var(--brown);
   animation: mouthmove 1s ease-in-out infinite alternate;
 }
@@ -389,6 +483,7 @@ body {
   position: absolute;
   top: 56%;
   left: 16%;
+  will-change: filter;
   filter: blur(0.1vw);
   width: 20%;
   height: 10%;
@@ -417,9 +512,9 @@ body {
   width: 50%;
   height: 100%;
   position: absolute;
-  top: 0;
+  top: -0%;
   right: -20%;
-  transform: rotate(-3deg);
+  transform: rotate(-15deg);
 }
 .kirby_content .kirby_inner .hand.two {
   top: 32%;
@@ -462,23 +557,27 @@ body {
   transform: translate(-50%, 0);
   background: #fefcdf;
   padding: 1%;
-  border: .5vw solid #E6226D;
+  border: .5vw solid;
+  border-radius: 1.5vw;
+  border-image: linear-gradient(to right, #E6226D, #f085ae) 1;
 }
 .p-countdown-dom .counter {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  line-height: 3vw;
+  font-size: 2.4vw;
+  color: #0F2E83;
+  line-height: 2.4vw;
+  font-weight: 600;
+  font-family: 'Poppins', sans-serif;  
 }
-.p-countdown-dom .entry {
+.p-countdown-dom .entry,
+.p-countdown-dom .entry-title {
   display: flex;
   flex-wrap: wrap;
-  margin: 0 0 0 1vw;
-  font-size: 3.8vw;
-  color: #0F2E83;
-  line-height: 3.2vw;
-  font-weight: 600;
-  font-family: 'Poppins', sans-serif;
+  margin: 0 0 0 .5vw;
+  text-align: center;
+  justify-content: center;
 }
 .p-countdown-dom .entry:first-child {
   margin: 0;
@@ -588,3 +687,109 @@ body {
     height: 45%;
   }
 } 
+
+.new_year .dragon_cap {
+  display: block;
+}
+.new_year .kirby_wrap {
+  animation: move2 1s ease-out infinite;
+}
+.new_year .kirby_content .kirby_inner .hand {
+  transform: rotate(70deg);
+  top: 32%;
+  -webkit-animation: move5 1s ease-in-out infinite;
+          animation: move5 1s ease-in-out infinite;  
+}
+.new_year .kirby_content .kirby_inner .hand.two {
+  transform: rotate(130deg);
+  top: 31%;
+  -webkit-animation: move6 1s ease-in-out infinite;
+          animation: move6 1s ease-in-out infinite;  
+}
+.new_year .kirby_content .kirby_inner .hand:after {
+  height: 120%;
+  right: 10%;
+  top: -60%;
+  transform: rotate(-70deg);
+}
+.new_year .kirby_content .kirby_inner .hand.two:after {
+  height: 120%;
+  top: 0%;
+  right: -100%;
+  transform: rotate(-15deg);
+}
+.new_year .kirby_content .kirby_inner .mouth {
+  top: 65%;
+  left: 48%;
+  height: 12%;
+  width: 15%;
+  border-radius: 47% 53% 50% 50% / 15% 13% 87% 85%;
+}
+.new_year .foot-right {
+  bottom: -6%;
+  left: -10%;
+  transform: rotate(19deg);
+  -webkit-animation: move3 1s ease-in-out infinite;
+          animation: move3 1s ease-in-out infinite;
+}
+.new_year .foot-left {
+  right: -10%;
+  bottom: -7%;
+  transform: rotate(15deg);
+  -webkit-animation: move4 1s ease-in-out infinite;
+          animation: move4 1s ease-in-out infinite;
+}
+
+
+@keyframes move2 {
+  0% { top: 55%; } 
+  50% { top: 45%; }
+  100% { top: 55%; }
+}
+@keyframes move3 {
+  0% { bottom: -6%; transform: rotate(19deg);} 
+  50% { bottom: -8%; transform: rotate(0deg);}
+  100% { bottom: -6%; transform: rotate(19deg);}
+}
+@keyframes move4 {
+  0% { bottom: -7%; transform: rotate(15deg);} 
+  50% { bottom: -9%; transform: rotate(30deg);}
+  100% { bottom: -7%; transform: rotate(15deg);}
+}
+@keyframes move5 {
+  0% { transform: rotate(70deg);} 
+  50% { transform: rotate(80deg);}
+  100% { transform: rotate(70deg);}
+}
+@keyframes move6 {
+  0% { transform: rotate(130deg);} 
+  50% { transform: rotate(120deg);}
+  100% { transform: rotate(130deg);}
+}
+
+@media (max-width: 767px) {
+  .kirby_wrap {
+    width: 50%;
+    transform: translateX(-50%) translateY(-50%);
+  }
+  .p-countdown-dom {
+    width: 80%;
+    transform: translate(-50%, 0);
+  }
+  .p-countdown-dom .counter  {
+    font-size: 3.6vw;
+    line-height: 3.6vw;
+  }
+  .dragon_hair_bk{
+    border-left: 2.5vw solid var(--green2);
+    filter: drop-shadow(-3.56vw 0.56vw 0px var(--green2));
+    -webkit-filter: drop-shadow(-3.56vw 0.56vw 0px var(--green2));
+  }
+  .dragon_hair_bk.two {
+    -webkit-filter: drop-shadow(-3.7vw 0vw 0px var(--green2));
+  }
+  .kirby_content .kirby_inner .hand,
+  .kirby_content .kirby_inner .hand.two {
+    box-shadow: 0 0 0 0.1vw var(--black);
+  }
+}
