@@ -84,7 +84,7 @@ body:after {
     z-index: 400;
 }
 .dragon_cap_front {
-    background: var(--green);
+    background: linear-gradient(85deg, var(--green) 86%, var(--green2));
     width: 100%;
     height: 100%;
     border-radius: 42% 45% 42% 42% / 100% 100% 0% 0%;
@@ -170,8 +170,8 @@ body:after {
     top: 60%;
     right: 15%;
     border-radius: 50% 50% 50% 50% / 10% 10% 50% 50%;
-    z-index: 500;
-    transform: rotate(-20deg);
+    z-index: 700;
+    transform: rotate(-10deg);
     border-right: .5vw solid var(--yellow);
     border-bottom-right-radius: 80%;
     border-top-right-radius: 40%;
@@ -206,7 +206,7 @@ body:after {
     width: 30%;
     height: 30%;
     border-radius: 49% 51% 50% 50% / 87% 86% 14% 13%;
-    background: var(--green);
+    background: linear-gradient(-15deg, var(--green) 56%, var(--green2));
     transform: rotate(180deg);
     box-shadow: 0 0 0 0.05vw var(--black);
     z-index: 10;
@@ -500,7 +500,7 @@ body:after {
   position: absolute;
   top: 34%;
   left: -15%;
-  background: linear-gradient(-155deg, var(--pinktwo) 70%, var(--pink));
+  background: linear-gradient(205deg, var(--pinktwo) 70%, var(--pink));
   border-radius: 60% 40% 40% 60% / 60% 40% 60% 40%;
   width: 30%;
   padding: 30% 0 0;
@@ -695,16 +695,18 @@ body:after {
   animation: move2 1s ease-out infinite;
 }
 .new_year .kirby_content .kirby_inner .hand {
-  transform: rotate(70deg);
-  top: 32%;
+  transform: rotate(0deg);
+  top: 33%;
   -webkit-animation: move5 1s ease-in-out infinite;
-          animation: move5 1s ease-in-out infinite;  
+  animation: move5 1s ease-in-out infinite;
+  background: linear-gradient(125deg, var(--pinktwo) 70%, var(--pink));
 }
 .new_year .kirby_content .kirby_inner .hand.two {
   transform: rotate(130deg);
   top: 31%;
   -webkit-animation: move6 1s ease-in-out infinite;
-          animation: move6 1s ease-in-out infinite;  
+  animation: move6 1s ease-in-out infinite;
+  background: linear-gradient(35deg, var(--pinktwo) 60%, var(--pink));
 }
 .new_year .kirby_content .kirby_inner .hand:after {
   height: 120%;
@@ -713,10 +715,7 @@ body:after {
   transform: rotate(-70deg);
 }
 .new_year .kirby_content .kirby_inner .hand.two:after {
-  height: 120%;
-  top: 0%;
-  right: -100%;
-  transform: rotate(-15deg);
+  content: none;
 }
 .new_year .kirby_content .kirby_inner .mouth {
   top: 65%;
@@ -740,10 +739,9 @@ body:after {
           animation: move4 1s ease-in-out infinite;
 }
 
-
 @keyframes move2 {
   0% { top: 55%; } 
-  50% { top: 45%; }
+  50% { top: 53%; }
   100% { top: 55%; }
 }
 @keyframes move3 {
@@ -783,6 +781,10 @@ body:after {
   .kirby_content .kirby_inner .hand,
   .kirby_content .kirby_inner .hand.two {
     box-shadow: 0 0 0 0.1vw var(--black);
+  }
+  .kirby_content .kirby_inner .eye_inner {
+    filter: drop-shadow(0vw 1vw 0px #5049c3);
+    -webkit-filter: drop-shadow(0vw 1vw 0px #5049c3);
   }
   .countdown-dom {
     width: 80%;
