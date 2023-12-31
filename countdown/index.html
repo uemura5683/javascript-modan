@@ -2,12 +2,9 @@
 <html lang="ja">
   <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <meta name="title" content="" />
+    <meta name="title" content="年越しカウントダウン カービィアニメーション" />
     <meta name="robots" content="index, follow" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta name="copyright" content="" />
-    <meta name="description" content="" />
-    <meta name="keywords" content="" />
     <link href="css/css.css" rel="stylesheet">
     <script src="https://unpkg.com/react@18.2.0/umd/react.development.js" crossorigin></script>
     <script src="https://unpkg.com/react-dom@18.2.0/umd/react-dom.development.js" crossorigin></script>
@@ -94,7 +91,6 @@
           if (Math.floor((countDownDate - now) / 1000) < 0) {
             const body = document.querySelector('.wrapper');
             body.classList.add('new_year');
-            clearInterval(this.timer);
             this.setState({ isExpired: true });
           } else {
             this.setState({

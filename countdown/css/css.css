@@ -20,8 +20,8 @@
   --browntwo: #9b6e35;
   --blue: #2e2a71;
 }
-.kirby_wrap *:before,
-.kirby_wrap *:after {
+
+.kirby_wrap *:before, .kirby_wrap *:after {
   content: "";
 }
 
@@ -29,6 +29,7 @@ body {
   margin: 0;
   font-family: monospace;
 }
+
 body:after {
   content: '';
   width: 100%;
@@ -39,36 +40,45 @@ body:after {
   top: 0;
   left: 0;
   -webkit-animation: fadeout .5s linear 0s infinite;
-      -ms-animation: fadeout .5s linear 0s infinite;
-          animation: fadeout .5s linear 0s infinite;
+  animation: fadeout .5s linear 0s infinite;
   -webkit-animation-fill-mode: forwards;
-      -ms-animation-fill-mode: forwards;
-          animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
   -webkit-animation-iteration-count: 1;
-      -ms-animation-iteration-count: 1;
-          animation-iteration-count: 1;
+  animation-iteration-count: 1;
 }
+
 @keyframes fadeout {
-  0% { opacity: 1; }
-  60% { opacity: 1; }
-  100% { opacity: 0; z-index: -1; }
+  0% {
+    opacity: 1;
+  }
+  60% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    z-index: -1;
+  }
 }
+
 .wrapper {
   background: linear-gradient(0deg, var(--yellow), var(--yellowtwo));
   height: 100vh;
 }
 
+
 /**
 * kirby
 **/
+
 .kirby_wrap {
   position: absolute;
   transform: translateX(-50%) translateY(-50%);
   top: 55%;
   left: 50%;
   width: 15%;
-  height: auto;  
+  height: auto;
 }
+
 .dragon_cap {
   display: none;
   border-radius: 42% 45% 42% 42% / 100% 100% 0% 0%;
@@ -80,34 +90,37 @@ body:after {
   height: 50%;
   z-index: 10;
 }
+
 .dragon_cap_front_top {
-    z-index: 400;
+  z-index: 400;
 }
+
 .dragon_cap_front {
-    background: linear-gradient(85deg, var(--green) 86%, var(--green2));
-    width: 100%;
-    height: 100%;
-    border-radius: 42% 45% 42% 42% / 100% 100% 0% 0%;
-    top: 0;
-    left: 0;
-    position: relative;
-    box-shadow: 0 0 0 .05vw var(--black);
-    z-index: 300;
+  background: linear-gradient(85deg, var(--green) 86%, var(--green2));
+  width: 100%;
+  height: 100%;
+  border-radius: 42% 45% 42% 42% / 100% 100% 0% 0%;
+  top: 0;
+  left: 0;
+  position: relative;
+  box-shadow: 0 0 0 .05vw var(--black);
+  z-index: 300;
 }
+
 .dragon_nose {
-    width: 45%;
-    height: 45%;
-    border-radius: 50% 50% 50% 50% / 50% 50% 50% 50%;
-    background: var(--green);
-    transform: rotate(-0deg);
-    box-shadow: 0 0 0 0.05vw var(--black);
-    position: absolute;
-    right: 23%;
-    top: 37%;
-    z-index: 700;
+  width: 45%;
+  height: 45%;
+  border-radius: 50% 50% 50% 50% / 50% 50% 50% 50%;
+  background: var(--green);
+  transform: rotate(-0deg);
+  box-shadow: 0 0 0 0.05vw var(--black);
+  position: absolute;
+  right: 23%;
+  top: 37%;
+  z-index: 700;
 }
-.dragon_nose:before,
-.dragon_nose:after{
+
+.dragon_nose:before, .dragon_nose:after {
   width: 10%;
   height: 15%;
   border-radius: 50% 50% 50% 50% / 50% 50% 50% 50%;
@@ -119,9 +132,11 @@ body:after {
   top: 30%;
   z-index: 60;
 }
-.dragon_nose:after{
+
+.dragon_nose:after {
   right: 25%;
 }
+
 .dragon_nose_sub {
   width: 50%;
   height: 70%;
@@ -134,22 +149,25 @@ body:after {
   top: 20%;
   z-index: 50;
 }
+
 .dragon_nose_sub.two {
   right: 60%;
   box-shadow: -0.05vw 0 0 0 var(--black);
 }
+
 .dragon_month {
-    width: 48%;
-    height: 45%;
-    border-radius: 50% 50% 50% 50% / 50% 50% 50% 50%;
-    background: var(--yellow);
-    transform: rotate(-0deg);
-    box-shadow: 0 0 0 0.05vw var(--black);
-    position: absolute;
-    right: 21%;
-    top: 41%;
-    z-index: 400;
+  width: 48%;
+  height: 45%;
+  border-radius: 50% 50% 50% 50% / 50% 50% 50% 50%;
+  background: var(--yellow);
+  transform: rotate(-0deg);
+  box-shadow: 0 0 0 0.05vw var(--black);
+  position: absolute;
+  right: 21%;
+  top: 41%;
+  z-index: 400;
 }
+
 .dragon_fang {
   background: #ffffff;
   height: calc(tan(45deg) * 25% / 2);
@@ -161,23 +179,26 @@ body:after {
   z-index: 0;
   transform: rotate(-100deg);
 }
+
 .dragon_fang.two {
   right: 76%;
   transform: rotate(-70deg);
 }
-.dragon_beard{
-    position: absolute;
-    top: 60%;
-    right: 15%;
-    border-radius: 50% 50% 50% 50% / 10% 10% 50% 50%;
-    z-index: 700;
-    transform: rotate(-10deg);
-    border-right: .5vw solid var(--yellow);
-    border-bottom-right-radius: 80%;
-    border-top-right-radius: 40%;
-    height: 80%;
-    width: 12%;
+
+.dragon_beard {
+  position: absolute;
+  top: 60%;
+  right: 15%;
+  border-radius: 50% 50% 50% 50% / 10% 10% 50% 50%;
+  z-index: 700;
+  transform: rotate(-10deg);
+  border-right: .5vw solid var(--yellow);
+  border-bottom-right-radius: 80%;
+  border-top-right-radius: 40%;
+  height: 80%;
+  width: 12%;
 }
+
 .dragon_beard.two {
   top: 63%;
   right: 60%;
@@ -185,6 +206,7 @@ body:after {
   border-bottom-left-radius: 40%;
   border-top-left-radius: 80%;
 }
+
 .dragon_eyebrows {
   width: 15%;
   height: 10%;
@@ -197,90 +219,97 @@ body:after {
   top: 16%;
   z-index: 20;
 }
+
 .dragon_eyebrows.two {
   right: 62%;
   top: 16%;
   transform: rotate(10deg);
 }
+
 .dragon_year {
-    width: 30%;
-    height: 30%;
-    border-radius: 49% 51% 50% 50% / 87% 86% 14% 13%;
-    background: linear-gradient(-15deg, var(--green) 56%, var(--green2));
-    transform: rotate(180deg);
-    box-shadow: 0 0 0 0.05vw var(--black);
-    z-index: 10;
-    position: absolute;
-    right: -8%;
-    top: 10%;
+  width: 30%;
+  height: 30%;
+  border-radius: 49% 51% 50% 50% / 87% 86% 14% 13%;
+  background: linear-gradient(-15deg, var(--green) 56%, var(--green2));
+  transform: rotate(180deg);
+  box-shadow: 0 0 0 0.05vw var(--black);
+  z-index: 10;
+  position: absolute;
+  right: -8%;
+  top: 10%;
 }
+
 .dragon_year:after {
-    position: absolute;
-    width: 40%;
-    height: 120%;
-    background: var(--green);
-    left: 80%;
-    top: -30%;
+  position: absolute;
+  width: 40%;
+  height: 120%;
+  background: var(--green);
+  left: 80%;
+  top: -30%;
 }
+
 .dragon_year.two {
-    transform: rotate(0deg) rotateX(180deg);
-    right: 77%;
+  transform: rotate(0deg) rotateX(180deg);
+  right: 77%;
 }
-.dragon_hair_top, .dragon_hair_top:before, .dragon_hair_top:after,
-.dragon_hair_top_bk, .dragon_hair_top_bk:before, .dragon_hair_top_bk:after{
-    position: absolute;
-    background-color: var(--browntwo);
-    width: 32%;
-    height: 76%;
-    z-index: 20;
+
+.dragon_hair_top, .dragon_hair_top:before, .dragon_hair_top:after, .dragon_hair_top_bk, .dragon_hair_top_bk:before, .dragon_hair_top_bk:after {
+  position: absolute;
+  background-color: var(--browntwo);
+  width: 32%;
+  height: 76%;
+  z-index: 20;
 }
-.dragon_hair_top:before, .dragon_hair_top:after,
-.dragon_hair_top_bk:before, .dragon_hair_top_bk:after{
-  width: 100%;height: 100%;
+
+.dragon_hair_top:before, .dragon_hair_top:after, .dragon_hair_top_bk:before, .dragon_hair_top_bk:after {
+  width: 100%;
+  height: 100%;
 }
-.dragon_hair_top,
-.dragon_hair_top_bk {
-    left: 52%;
-    top: -35%;
-    transform: translate(-50%, 0) scaleY(.4) scaleX(1);
+
+.dragon_hair_top, .dragon_hair_top_bk {
+  left: 52%;
+  top: -35%;
+  transform: translate(-50%, 0) scaleY(.4) scaleX(1);
 }
-.dragon_hair_top:before,
-.dragon_hair_top_bk:before {
-    transform: rotate(30deg);
+
+.dragon_hair_top:before, .dragon_hair_top_bk:before {
+  transform: rotate(30deg);
 }
-.dragon_hair_top:after,
-.dragon_hair_top_bk:after {
-    transform: rotate(-30deg);
+
+.dragon_hair_top:after, .dragon_hair_top_bk:after {
+  transform: rotate(-30deg);
 }
-.dragon_hair_top_bk,
-.dragon_hair_top_bk:before,
-.dragon_hair_top_bk:after {
+
+.dragon_hair_top_bk, .dragon_hair_top_bk:before, .dragon_hair_top_bk:after {
   box-shadow: 0 0 0 0.1vw var(--black);
   z-index: 1;
 }
-.dragon_hair_bk{
-    position: absolute;
-    top: -15%;
-    right: -15%;
-    transform: rotate(-80deg);
-    border-left: 1.5vw solid var(--green2);
-    border-bottom-left-radius: 80%;
-    border-top-left-radius: 40%;
-    height: 80%;
-    width: 32%;
-    will-change: filter;
-    filter: drop-shadow(-1.56vw 0.56vw 0px var(--green2));
-    -webkit-filter: drop-shadow(-1.56vw 0.56vw 0px var(--green2));
-    z-index: -1;
+
+.dragon_hair_bk {
+  position: absolute;
+  top: -15%;
+  right: -15%;
+  transform: rotate(-80deg);
+  border-left: 1.5vw solid var(--green2);
+  border-bottom-left-radius: 80%;
+  border-top-left-radius: 40%;
+  height: 80%;
+  width: 32%;
+  will-change: filter;
+  filter: drop-shadow(-1.56vw 0.56vw 0px var(--green2));
+  -webkit-filter: drop-shadow(-1.56vw 0.56vw 0px var(--green2));
+  z-index: -1;
 }
+
 .dragon_hair_bk.two {
-    right: 78%;
-    transform: rotate(-100deg);
-    z-index: 0;
-    border-bottom-left-radius: 40%;
-    border-top-left-radius: 80%;
-    -webkit-filter: drop-shadow(-1.9vw 0vw 0px var(--green2));
+  right: 78%;
+  transform: rotate(-100deg);
+  z-index: 0;
+  border-bottom-left-radius: 40%;
+  border-top-left-radius: 80%;
+  -webkit-filter: drop-shadow(-1.9vw 0vw 0px var(--green2));
 }
+
 .dragon_eye {
   position: absolute;
   background: var(--white);
@@ -293,6 +322,7 @@ body:after {
   left: 30%;
   box-shadow: 0 0 0 .05vw var(--black);
 }
+
 .dragon_eye:before {
   position: absolute;
   background: var(--black);
@@ -304,24 +334,26 @@ body:after {
   top: 30%;
   left: 10%;
 }
+
 .dragon_eye.two {
-    transform: rotate(60deg);
-    left: 69%;
+  transform: rotate(60deg);
+  left: 69%;
 }
-.dragon_horn,
-.dragon_horn:before,
-.dragon_horn:after {
-    position: absolute;
-    background-color: var(--browntwo);
-    width: 5%;
-    height: 100%;
-    top: -80%;
-    right: 11%;
-    border-radius: 50% 50% 0 0 / 10% 10% 0 0;
-    z-index: 10;
-    transform: rotate(25deg);
+
+.dragon_horn, .dragon_horn:before, .dragon_horn:after {
+  position: absolute;
+  background-color: var(--browntwo);
+  width: 5%;
+  height: 100%;
+  top: -80%;
+  right: 11%;
+  border-radius: 50% 50% 0 0 / 10% 10% 0 0;
+  z-index: 10;
+  transform: rotate(25deg);
 }
+
 .dragon_horn {}
+
 .dragon_horn:before {
   height: 50%;
   width: 75%;
@@ -331,19 +363,22 @@ body:after {
   transform: rotate(25deg);
   z-index: -1;
 }
+
 .dragon_horn:after {
-    height: 50%;
-    width: 75%;
-    border-radius: 50% 50% 0 0 / 20% 20% 0 0;
-    top: 20%;
-    left: -78%;
-    transform: rotate(-25deg);
-    z-index: -1;
+  height: 50%;
+  width: 75%;
+  border-radius: 50% 50% 0 0 / 20% 20% 0 0;
+  top: 20%;
+  left: -78%;
+  transform: rotate(-25deg);
+  z-index: -1;
 }
+
 .dragon_horn.two {
-    right: 85%;
-    transform: rotate(-25deg);
+  right: 85%;
+  transform: rotate(-25deg);
 }
+
 .dragon_cap_bottom {
   background: var(--pinktwo);
   border-radius: 42% 45% 42% 42% / 100% 100% 0% 0%;
@@ -355,10 +390,12 @@ body:after {
   height: 30%;
   z-index: 300;
 }
+
 .kirby_content {
   animation: kirbymove .25s ease-in-out infinite;
   z-index: 40;
 }
+
 .kirby_content .kirby_inner {
   background: linear-gradient(135deg, var(--pinktwo) 70%, var(--pink));
   border-radius: 50%;
@@ -366,15 +403,12 @@ body:after {
   padding: 100% 0 0;
   box-shadow: 0 0 0 0.05vw var(--black);
 }
-.kirby_content .kirby_inner .tears,
-.kirby_content .kirby_inner .eye,
-.kirby_content .kirby_inner .mouth,
-.kirby_content .kirby_inner .cheek,
-.kirby_content .kirby_inner .hand,
-.kirby_content .kirby_inner .foot {
+
+.kirby_content .kirby_inner .tears, .kirby_content .kirby_inner .eye, .kirby_content .kirby_inner .mouth, .kirby_content .kirby_inner .cheek, .kirby_content .kirby_inner .hand, .kirby_content .kirby_inner .foot {
   position: absolute;
   transition: all ease-in-out .3s;
 }
+
 .kirby_content .kirby_inner .eye {
   width: 10%;
   padding: 30% 0 0;
@@ -384,7 +418,8 @@ body:after {
   left: 34%;
   animation: eye 5s ease-out infinite;
   z-index: 30;
-} 
+}
+
 .kirby_content .kirby_inner .eye:before {
   background-color: var(--white);
   position: absolute;
@@ -397,6 +432,7 @@ body:after {
   z-index: 2;
   animation: eye-before 5s ease-out infinite;
 }
+
 .kirby_content .kirby_inner .eye:after {
   width: 100%;
   height: auto;
@@ -409,28 +445,32 @@ body:after {
   padding: 150% 0 0;
   background-image: linear-gradient(90deg, var(--pinktwo) 0 95%, var(--black) 95% 100%);
 }
+
 .kirby_content .kirby_inner .eye.two {
   left: 65%;
 }
+
 .kirby_content .kirby_inner .eye.two:after {
   transform: rotate(-60deg);
   background-image: linear-gradient(-90deg, var(--pinktwo) 0 95%, var(--black) 95% 100%);
   left: 27%;
 }
+
 .kirby_content .kirby_inner .eye_inner {
-    width: 60%;
-    padding: 80% 0 0;
-    background: var(--black);
-    border-radius: 44%;
-    top: 53%;
-    left: 21%;
-    z-index: 30;
-    position: absolute;
-    will-change: filter;
-    filter: drop-shadow(.0vw .5vw 0px #5049c3);
-    -webkit-filter: drop-shadow(.0vw .5vw 0px #5049c3);
-    animation: eye 5s ease-out infinite;
+  width: 60%;
+  padding: 80% 0 0;
+  background: var(--black);
+  border-radius: 44%;
+  top: 53%;
+  left: 21%;
+  z-index: 30;
+  position: absolute;
+  will-change: filter;
+  filter: drop-shadow(.0vw .5vw 0px #5049c3);
+  -webkit-filter: drop-shadow(.0vw .5vw 0px #5049c3);
+  animation: eye 5s ease-out infinite;
 }
+
 .kirby_content .kirby_inner .mouth {
   position: absolute;
   top: 65%;
@@ -442,6 +482,7 @@ body:after {
   background: var(--brown);
   animation: mouthmove 1s ease-in-out infinite alternate;
 }
+
 .kirby_content .kirby_inner .mouth:after {
   width: 100%;
   height: 100%;
@@ -457,6 +498,7 @@ body:after {
   opacity: 0;
   animation: 1s linear infinite mokumoku 1s;
 }
+
 .kirby_content .kirby_inner .mouth:before {
   bottom: 3%;
   left: 50%;
@@ -468,6 +510,7 @@ body:after {
   display: block;
   position: absolute;
 }
+
 .kirby_content .kirby_inner .tears {
   top: 57%;
   right: 27%;
@@ -478,6 +521,7 @@ body:after {
   border-radius: 70% 70% 50% 50%/70% 70% 50% 50%;
   animation: tears 5s ease-out infinite;
 }
+
 .kirby_content .kirby_inner .cheek {
   background-color: var(--pinkthree);
   position: absolute;
@@ -491,11 +535,13 @@ body:after {
   transform: rotate(-10deg);
   z-index: 3;
 }
+
 .kirby_content .kirby_inner .cheek.two {
   left: auto;
   right: 5%;
   transform: rotate(10deg);
 }
+
 .kirby_content .kirby_inner .hand {
   position: absolute;
   top: 34%;
@@ -507,6 +553,7 @@ body:after {
   box-shadow: 0 0 0 0.05vw var(--black);
   transform: rotate(0deg);
 }
+
 .kirby_content .kirby_inner .hand:after {
   background: var(--pinktwo);
   width: 50%;
@@ -516,6 +563,7 @@ body:after {
   right: -20%;
   transform: rotate(-15deg);
 }
+
 .kirby_content .kirby_inner .hand.two {
   top: 32%;
   left: auto;
@@ -525,10 +573,12 @@ body:after {
   box-shadow: 0 0 0 0.05vw var(--black);
   z-index: -1;
 }
+
 .kirby_content .kirby_inner .hand.two:after {
   right: -20%;
   transform: rotate(11deg);
 }
+
 .kirby_content [class*='foot'] {
   width: 50%;
   height: 35%;
@@ -538,11 +588,13 @@ body:after {
   z-index: -1;
   box-shadow: inset 0.25vw -1vw 0.1vw 0 var(--brown), 0 0 0 0.05vw var(--black);
 }
+
 .kirby_content .foot-right {
   bottom: -6%;
   left: -10%;
   transform: rotate(19deg);
 }
+
 .kirby_content .foot-left {
   right: -10%;
   bottom: -7%;
@@ -561,6 +613,7 @@ body:after {
   border-radius: 1.5vw;
   border-image: linear-gradient(to right, #E6226D, #f085ae) 1;
 }
+
 .countdown-dom .counter {
   display: flex;
   flex-wrap: wrap;
@@ -569,16 +622,17 @@ body:after {
   color: #0F2E83;
   line-height: 2.4vw;
   font-weight: 600;
-  font-family: 'Poppins', sans-serif;  
+  font-family: 'Poppins', sans-serif;
 }
-.countdown-dom .entry,
-.countdown-dom .entry-title {
+
+.countdown-dom .entry, .countdown-dom .entry-title {
   display: flex;
   flex-wrap: wrap;
   margin: 0 0 0 .5vw;
   text-align: center;
   justify-content: center;
 }
+
 .countdown-dom .entry:first-child {
   margin: 0;
 }
@@ -686,14 +740,16 @@ body:after {
     width: 60%;
     height: 45%;
   }
-} 
+}
 
 .new_year .dragon_cap {
   display: block;
 }
+
 .new_year .kirby_wrap {
   animation: move2 1s ease-out infinite;
 }
+
 .new_year .kirby_content .kirby_inner .hand {
   transform: rotate(0deg);
   top: 33%;
@@ -701,6 +757,7 @@ body:after {
   animation: move5 1s ease-in-out infinite;
   background: linear-gradient(125deg, var(--pinktwo) 70%, var(--pink));
 }
+
 .new_year .kirby_content .kirby_inner .hand.two {
   transform: rotate(130deg);
   top: 31%;
@@ -708,15 +765,18 @@ body:after {
   animation: move6 1s ease-in-out infinite;
   background: linear-gradient(35deg, var(--pinktwo) 60%, var(--pink));
 }
+
 .new_year .kirby_content .kirby_inner .hand:after {
   height: 120%;
   right: 10%;
   top: -60%;
   transform: rotate(-70deg);
 }
+
 .new_year .kirby_content .kirby_inner .hand.two:after {
   content: none;
 }
+
 .new_year .kirby_content .kirby_inner .mouth {
   top: 65%;
   left: 48%;
@@ -724,45 +784,87 @@ body:after {
   width: 15%;
   border-radius: 47% 53% 50% 50% / 15% 13% 87% 85%;
 }
+
 .new_year .foot-right {
   bottom: -6%;
   left: -10%;
   transform: rotate(19deg);
   -webkit-animation: move3 1s ease-in-out infinite;
-          animation: move3 1s ease-in-out infinite;
+  animation: move3 1s ease-in-out infinite;
 }
+
 .new_year .foot-left {
   right: -10%;
   bottom: -7%;
   transform: rotate(15deg);
   -webkit-animation: move4 1s ease-in-out infinite;
-          animation: move4 1s ease-in-out infinite;
+  animation: move4 1s ease-in-out infinite;
 }
 
 @keyframes move2 {
-  0% { top: 55%; } 
-  50% { top: 53%; }
-  100% { top: 55%; }
+  0% {
+    top: 55%;
+  }
+  50% {
+    top: 53%;
+  }
+  100% {
+    top: 55%;
+  }
 }
+
 @keyframes move3 {
-  0% { bottom: -6%; transform: rotate(19deg);} 
-  50% { bottom: -8%; transform: rotate(0deg);}
-  100% { bottom: -6%; transform: rotate(19deg);}
+  0% {
+    bottom: -6%;
+    transform: rotate(19deg);
+  }
+  50% {
+    bottom: -8%;
+    transform: rotate(0deg);
+  }
+  100% {
+    bottom: -6%;
+    transform: rotate(19deg);
+  }
 }
+
 @keyframes move4 {
-  0% { bottom: -7%; transform: rotate(15deg);} 
-  50% { bottom: -9%; transform: rotate(30deg);}
-  100% { bottom: -7%; transform: rotate(15deg);}
+  0% {
+    bottom: -7%;
+    transform: rotate(15deg);
+  }
+  50% {
+    bottom: -9%;
+    transform: rotate(30deg);
+  }
+  100% {
+    bottom: -7%;
+    transform: rotate(15deg);
+  }
 }
+
 @keyframes move5 {
-  0% { transform: rotate(70deg);} 
-  50% { transform: rotate(80deg);}
-  100% { transform: rotate(70deg);}
+  0% {
+    transform: rotate(70deg);
+  }
+  50% {
+    transform: rotate(80deg);
+  }
+  100% {
+    transform: rotate(70deg);
+  }
 }
+
 @keyframes move6 {
-  0% { transform: rotate(130deg);} 
-  50% { transform: rotate(120deg);}
-  100% { transform: rotate(130deg);}
+  0% {
+    transform: rotate(130deg);
+  }
+  50% {
+    transform: rotate(120deg);
+  }
+  100% {
+    transform: rotate(130deg);
+  }
 }
 
 @media (max-width: 767px) {
@@ -770,7 +872,7 @@ body:after {
     width: 50%;
     transform: translateX(-50%) translateY(-50%);
   }
-  .dragon_hair_bk{
+  .dragon_hair_bk {
     border-left: 2.5vw solid var(--green2);
     filter: drop-shadow(-3.56vw 0.56vw 0px var(--green2));
     -webkit-filter: drop-shadow(-3.56vw 0.56vw 0px var(--green2));
@@ -778,8 +880,7 @@ body:after {
   .dragon_hair_bk.two {
     -webkit-filter: drop-shadow(-3.7vw 0vw 0px var(--green2));
   }
-  .kirby_content .kirby_inner .hand,
-  .kirby_content .kirby_inner .hand.two {
+  .kirby_content .kirby_inner .hand, .kirby_content .kirby_inner .hand.two {
     box-shadow: 0 0 0 0.1vw var(--black);
   }
   .kirby_content .kirby_inner .eye_inner {
@@ -790,8 +891,8 @@ body:after {
     width: 80%;
     transform: translate(-50%, 0);
   }
-  .countdown-dom .counter  {
+  .countdown-dom .counter {
     font-size: 3.6vw;
     line-height: 3.6vw;
-  }  
+  }
 }
