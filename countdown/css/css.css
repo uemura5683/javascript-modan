@@ -549,7 +549,7 @@ body:after {
   transform: rotate(15deg);
 }
 
-.p-countdown-dom {
+.countdown-dom {
   position: absolute;
   width: fit-content;
   left: 50%;
@@ -561,7 +561,7 @@ body:after {
   border-radius: 1.5vw;
   border-image: linear-gradient(to right, #E6226D, #f085ae) 1;
 }
-.p-countdown-dom .counter {
+.countdown-dom .counter {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -571,15 +571,15 @@ body:after {
   font-weight: 600;
   font-family: 'Poppins', sans-serif;  
 }
-.p-countdown-dom .entry,
-.p-countdown-dom .entry-title {
+.countdown-dom .entry,
+.countdown-dom .entry-title {
   display: flex;
   flex-wrap: wrap;
   margin: 0 0 0 .5vw;
   text-align: center;
   justify-content: center;
 }
-.p-countdown-dom .entry:first-child {
+.countdown-dom .entry:first-child {
   margin: 0;
 }
 
@@ -772,14 +772,6 @@ body:after {
     width: 50%;
     transform: translateX(-50%) translateY(-50%);
   }
-  .p-countdown-dom {
-    width: 80%;
-    transform: translate(-50%, 0);
-  }
-  .p-countdown-dom .counter  {
-    font-size: 3.6vw;
-    line-height: 3.6vw;
-  }
   .dragon_hair_bk{
     border-left: 2.5vw solid var(--green2);
     filter: drop-shadow(-3.56vw 0.56vw 0px var(--green2));
@@ -792,4 +784,12 @@ body:after {
   .kirby_content .kirby_inner .hand.two {
     box-shadow: 0 0 0 0.1vw var(--black);
   }
+  .countdown-dom {
+    width: 80%;
+    transform: translate(-50%, 0);
+  }
+  .countdown-dom .counter  {
+    font-size: 3.6vw;
+    line-height: 3.6vw;
+  }  
 }

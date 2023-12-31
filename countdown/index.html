@@ -11,18 +11,50 @@
     <link href="css/css.css" rel="stylesheet">
     <script src="https://unpkg.com/react@18.2.0/umd/react.development.js" crossorigin></script>
     <script src="https://unpkg.com/react-dom@18.2.0/umd/react-dom.development.js" crossorigin></script>
-    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prop-types/15.6.2/prop-types.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>    
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script> 
   </head>
   <body>
     <div class="wrapper">
       <div class="kirby_wrap">
+        <div class="dragon_cap">      
+          <div class="dragon_cap_front_top">
+            <div class="dragon_nose">
+              <div class="dragon_nose_sub"></div>
+              <div class="dragon_nose_sub two"></div>
+              <div class="dragon_fang"></div>
+              <div class="dragon_fang two"></div>                        
+            </div>   
+            <div class="dragon_beard"></div>
+            <div class="dragon_beard two"></div>  
+          </div>
+          <div class="dragon_cap_front">
+            <div class="dragon_month"></div>
+            <div class="dragon_eyebrows"></div>
+            <div class="dragon_eyebrows two"></div>
+            <div class="dragon_horn"></div>
+            <div class="dragon_horn two"></div>
+            <div class="dragon_hair_top"></div>
+            <div class="dragon_hair_top_bk"></div>
+            <div class="dragon_eye"></div>
+            <div class="dragon_eye two"></div>
+            <div class="dragon_year"></div>
+            <div class="dragon_year two"></div>
+          </div>
+          <div class="dragon_cap_back">
+            <div class="dragon_hair_bk"></div>
+            <div class="dragon_hair_bk two"></div>
+          </div>
+          <div class="dragon_cap_bottom"></div>
+        </div>
         <div class="kirby_content">
           <div class="kirby_inner">
             <div class="tears"></div>
-            <div class="eye"><div class="eye_inner"></div></div>
-            <div class="eye two"><div class="eye_inner"></div></div>
+            <div class="eye">
+              <div class="eye_inner"></div>
+            </div>
+            <div class="eye two">
+              <div class="eye_inner"></div>
+            </div>
             <div class="mouth"></div>
             <div class="cheek"></div>
             <div class="cheek two"></div>
@@ -33,7 +65,7 @@
           <div class="foot-left"></div>
         </div>  
       </div> 
-      <div class="p-countdown-dom"></div>
+      <div class="countdown-dom"></div>
     </div>
     <script type="text/babel">
       const { Component, Fragment } = React;
@@ -89,7 +121,7 @@
             <Fragment>
               {!isExpired ? (
                 <div className="counter">
-                  2024年まで残り 
+                  2024年まで残り
                   {Object.entries(remaining).map((el, i) => (
                     <div key={i} className="entry">
                       <div key={el[1]} className="entry-value">
@@ -107,7 +139,7 @@
         }
       }
       const app = <CountDown />;
-      const container = document.querySelector('.p-countdown-dom');
+      const container = document.querySelector('.countdown-dom');
       const root = createRoot(container);
       root.render( app );
     </script>
