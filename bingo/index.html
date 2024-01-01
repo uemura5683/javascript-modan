@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScriptでビンゴゲームのデモ</title>
+  <link rel="stylesheet" href="css.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="index.js"></script>
+</head>
+<body>
+<div class="wrapper">
+  <div id="result" class="result"></div>
+  <ul id="number" class="number"></ul>
+  <div class="wrapper-button">
+    <button id="button" class="button">START</button>
+  </div>
+  <audio id="sound-play" preload="auto">
+    <source src="start.mp3" type="audio/mp3">
+  </audio>
+  <audio id="sound-pause" preload="auto">
+    <source src="pause.mp3" type="audio/mp3">
+  </audio>
+</div>
+</body>
+</html>
