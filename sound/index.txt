@@ -1,0 +1,5 @@
+参考サイト
+https://github.com/ics-creative/230411_sound_visualizer/blob/main/docs/2d.html
+
+周波数を取得
+https://nogson2.hatenablog.com/entry/2017/10/16/191205

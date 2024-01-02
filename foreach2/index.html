@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8"/>
+  <link type="text/css" rel="stylesheet" href="css.css">
+</head>
+<body>
+  <div class="wrapper">
+    <h1>JavaScriptの配列メソッド: オブジェクトの配列を扱うときに役立つ便利な配列メソッドを分かりやすく解説2</h1>
+    <section>
+      <h2>map()</h2>
+      <pre><code>
+let listProduct = [
+  { id: 1, name: 'Apple', type: 'fruit' },
+  { id: 2, name: 'Orange', type: 'fruit' },
+  { id: 3, name: 'Banana', type: 'fruit' },
+  { id: 4, name: 'Tomato', type: 'vegetable' },
+  { id: 5, name: 'Carrot', type: 'vegetable' }
+];
+ 
+let types = [...new Set(listProduct.map(object => object.type))];
+ 
+console.log(types); 
+// ['fruit', 'vegetable']
+      </code></pre>
+      <a href="https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Array/map" target="_blank">Array.prototype.map() -MDN 日本語版</a>
+    </section>
+    <section>
+      <h2>sort()</h2>
+      <pre><code>
+let listUser = [
+  { id: 1, name: 'Alice' },
+  { id: 2, name: 'Dave' },
+  { id: 3, name: 'Charlie' },
+  { id: 4, name: 'Bob' }
+];
+ 
+listUser.sort((a, b) => {
+  if (a.name < b.name) return -1;
+  if (a.name > b.name) return 1;
+  return 0;
+});
+ 
+console.log(listUser);
+// [{ id: 1, name: 'Alice' }, { id: 4, name: 'Bob' }, { id: 3, name: 'Charlie' }, { id: 2, name: 'Dave' }]
+      </code></pre>
+      <a href="https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Array/sort" target="_blank">Array.prototype.sort() -MDN 日本語版</a>
+    </section>
+
+
+    <section>
+      <h2>flatMap()</h2>
+      <pre><code>
+let listTag = [  
+  { id: 1, name: 'Alice', tags: ['a', 'b'] },
+  { id: 2, name: 'Bob', tags: ['c', 'd'] },
+  { id: 3, name: 'Charlie', tags: ['e', 'f'] },
+  { id: 4, name: 'Dave', tags: ['g', 'h'] }
+];
+ 
+let tags = listTag.flatMap(object => object.tags);
+ 
+console.log(tags); 
+// ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h']
+      </code></pre>
+      <a href="https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Array/flatMap" target="_blank">Array.prototype.flatMap() -MDN 日本語版</a>
+    </section>
+
+
+  </div>
+  <script src="index.js"></script>
+</body>
+</html>
