@@ -9,7 +9,151 @@
   </head>
   <body>
     <div class="wrapper">
+      <p>
+        JavaScriptのArrayBufferはWebGLなどでまとまったバイナリデータを扱う際に使用されています。<br>
+        ArrayBufferという用語だけ聞くとピンとこない人もいるかもしれません。<br>
+        開発者が主に目にするのは、Float32ArrayやUint16ArrayといったTypedArray（型付き配列）の形式です。<br>
+        こちらであれば見覚えがあるという方もいるでしょう。<br>
+        実はFloat32ArrayやUint16Arrayの本体は、ArrayBufferというバイナリデータを扱うためのオブジェクトなのです。<br>
+        <br>
+        本記事では、ArrayBufferについて深く理解し、正しく使用できるようになることを目指します。<br>
+        そのことで、省メモリーなウェブアプリケーションの開発に役立つはずです。<br>
+        <br>
+        主な対象読者<br>
+        <br>
+        TypeScriptの型推論でArrayBufferやTypedArrayが引数に求められるので、<br>
+        よくわからず参考サイトのコードをコピペしている<br>
+        ArrayとTypedArrayとの違いを詳しく知りたい<br>
+      </p>
+      <h2>なぜArrayBufferが必要なのか</h2>
+      <p>
+        コンピューターは、内部的にすべてのデータをバイナリ形式、<br>
+        すなわち「0」と「1」の二進数で表現しています。<br>
+        これは、電気的な信号のオフ（0）とオン（1）を組み合わせて情報を処理するためです。<br>
+        <br>
+        バイナリ形式は、コンピューターがデータを効率的かつ高速に処理するために最適化されています。<br>
+        また、バイナリ形式はデータサイズを小さく保てるため、保存容量の節約や通信の効率化にもつながります。<br>
+        コンピューターはすべてのデータをバイナリ形式で扱うことで、その高い計算能力を実現しています。<br>
+        <br>
+        ArrayBuffer登場以前のJavaScriptのデータ型や構造では、バイナリデータを効率的に扱うことが困難でした。<br>
+        しかし、ネットワークの高速化やウェブ技術の進化にともなって、<br>
+        以下のような複雑で大きなデータを処理する必要性が高まりました。<br>
+        <br>
+        ・メディアデータの操作：画像・動画・音声データの生成・編集・解析<br>
+        ・ファイル操作：ユーザーがアップロードしたファイルの解析。ファイルの生成、ダウンロードなど<br>
+        ・ネットワーク通信：データの送受信や解析<br>
+        ・グラフィックス処理：WebGLを用いた高度なグラフィックス描画<br>
+        ・そこで、バイナリデータを効果的に操作するための仕組みとして、ArrayBufferがECMAScript 2015で導入されました。<br>
+      </p>
+      <h2>ArrayBufferとTypedArray</h2>
+      <p>
+        ArrayBufferとは、バイナリデータそのものをメモリー上に確保するためのオブジェクトです。<br>
+        1バイト（8ビット）を単位とし、複数のバイト列が並んだデータのかたまりとなっています。<br>
+        <br>
+        実は、ArrayBufferそれ自体にはバイナリデータを1バイトずつ管理する機能しかなく、<br>
+        データ型の概念もありません。バイナリデータに意味をもってアクセスするにはTypedArrayオブジェクトが必要になります。
+      </p>
+      <code>
+        <pre>
+// 16バイトのメモリー領域を確保
+const array = new ArrayBuffer(16);
 
+// ArrayBufferからデータを読んだり書き込むことはできない
+console.log(array[0]); // undefined
+        </pre>
+      </code>
+      <p>
+        TypedArrayはArrayBufferのバイナリデータを数バイト単位で特定のデータ型として解釈し、<br>
+        配列風のインターフェイスを提供するための「ビュー」オブジェクトです。<br>
+        実際には、TypedArrayという名前のクラスやAPIはありません。<br>
+        Float32ArrayやUint8Arrayといった、型ごとに管理する配列風ビューオブジェクトのAPIの総称です。<br>
+        <br>
+        次の図版では、同じArrayBufferインスタンスをUint8ArrayとUint32Arrayの2通りのTypedArrayで参照した場合のイメージを示しています。<br><br>
+        <img src="https://ics.media/entry/250408/images/250408_arraybuffer_uint8array__960.png"><br><br>
+        <img src="https://ics.media/entry/250408/images/250408_arraybuffer_uint32array__960.png"><br><br>
+        TypedArrayはコンストラクターの引数にArrayBufferを指定することで、<br>
+        そのArrayBufferを参照するTypedArrayオブジェクトを作成します。<br>
+        <br>
+        また、単に配列の要素数を指定してTypedArrayのコンストラクターを呼び出すことでも作成できます。<br>
+        しかし、内部では上記の書き方と同じようにArrayBufferが作られ、管理されます。<br><br>
+      </p>
+      <code>
+        <pre>
+// 16バイトのメモリー領域を確保
+const array = new ArrayBuffer(16);
+
+// ArrayBufferを8ビット符号なし整数で解釈するためのTypedArrayを作成
+const uint8A = new Uint8Array(array);
+// TypedArrayには配列アクセス演算子[]を使用して各要素に決まった型のデータを読み書きできる
+uint8A[0] = 100;
+
+// 8ビット符号なし整数を16個格納できるTypedArrayを作成
+// 内部では16バイトのArrayBufferが自動的に作られる
+// この作成方法は上の例とほぼ同じ動きをする
+const uint8B = new Uint8Array(16);
+        </pre>
+      </code>
+      <p>
+        TypedArrayに格納できる代表的なデータ型には下記のような種類があります。<br>
+        TypedArrayには他にもたくさんの種類があります。詳しくは『TypedArray オブジェクト | MDN』を参照ください。<br>
+      </p>
+      <code>
+        <pre>
+----------------------------------------------------------------------------
+TypedArray	格納できるデータ型	値の範囲	バイト数
+----------------------------------------------------------------------------
+Uint8Array	8ビット符号なし整数	0 〜 255	1
+----------------------------------------------------------------------------
+Uint8ClampedArray	8ビット符号なし整数	0 〜 255（*1）	1
+----------------------------------------------------------------------------
+Float32Array	32ビット浮動小数点数	およそ-3.4x10^38 〜 3.4x10^38	4
+----------------------------------------------------------------------------
+Float64Array（*2）	64ビット浮動小数点数	およそ-1.8x10^308 〜 1.8x10^308	8
+----------------------------------------------------------------------------
+        </pre>
+      </code>
+      <p>
+        （*1）範囲外のデータを設定すると、この範囲に補正される。<br>
+        <br>
+        （*2）JavaScriptにおける数値型はNumberしかありません。<br>
+        Numberは内部的には64ビット浮動小数点数で、整数も小数もすべてNumber型で扱います。<br>
+        Numberと同じ精度のTypedArrayを使いたい場合は、Float64Arrayを選択します。<br>
+        <br>
+        大事な点として、TypedArrayはArrayBufferを解釈するためのビューに過ぎないことをもう一度強調しておきます。<br>
+        100MBのUint8Arrayを作成したところで、実際にメモリーを確保しているのは中身のArrayBufferです。<br>
+      </p>
+      <h2>コラム：任意のデータ型でArrayBufferにアクセスできるDataView</h2>
+      <p>
+        ArrayBufferにアクセス可能な「ビュー」として、TypedArrayの他にDataViewがあります。<br>
+        DataViewはArrayBufferに任意のデータ型としてアクセス可能です。<br>
+        また、複数バイトにアクセスするデータのエンディアンを実行環境にかかわらず指定できます。<br>
+        <br>
+        ※エンディアンとは、メモリー上で複数バイトを解釈する際のバイトの並び順です。       
+      </p>
+      <h2>コラム：TypedArrayの新しいデータ型</h2>
+      <p>
+        基本的なデータ型はECMAScript 2015で追加されましたが、<br>
+        その後もTypedArrayの種類が追加されているので紹介します。<br>
+        <br>
+        ①BigInt64Array<br>
+        <br>
+        BigInt64Arrayは64ビット符号付き整数を扱えるデータ型です。<br>
+        JavaScriptのNumberでは表現しきれない大きな整数を正確に扱えます。<br>
+        BigInt64ArrayはECMAScript 2020でBigIntとあわせて追加されました。<br>
+        BigInt64Arrayから得られる数値はBigIntですので、そのままではNumberとの演算は行えないことに注意が必要です。<br>
+        <br>
+        参考記事：<a href="https://ics.media/entry/200128/#2^53%E4%BB%A5%E4%B8%8A%E3%81%AE%E6%95%B4%E6%95%B0%E3%82%92%E6%89%B1%E3%81%88%E3%82%8Bbigint">JavaScriptのモダンな書き方- ES2020のオプショナルチェーン、null合体演算子、動的import、globalThis等を解説<a><br>
+        <br>
+        ②Float16Array<br>
+        <br>
+        Float16Arrayは16ビット浮動小数点数を扱えるデータ型です。16ビット浮動小数点数は、<br>
+        ディープラーニングなどのAIの計算でよく使われます。<br>
+        Float32Arrayと比べると精度が落ちるものの、データ量が半分です。<br>
+        そのため、使用するメモリー容量や帯域が半分で済み、演算も高速に実行可能です。<br>
+        <br>
+        Float16ArrayはChrome 135、Edge 135（2025年4月）、Safari 18.2（2024年12月）、Firefox 129（2024年8月）で利用可能です。<br>
+        ただし、2025年4月執筆時点では、ECMAScriptの仕様になっておらず、<a href="https://tc39.es/proposal-float16array/">TC39でStage 3の段階</a>です。
+      </p>
     </div>
   </body>
 </html>
