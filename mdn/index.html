@@ -9,6 +9,122 @@
   </head>
   <body>
     <div class="wrapper">
+      <h2>配列</h2>
+      <h3>配列の定義☆</h3>
+      <p>
+        配列の定義では、リテラルを用いるるようにしてください。
+      </p>
+      <code>
+        <pre>
+const list = []
+        </pre>
+      </code>
+      <p>
+        わざわざコンストラクタを使わないようにしましょう。
+      </p>
+      <code>
+        <pre>
+const list = new Array(length)
+      </pre>
+    </code>
+      </p>
+      <h2>コメント</h2>
+      <h3>単一コメント☆</h3>
+      <p>
+        スラッシュとコメントの間には空白を入れ、文末にはピリオド又は句点を付けません。
+      </p>
+      <code>
+        <pre>
+class Member {
+  // declaration without default values
+  private name: string;
+  private age: number;
+
+  constructor(name: string, age: number) {
+      this.name = name;
+      this.age = age;
+  }
+
+  // getter functions
+  getName(): string {
+      return this.name;
+  }
+
+  getAge(): number {
+      return this.age;
+  }
+
+  // setter functions
+  setName(name: string) {
+      this.name = name;
+  }
+
+  setAge(age: number) {
+      this.age = age;
+  }
+
+  // complement function
+  greeting(): string {
+      const greetWord = `My name is ${this.name}, I'm ${this.age} years old.`;
+      return greetWord;
+  }
+}
+      </pre>
+    </code>
+    <h3>複数行のコメント☆☆</h3>
+    <p>
+      コメントは短い方が理想的ですが、長いコメントではすべての文の先頭に//を追加してください。/* … */は使わないでください。
+    </p>
+    <code>
+      <pre>
+// This funciton generates lines of 'Commando'
+// One sentence is returned from the function.
+// You can change the name of an antagonist, Sully.
+// Let's get it tried!
+
+function qotesOfCommando(name: string): string {
+    const generalQuote1 = `Matrix: Remember, ${name}, when I promised to kill you last? \n`
+    const soldierQuote = `${name}: That's right, Matrix! You did! \n`
+    const generalQuote2 = `Matrix: I lied.`
+    return generalQuote1 + soldierQuote + generalQuote2
+}
+
+console.log(qotesOfCommando("Sully"))
+      </pre>
+    </code>
+    <p>
+      これはだめ
+    </p>
+    <code>
+      <pre>
+/* 
+  This funciton generates lines of 'Commando'
+  One sentence is returned from the function.
+  You can change the name of an antagonist, Sully.
+  Let's get it tried! 
+*/
+
+function qotesOfCommando(name: string): string {
+    const generalQuote1 = `Matrix: Remember, ${name}, when I promised to kill you last? \n`
+    const soldierQuote = `${name}: That's right, Matrix! You did! \n`
+    const generalQuote2 = `Matrix: I lied.`
+    return generalQuote1 + soldierQuote + generalQuote2
+}
+
+console.log(qotesOfCommando("Sully"))
+      </pre>
+    </code>
+    <p>
+      サンプルコードを書くにあたっては基本的に/* … */を使わないようですが、引数の省略を表すときには使うこともあるようです。<br>
+      取りえる引数を用いないことを表すために使うようです。
+    </p>
+    <code>
+      <pre>
+array.map((value /* , index, array */) => {
+  // …
+});
+      </pre>
+    </code>
     </div>
   </body>
 </html>

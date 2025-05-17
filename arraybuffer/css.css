@@ -1,19 +1,26 @@
 body {
   color: #333333;
   font-family: arial, sans-serif;
+  margin: 1rem;
 }
 
 code {
   color: #ffffff;
 }
+
 code pre {
   background: #333333;  
   padding: 15px;
 }
 
+img {
+  max-width: 500px;
+}
+
 .wrapper {
   margin: 0 auto;
 }
+
 
 .result {
   align-items: center;

@@ -154,6 +154,79 @@ Float64Array（*2）	64ビット浮動小数点数	およそ-1.8x10^308 〜 1.8x
         Float16ArrayはChrome 135、Edge 135（2025年4月）、Safari 18.2（2024年12月）、Firefox 129（2024年8月）で利用可能です。<br>
         ただし、2025年4月執筆時点では、ECMAScriptの仕様になっておらず、<a href="https://tc39.es/proposal-float16array/">TC39でStage 3の段階</a>です。
       </p>
+      <h2>TypedArrayの作成方法</h2>
+      <p>
+        TypedArrayについて、作成方法と注意点を詳しく説明します。<br>
+        方法によって内部のArrayBufferの状態が異なります。<br>
+        とくに、ArrayBufferを新しく作成するのか、しないのかについて焦点をあてています。<br>
+        <br>
+        ArrayBufferが新しく作成されると、メモリーの容量がサイズ分確保されます。<br>
+        不要にメモリーを消費しないよう注意が必要です。<br>
+        また、元のArrayBufferおよびTypedArrayの変更の影響を受けるかどうかにもかかわってきます。<br>
+        正しくデータ処理を行う上でハマりやすいポイントですので、意識しましょう。
+      </p>
+      <h2>new演算子（コンストラクター）</h2>
+      <p>
+        コンストラクターからnew演算子でTypedArrayを作成する際、<br>
+        引数によってArrayBufferを新しく作成するのか、しないのかが異なります。<br>
+        <br>
+        A：引数に要素数を指定する<br>
+        <br>
+        対応したデータ型のバイト数を要素数分確保したArrayBufferが内部で自動生成されます。<br>
+        <br>
+        B：引数に配列を指定する<br>
+        <br>
+        対応したデータ型のバイト数を指定した配列の要素数分確保したArrayBufferが内部で自動生成されます。<br>
+        <br>
+        C：引数にArrayBufferを指定する<br>
+        <br>
+        内部で新しくArrayBufferは作成されず、コンストラクターで渡したArrayBufferを解釈するTypedArrayを作成します。        
+      </p>
+      <code>
+        <pre>
+// A：32ビット浮動小数点数の配列を4要素確保。内部では16バイトのArrayBufferが作成される
+const float32A = new Float32Array(4);
+
+// B：32ビット浮動小数点数の配列を4要素、値を指定して確保
+// 内部では16バイトのArrayBufferが作成される
+const float32B = new Float32Array([0.25, 0.5, 0.75, 1.0]);
+
+// 16バイトのメモリー領域を確保
+const array = new ArrayBuffer(16);
+// C：渡した16バイトのArraybufferを32ビット浮動小数点数の配列として解釈
+// float32Cは4要素の配列になる
+const float32C = new Float32Array(array);          
+        </pre>
+      </code>
+      <p>
+        同じArrayBufferから複数のTypedArrayを作成することも可能です。<br>
+        このとき、データの本体であるArrayBufferは共有しています。<br>
+        そのため、ひとつのTypedArrayを変更すると、他のTypedArrayに影響します。
+      </p>
+      <code>
+        <pre>
+// 16バイトのメモリー領域を確保
+const array = new ArrayBuffer(16);
+
+// ArraybufferからFloat32Arrayを作成
+const float32A = new Float32Array(array);
+// 同じArraybufferから別のFloat32Arrayを作成
+const float32B = new Float32Array(array);
+
+// すべてのArrayBufferは同一
+console.log(float32A.buffer === array); // true
+console.log(float32B.buffer === float32A.buffer); // true
+
+// ArrayBufferを共有している場合、一方の変更は他方にも反映される
+float32A[0] = 0.25;
+console.log(float32B[0]); // 0.25                 
+        </pre>
+      </code>
+      <h2>slice()メソッド</h2>
+      <p>
+        作成済みのTypedArrayインスタンスからslice()メソッドで新しいTypedArrayを作成できます。<br>
+        引数で切り出す要素の範囲を指定します。このとき、作成元のArrayBufferは共有せず、新しいArrayBufferが作成されます。
+      </p>
     </div>
   </body>
 </html>
