@@ -125,6 +125,156 @@ array.map((value /* , index, array */) => {
 });
       </pre>
     </code>
+    <h2>関数</h2>
+    <p>
+      サンプルコードを書く際に可能な限り以下のような書き方にするとよいと紹介されてありました。<br>
+      関数の書き方は三つほどもあるので、どの時に何を使うかはクローズドなプロジェクトでも統一しておいても良いかもしれません。
+    </p>
+    <h3>関数の宣言☆☆☆</h3>
+    <p>
+      関数の定義は関数宣言を用いて、関数式やアロー関数を用いるのは避けてください。<br>
+      よい例
+    </p>
+    <code>
+      <pre>
+function declareFunction(): void {
+  console.log("function")
+}
+      </pre>
+    </code>
+    <p>
+      悪い例
+    </p>
+    <code>
+      <pre>
+const declareFunction = function(): void {
+  console.log("function")
+}      
+      </pre>
+    </code>
+    <p>
+      悪い例
+    </p>
+    <code>
+      <pre>
+const declareFunction = () => console.log("function")  
+      </pre>
+    </code>
+    <p>
+      関数宣言の巻取り<br>
+      JavaScriptは通常コードを上から読んでいくので、定義前の変数やクラスを用いようとするとエラーが起こります。<br>
+      ただ、関数宣言は「巻き取り」が起こるため、後の方で宣言したものを宣言前の段階で使ってもエラーが起こらないという特徴があります。<br>
+      <br>
+      これは、スクリプトにおいて、「よく編集される関数を上部に、そうではないヘルパー関数などは下部に置くことで、認知的負荷やスクロールの手間を減らせる」という点で有用です。
+    </p>
+    <code>
+      <pre>
+"use client"
+
+import { react } from "React"
+
+// UIを担当するこの関数はよく編集される
+export default function Home() {
+    const path = getPath()
+    return (
+        <>
+            <p>{path}</p>
+        </>
+    )
+}
+
+// このヘルパー関数が修正されることはあまりない
+function getPath(): string {
+    // ...
+}
+      </pre>
+    </code>
+    <h3>アロー関数の使い時と使い方☆</h3>
+    <p>
+      無名関数をコールバックとして用いる場合、アロー関数を使用して簡潔にしましょう。<br>
+      また、アロー関数を用いる場合は、可能な限り暗黙の返り値（式本体とも呼ばれます）を使用してください。
+    </p>
+    <code>
+      <pre>
+const members = [
+    {name: "Kirby", age: 30},
+    {name: "Meta Knight", age: 30},
+    {name: "Magolor", age: 14},
+];
+
+const memberAges = members.map(member => member.age);
+const youngestAge = Math.min(...memberAges);
+const youngestMembers = members.filter(member => member.age === youngestAge).map(member => member.name);
+console.log(youngestMembers)
+// ["Magolor"]
+      </pre>
+    </code>
+    <p>
+      悪い例1：わざわざ式宣言は用いない。
+    </p>
+    <code>
+      <pre>
+const memberAges = members.map(function(member) {
+  return member.age
+})
+      </pre>
+    </code>
+    <p>
+      悪い例2：一文で済むならわざわざ関数ブロックを作ったりしない。
+    </p>
+    <code>
+      <pre>
+const memberAges = members.map(member => {
+  return member.age
+})
+      </pre>
+    </code>
+    <p>
+      eact：関数コンポーネントはどう定義するべきか？
+      この話をReactに拡張するならば、関数コンポーネントを定義するときは関数宣言でやるのがベターと言う結論になります。
+      人によってはアロー関数で変数に代入して定義していたりしますが、もしこれを揃えたいなら関数宣言に合わせる方が有力でしょう。
+      
+      もう少しいうと、（これは個人の感想なのですが）export するのも宣言時でよいかもしれません。
+      関数コンポーネントの定義時にexport defaultをしていない場合、「その関数コンポーネントが子コンポーネントとして、下で定義された親コンポーネントに使われているかもしれない」と考えなければならないからです。感覚としては、letで変数宣言されたときと似たような感じでしょうか（後で変更されるかもしれないと身構える必要がある）。
+      
+      exportするかどうかを一発で理解したいので、宣言時にexportする方が無難でしょう。
+      
+      例
+      ・最後にexport
+    </p>
+    <code>
+      <pre>
+function UI1() {
+  return <></>
+}
+
+function UI2() {
+  return (
+      <>
+          {<UI1 />}
+      </>
+  )
+}
+
+export default UI2 // 最後まで見ないと結局何がexportされるか分からない。
+      </pre>
+    </code>
+    <p>・最初にexport</p>
+    <code>
+      <pre>
+export default function UI1() {
+  return (
+      <>
+          {<UI2 />}
+      </>
+  )
+}
+
+function UI2() {
+  return <></>
+}
+      </pre>
+    </code>
     </div>
   </body>
 </html>

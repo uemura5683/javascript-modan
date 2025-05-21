@@ -227,6 +227,28 @@ console.log(float32B[0]); // 0.25
         作成済みのTypedArrayインスタンスからslice()メソッドで新しいTypedArrayを作成できます。<br>
         引数で切り出す要素の範囲を指定します。このとき、作成元のArrayBufferは共有せず、新しいArrayBufferが作成されます。
       </p>
+      <h2>subarray()メソッド</h2>
+      <p>
+        作成済みのTypedArrayインスタンスからsubarray()メソッドで新しいTypedArrayを作成できます。<br>
+        引数で切り出す要素の範囲を指定します。このとき、作成元のArrayBufferを共有するため、新しいArrayBufferは作成されません。<br>
+        <br>
+        以上をまとめると下記のようになります。<br>
+        TypedArrayを作成する際にArrayBufferが内部で新しく作られるか、<br>
+        元のArrayBufferを共有するかはメモリー効率の大事なポイントです。
+      </p>
+      <p>
+        TypedArrayの作成方法	ArrayBufferの作成・共有	ArrayBufferの中身
+        ------------------------------------------------------------
+        new TypedArray(要素数)	新規作成される	初期値で埋められる
+        ------------------------------------------------------------
+        new TypedArray(配列)	新規作成される	引数の配列が要素に代入される
+        ------------------------------------------------------------
+        new TypedArray(ArrayBuffer)	引数のArrayBufferを共有する	引数のArrayBufferを引き継ぐ（変更されない）
+        ------------------------------------------------------------
+        slice(start, end)	新規作成される	元のArrayBufferの値が複製され代入される
+        ------------------------------------------------------------
+        subarray(begin, end)	作成元のArrayBufferを共有する	元のArrayBufferを引き継ぐ（変更されない）
+      </p>
     </div>
   </body>
 </html>
