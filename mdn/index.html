@@ -275,6 +275,232 @@ function UI2() {
 }
       </pre>
     </code>
+    <h2>ループと制御</h2>
+    <p>
+      Pythonならイテラブルのループはfor inで、Golangならコレクションのループはfor;;ないしfor range構文など使えるものが限定的です。<br>
+      しかし、な　ぜ　か　JavaScriptは割とたくさんあります。<br>
+      古典的なfor(;;)だけでなく、for inやfor of、メソッドとしてforEachまで。<br>
+      開発者の方が何を思ってこんなに実装したかは知りませんが、実務ではできる限り書き方は揃えることが望まれるでしょう。
+    </p>
+    <h3>ループの構文☆</h3>
+    <p>
+      コレクションの要素をすべて反復処理する場合は、for ofかforEachを使うようにしてください。
+    </p>    
+    <code>
+      <pre>
+const nintendoIPs = ["Mario", "Kirby", "Pokemon", "Fire Emblem", "Pikmin", "Zelda"]
+for(const ip of nintendoIPs) {
+    console.log(nintendoIPs)
+}
+
+nintendoIPs.forEach(ip => console.log(ip))
+      </pre>
+    </code>
+    <p>
+      for(;;)を使うことは推奨されません。
+      インデックスの i を追加しなければならないだけでなく、配列の長さも指定しなければなりません。配列を回すだけなら冗長です。
+    </p>
+    <code>
+      <pre>
+for(let i = 0; i < nintendoIPs.length; i++) {
+  console.log(nintendoIPs[i])
+}
+      </pre>
+    </code>
+    <p>
+      もしインデックスを取り扱いたいならforEachを使ってください。コールバック関数の第二引数でインデックスを受け取れます。
+    </p>
+    <h3>or ofとforEachの違い</h3>
+    <p>
+      for ofは制御構文であるのに対して、forEachはArrayのプロトタイプメソッドです。<br>
+      これは、例えば関数の中でループする時に顕著に違いが現れます。<br>
+      for ofのループブロックの中でreturnすれば、if文の制御ブロックでのreturnと同じように関数を終了させることができますが、<br>
+      forEachの場合単にその時のループで実行されているコールバック関数を終了するだけです。さらにその上の関数ブロックまでは終了できません。<br>
+      mapのコールバック関数でreturnしても早期リターンにならないことを考えると実感しやすいと思います。<br>
+      このため、以下の二つの関数は同じような挙動になるわけではありません。
+    </p>
+    <code>
+      <pre>
+const nintendoIPs = ["Mario", "Kirby", "Pokemon", "Fire Emblem", "Pikmin", "Zelda"]
+
+function loopList(list: string[]): boolean {
+    for(const v of list) {
+        if (v.length > 5) {
+            return false
+        }
+    }
+    return true
+}
+console.log(loopList(nintendoIPs)) // 期待通りfalseが出力
+
+function loopList2(list: string[]): boolean {
+    list.forEach(v => {
+        if (v.length > 5) {
+            return false
+        }
+    })
+    return true
+}
+console.log(loopList2(nintendoIPs)) // 常にtrue
+      </pre>
+    </code>
+    <p>
+      もう少しいえば、forEachは返り値が常に棄却されundefinedとなります。<br>
+      他のArrayプロトタイプメソッドで連鎖することはできませんし、元の配列が変わることもありません（即ち破壊的メソッドですらない）。<br>
+      配列を回すことだけに特化した特殊なArrayメソッドであると解釈することが大切です。
+    </p>
+    <p>
+      for ofを使う場合は、変数をconstなどで定義してください。<br>
+      これがないと暗黙の裡にグローバル変数を定義していることになり、意図しない変数の定義・上書きが起こる危険があります。
+    </p>    
+    <code>
+      <pre>
+const nintendoIPs = ["Mario", "Kirby", "Pokemon", "Fire Emblem", "Pikmin", "Zelda"]
+
+for(v of nintendoIPs) {
+    console.log(v)
+    // Kirby
+    // Pokemon
+    // Fire Emblem
+    // Pikmin
+    // Zelda
+
+}
+
+console.log(v) 
+// Zelda
+// 最後に代入されたvがここでもアクセスできる
+      </pre>
+    </code>
+    <h3>より意味の分かりやすいコードへ</h3>
+    <p>
+      forループをまったく使用しないようにすることを検討してください。 <br>
+      Arrayを使用している場合は、代わりにmap, every, some, findIndex, find, includesのようなより意味づけされた反復処理メソッドを使用することを検討してください。
+    </p>
+    <h3>制御文のブロック☆☆☆</h3>
+    <p>
+      もしif文がreturnで終わっている場合はelseを追加しないでください。ネストを浅くするためです。<br>
+      ただし、if, for, while などの制御フロー文は、単一の文の時は{}の使用を要求されませんが、常に{}を使用してください。文を追加する際に{}を追加するのを防ぐためです。
+    </p>
+    <code>
+      <pre>
+if (flag) {
+  return "success" // {}の中でreturn
+}
+
+// else文は作らない
+      </pre>
+    </code>
+    <p>
+      よくない例1
+    </p>
+    <code>
+      <pre>
+if (flag) return "success"
+      </pre>
+    </code>
+    <p>
+      よくない例2
+    </p>
+    <code>
+      <pre>
+// 実はreturn文が直後になくてもjsは賢いので制御フローのreturn文だと認識してくれる
+function func(flag: boolean):string {
+    if (flag)
+        // ただし、ここに何かを追加したらエラー
+    
+        return "success"
+
+    return "failure"
+}
+      </pre>
+    </code>
+    <p>
+      例えば、Golangでは書き方が非常に限定されているため、頻繁にif文を丸ごと書かないといけません。<br>
+      三項演算子は使えませんし、{}を省略することもできません。<br>
+      しかしそのおかげで条件分の書き方は個人の好みが入る余地はほとんどありません。<br>
+      <br>
+      短文で終わるのにわざわざ{}を省略しないのは非効率に見えるかもしれませんが、<br>
+      複数行にしないといけなくなった時に{}を追加し忘れる問題や、Golangのようにできるだけ記法は統一しておいた方がよいという話もあります。
+    </p>
+    <h3>switch文のブロック☆☆</h3>
+    <p>
+      breakとreturnは共存しません。return文を使う時はbreakしないようにしてください。
+    </p>
+    <code>
+      <pre>
+function monthStringToNumber(month: string): number {
+  switch (month) {
+      case "January":
+          return 1
+      case "Febrary":
+          return 2
+      case "March":
+          return 3
+      // ...
+      default:
+          return 0
+  }
+}
+console.log(monthStringToNumber("December")) // 12
+      </pre>
+    </code>
+    <p>
+      caseブロックの中で変数を宣言したりする必要がある場合は、{}で囲ってください。
+    </p>
+    <code>
+      <pre>
+switch (role) {
+  case "admin": {
+      const privilege = new Admin()
+      member.accessibility = privilege
+      break 
+  }
+  case "alumni": {
+      const oldAccess = new Alumni()
+      member.accessibility = oldAccess
+      break
+  }
+  case "normal": {
+      const normalAccess = new Normal()
+      member.accessibility = normalAccess
+      break
+  }
+  default:
+      member.accessibility = null
+      break
+}
+      </pre>
+    </code>
+    <h2>変数</h2>
+    <h3>変数の宣言☆☆</h3>
+    <p>
+      基本的に変更する予定のないものはconstで宣言してください。<br>
+      varはグローバルスコープを汚染するため避けてください。<br>
+    </p>
+    <code>
+      <pre>
+const comsumptionTaxRate = 0.1
+      </pre>
+    </code>
+    <p>
+      1 行で複数の変数を宣言したり、カンマで区切ったり、連鎖宣言を用いたりしないでください。
+    </p>
+    <code>
+      <pre>
+let var1, var2;
+let var3 = var4 = "Apapou"; // var4 は暗黙にグローバル変数として作成され、厳格モードでは失敗する
+      </pre>
+    </code>
+    <h2>おわりに</h2>
+    <p>
+      なじみ深いものもあれば、そういう書き方が推奨されていると初めて知ったものもあると思います。<br>
+      繰り返すようで恐縮ですがこれはあくまでもサンプルコードを書くときにどういう風に書くべきかというものです。ただ、実にいろいろな書き方ができるJavaScriptにおいて、根拠をもって（即ち個人の好みでなく）書き方を統一するための一つの指標・ガイドラインになるかと思います。<br>
+      実際に採用するかはともかく、目を通しておくのも意味はあるかなと思った次第です。<br><br>
+      <a href="https://developer.mozilla.org/ja/docs/MDN/Writing_guidelines/Code_style_guide/JavaScript#%E3%83%AB%E3%83%BC%E3%83%97%E3%81%A8%E6%9D%A1%E4%BB%B6%E6%96%87">
+        https://developer.mozilla.org/ja/docs/MDN/Writing_guidelines/Code_style_guide/JavaScript#%E3%83%AB%E3%83%BC%E3%83%97%E3%81%A8%E6%9D%A1%E4%BB%B6%E6%96%87
+      </a>
+    </p>
     </div>
   </body>
 </html>
