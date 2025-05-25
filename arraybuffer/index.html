@@ -249,6 +249,130 @@ console.log(float32B[0]); // 0.25
         ------------------------------------------------------------
         subarray(begin, end)	作成元のArrayBufferを共有する	元のArrayBufferを引き継ぐ（変更されない）
       </p>
+      <h2>配列（Array）との比較</h2>
+      <p>
+        JavaScriptにはTypedArrayとは別に配列（Array）の違いを説明します。<br>
+        <br>
+        ArrayはTypedArrayと比べると柔軟で汎用性が高いです。<br>
+        しかし、Arrayは内部で動的なメモリー管理を行うため、データ処理や転送を高い頻度で行う場合にはオーバーヘッドが発生する可能性があります。<br>
+        <br>
+        TypedArrayは長さが固定であり、バイト単位のデータ格納が可能なため、メモリーアクセスが効率的に行われます。<br>
+        数値計算においてもバイナリデータを直接操作できるので、高いパフォーマンスが期待できます。<br>
+        また、メモリー領域が連続しているので高速なデータの転送が可能です。<br>
+        <br>
+        大量のデータを処理する数値計算の場合にはTypedArrayで管理するとデータのまとめた取り回しが楽になります。<br>
+        逆にデータの規模が小さい時は汎用的なArrayが良いでしょう。
+      </p>
+      <h3>TypedArrayは決まった型の数値しか格納できない</h3>
+      <p>
+        Arrayは数値、文字列、オブジェクトなど、任意のデータを混在させて格納できます。
+      </p>
+      <code>
+        <pre>
+// 配列は数値や文字列、オブジェクトを混在できる
+const array = [10, "hello", { key: "value" }];
+        </pre>
+      </code>
+      <p>
+        TypedArrayは決まった型の数値しか格納できません。
+      </p>
+      <code>
+        <pre>
+// 32ビット浮動小数点数が10個格納できるメモリー領域を確保
+const float32 = new Float32Array(10);
+
+// Float32Arrayに32ビット浮動小数点数を格納
+float32[0] = 0.5;
+
+// 数値として表現できないオブジェクトを代入するとNaNが格納される
+float32[1] = "文字列"; // a[1] = NaN
+        </pre>
+      </code>
+      <h3>TypedArrayはサイズを変更できない</h3>
+      <p>
+        Arrayは配列サイズの変更が容易に可能です。
+      </p>
+      <code>
+        <pre>
+const array = [10, "hello", { key: "value" }];
+console.log(array.length); // 3
+
+// 配列はサイズの変更が簡単にできる
+array.push("newValue");
+console.log(array.length); // 4
+        </pre>
+      </code>
+      <p>
+        一方、TypedArrayは配列のサイズの変更ができません。これは、TypedArrayが先にメモリー領域をまとめて一箇所に確保し、効率的に処理するための制約です。配列の長さが変わる操作はできないため、concat()メソッドやsplice()メソッドもありません。
+      </p>
+      <code>
+        <pre>
+// 32ビット浮動小数点数が10個格納できるメモリー領域を確保
+const float32 = new Float32Array(10);
+// push()やpop()など、配列のサイズが変更されるメソッドは持たない
+// float32.push(0.5); // ✗
+        </pre>
+      </code>
+      <p>
+        逆に、Arrayは中身がメモリー上で連続していない可能性があります。サイズも可変で配列内にどのような大きさのオブジェクトでも格納できるので、必要なメモリー領域があらかじめわからないためです。<br>
+        Arrayは操作を柔軟にできる反面、配列の中身をまるまる複製したり、転送するためにはメモリーに散らばったデータを集める必要があります。転送のような操作を行うときは、TypedArrayと比べると効率がよくありません。
+      </p>
+      <img src="https://ics.media/entry/250408/images/250408_array_location__960.png">
+      <h3>コラム：サイズを変更できるTypedArray</h3>
+      <p>
+        ECMAScript 2024でArrayBufferのサイズを変えられるresize()メソッドが追加されました。ArrayBufferを作るときに最大の想定バイトサイズを指定しておくと、後からそのサイズまで拡張できます。
+      </p>
+      <code>
+        <pre>
+// 8バイトのArrayBufferを作成（最大16バイトまで拡張可能）
+const array = new ArrayBuffer(8, { maxByteLength: 16 });
+console.log(array.byteLength); // 8
+
+// サイズを拡張
+buffer.resize(12);
+console.log(array.byteLength); // 12
+        </pre>
+      </code>
+      <p>
+        サイズ変更は可能になるものの、最初からバイト数を見積もっておかなくてはならないため、やはり柔軟性は高くありません。
+      </p>
+      <h3>TypedArrayの配列操作</h3>
+      <p>
+        TypedArrayは、Arrayにあるmap()メソッドやforEach()メソッド、filter()メソッドなどの配列操作が可能です。しかし、TypedArrayならではの注意点があります。<br>
+        <br>
+        たとえば、map()メソッドを使用する場合、返却される新しい配列は元のTypedArrayと同じ型になります。また、中のArrayBufferは新しく作られます。<br>
+        <br>
+        大きなデータに対してmap()操作を行うと、内部的には同じサイズの新たなメモリー領域が確保されることになります。知らずにメモリーを消費していることがあるため、注意が必要です。
+      </p>
+      <code>
+        <pre>
+// 要素を指定してFloat32Arrayを作成
+const float32 = new Float32Array([1, 4, 9, 16]);
+// map()操作が可能
+const newFloat32 = float32.map(value => value + 1);
+
+console.log(newFloat32); // Float32Array, [2, 5, 10, 17]
+// 元のTypedArrayはそのまま
+console.log(float32); // Float32Array, [1, 4, 9, 16]
+// TypedArrayが参照するArrayBufferは新しく作られる
+console.log(float32.buffer === newFloat32.buffer); // false
+        </pre>
+      </code>
+      <p>
+        sort()やreverse()などは元のArrayBufferを操作するため、新しいArrayBufferは作られません。新しいArrayBufferが作られるかどうかは、Arrayの同名の配列操作メソッドが元の配列を操作するかどうかに対応しています。
+      </p>
+      <code>
+        <pre>
+// 要素を指定してFloat32Arrayを作成
+const float32 = new Float32Array([9, 4, 16, 1]);
+// sort()操作が可能
+float32.sort();
+
+// 元のArrayBufferが変更される
+console.log(float32); // Float32Array, [1, 4, 9, 16]
+        </pre>
+      </code>
+
     </div>
   </body>
 </html>
